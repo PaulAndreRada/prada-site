@@ -83,7 +83,7 @@
 	      <div class="intro_container_desktop"
 		   id="introContainer">
 		<div class="intro"> 
-		  Hi, I’m Paul Rada, a Product Designer that specializes in web and mobile apps.
+		  Hi, I’m <a href="#">Paul Rada</a>, a Product Designer that specializes in web and mobile apps.
 		</div>
 	      </div> <!--intro_container-->
 	      

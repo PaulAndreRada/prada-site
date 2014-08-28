@@ -6,7 +6,7 @@
 
 $(function(){ 	
 	'use strict';
-
+	/*
 	var $doc = $(document),
 	    $introCon = $doc.find( '#introContainer' ),
 	    $contentCon = $doc.find( '#contentCon' ),
@@ -51,7 +51,7 @@ $(function(){
 	
 	
 	
-	
+	*/
 	
 	
 	

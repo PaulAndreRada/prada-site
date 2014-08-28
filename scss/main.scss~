@@ -23,7 +23,11 @@ textarea {
 html {
     font-size: 1em;
     line-height: 1.4;
+    height: 100%;
 }
+
+/* remove link decorations */
+  a {  text-decoration: none; }
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -101,150 +105,206 @@ textarea {
 
    // @vars
    // Style variables 
-   $main-color : rgb( 102, 102, 102 );
-   $secondary-color: rgb( 90, 90, 90 );
+   $main-color : rgb( 61, 61, 61 );
+   $secondary-color: rgb( 205, 200, 174 );
    $tertiary-color: rgb( 63, 169, 245 );
-   $BG-color : rgb( 240, 240, 240 );
+   $BG-color : white;
    
    // Position variables
    $marg-from-top: 60%;   
    
-   @font-face {
-     font-family: "akzidenzGR";
-     src: url( ../fonts/AkzidenzGrotesk-Roman.otf );
-   }
 
    html{
-     max-width: 100%;	
+     max-height: 100%;	
+     height: 100%;
    }
     
    body { 
-     font-family: "akzidenzGR", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+     max-height: 100%;
+     height: 100%;
+     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
      background: $BG-color;
    }
 
-   .page-wrap { 
-     @include container;
-   }
-   
-  
-   .tear { 
-     position: absolute;
-     left :-40px;
-     top: 150px;
-     border: 0;
-     width: 1px;
-     height : 300px;
-     background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), $main-color, rgba(0,0,0,0)); 
-     background-image:    -moz-linear-gradient(top, rgba(0,0,0,0), $main-color, rgba(0,0,0,0)); 
-     background-image:     -ms-linear-gradient(top, rgba(0,0,0,0), $main-color, rgba(0,0,0,0)); 
-     background-image:      -o-linear-gradient(top, rgba(0,0,0,0), $main-color, rgba(0,0,0,0));
-   }        
+.page-wrap {
+   @include container;
+   height: 100%;	
+   max-height: 100%;
+}
 
+   
+///* @nav */  
+
+///* nav extends */ 
+.icon-container { 
+   position: relative;
+   float:left;
+   width: 100%;
+   margin-top:80px;
+}
+.nav-icon { 
+  
+   
+
+}
+.nav-text{
+  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif; 
+  font-weight: 100; 
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 34px;
+  text-align : center;
+  color : $secondary-color;
+}
+
+nav {
+  @include columns(3); 
+  position: fixed;
+  height: 100%;
+  max-height:100%; 
+
+ 
+  .home_icon_container{
+    @extend .icon-container;  
+    
+    .home_icon{
+      @extend .nav-text;
+        
+    }
+  }
+
+  .ux_icon_container{ 
+    @extend .icon-container;
+
+    .ux_icon{ 
+      @extend .nav-text;
+
+    }   
+  }
+  
+  .gpx_icon_container{ 
+    @extend .icon-container;
+
+    .gpx_icon{ 
+      @extend .nav-text;
+
+    }   
+  }
+  
+  .code_icon_container{ 
+    @extend .icon-container;
+
+    .code_icon{ 
+      @extend .nav-text;
+
+    }   
+  }
+ 
+  .links_icon_container{ 
+    @extend .icon-container;
+
+    .links_icon{ 
+      @extend .nav-text;
+
+    }   
+  }
+  
+  
+ }//nav	
+  
+
+// @Main Content // 
+
+// extends
+.content-sections { 
+  @include columns(13);
+  @include alpha;
+  @include omega;
+  height: 100%;
+  max-height: 100%;
+}
+
+.content-container{ 
+   @include columns(9);     
+   border-top: 1px solid $secondary-color;
+   border-bottom: 1px solid $secondary-color;
+   height:auto;
+}
+
+.content_rails{ 
+  @include offset(3);
+  height: 100%;
+  max-height: 100%;
+}
+
+
+section.intro{ 
+  @extend .content-sections;
+}
+   .intro_container {
+     @extend .content-container;
+     margin-top: 30%;
+     border-top: none;
+   }  
+   
    .intro_container_desktop{ 
-     @include columns(6);
-     position: fixed;
-     min-height: 100%;
-		 
+     @extend .intro_container;	
+     padding-left: 20%;
+     padding-right: 20%;
+      
      .intro{
-	margin-top: $marg-from-top;	
-	font-size : 35px;
+	font-size : 30px;
 	font-weight: normal;
 	color: $main-color;
+	padding-bottom: 15%;
+
+	a {
+	  color: $secondary-color;
+	}
      }     
    }
 
 
 
-   .intro_container_mobile{ 
-     @include columns(16);
-     position: fixed;	    
-     top:0px;
-     background: $BG-color;
-     
-     .intro{
-	margin-top: 30px;
-	font-size : 25px;
-	color: $main-color;
-     }     
-     
-   }  
-	
+// project extend classes
+.project-image{
+   background: url('../img/sprites/main_sprite_big.png') no-repeat;
+   background-size: 170%;
+   margin-top: 9%;   
+}
 
-   .side_container{ 
-     @include columns(8);
-     margin-top: $marg-from-top;
-     text-align : right;
-     color : $secondary-color;
-   }
-   .icon { 
-      content: "";
-      display: inline-block;
-      background: url( ../img/sprites/sprites_crop.png ) no-repeat; 
-      background-size: 405%;
-      height:34px;
-      width: 34px;
-   }
+section.ux { 
+  @extend .content-sections;
 
-      
-   .content_container_desktop { 
-      @include offset(8);
-   }
-   
+  .project_block { 
+    @extend .content-container;
+    height:33.33%;
 
-   .content_container_mobile { 
-      @extend .content_container_desktop;
-      margin-top: 100px;      
-   }
-   
-      .networks_container{
-        @extend .side_container;
-	font-size : 25px;
+    .riotry_image {
+      @extend .project-image;
+      background-position: 0px -100px;
+      width: 245px;
+      height: 91px;
+      margin-left: 32%;
+    }
+    
+    .stampede_image {
+      @extend .project-image;
+      background-position: -0px -200px;
+      width: 245px;
+      height: 91px;
+      margin-left: 32%;
+    }
 
-	.network_icon_container{ 
-	  margin-top: 10px;
-	   .network_icon{
-	      .linkedin-icon{
-	         @extend .icon;
-		 background-position: -69px -0px
-	      }
-	      .github-icon{
-	         @extend .icon;
-		 background-position: -1px 0px
-	      }
-	      .instagram-icon{
-	         @extend .icon;
-		 background-position: -35px 0px
-	      }
-	      .quora-icon{
-	         @extend .icon;
-		 background-position: -103px 0px
-	      }
-	   }	
-	}
-      }
-	
-	   
-      .contact_container{ 
-        @extend .side_container;
-	margin-top: $marg-from-top*2;
-	font-size : 25px;
-	a { 
-	  text-decoration : none;
-	  font-weight: bold;
-	  color : $tertiary-color;
-	}
-      }
-      
-      .closing_container{
-        @extend .side_container;
-	margin-top: $marg-from-top*1.4;
-	margin-bottom : 20px;
-	font-size : 12px;
-	color: rgba( 0,0,0, .3);
-      }
-   
-
+    .sudo_image {
+      @extend .project-image;
+      background-position: -10px -300px;
+      width: 245px;
+      height: 91px;
+      margin-left: 32%;
+    }
+  }
+}
 
 
 
@@ -275,6 +335,7 @@ textarea {
     width: 0;
     height: 150%;
 }
+
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
@@ -324,51 +385,12 @@ textarea {
 }
 
 /*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix:before,
-.clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-/*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
 
 .clearfix {
     *zoom: 1;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
