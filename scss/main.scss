@@ -1,5 +1,7 @@
+@import "compass/css3/transition";
 @import "_normalize";
 @import "_skeleton";
+
 
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
@@ -103,7 +105,8 @@ textarea {
    @main   
    Author's custom styles
    ========================================================================== */
-
+   
+   
    // @vars
    // Style variables 
    $main-color : rgb( 61, 61, 61 );
@@ -112,8 +115,7 @@ textarea {
    $BG-color : white;
    
    // Position variables
-   $proj-img-top-margin: 90px;   
-   
+   $proj-img-top-margin: 70px;   
 
    html{
      max-height: 100%;	
@@ -152,6 +154,13 @@ textarea {
   font-size: 34px;
   text-align : center;
   color : $secondary-color;
+  @include transition-property(color);
+  @include transition-duration(.2s);
+
+  
+  &:hover, &:active { 
+    color: $main-color;
+  }
 }
 .nav-icon { 
    background: url('../img/sprites/main_sprite_big.png') no-repeat;
@@ -165,16 +174,22 @@ nav {
   @include columns(3); 
   position: fixed;
   height: 100%;
-  max-height:100%; 
-
+  max-height:100%;
  
   .home_icon_container{
     @extend .icon-container;  
     
-    .home_icon{
+    .home_icon{	
       @extend .nav-icon;
       margin-left: 39%;
-      background-position: -260px -340px;
+      background-position: -260px -342px;
+      // add a step for fade
+      //      @include transition-property(background);
+      //      @include transition-duration(1s);
+      
+      &:hover, &:active { 
+        background-position: -260px -402px;
+      }
         
     }
   }
@@ -184,7 +199,6 @@ nav {
 
     .ux_icon{ 
       @extend .nav-text;
-
     }   
   }
   
@@ -193,7 +207,6 @@ nav {
 
     .gpx_icon{ 
       @extend .nav-text;
-
     }   
   }
   
@@ -202,7 +215,6 @@ nav {
 
     .code_icon{ 
       @extend .nav-text;
-
     }   
   }
  
@@ -212,16 +224,19 @@ nav {
     .links_icon{ 
       @extend .nav-icon;
       margin-left: 36%;
-      background-position: -249px -460px;
+      background-position: -249px -461px;
+      
+      &:hover, &:active { 
+        background-position: -249px -532px;
+      }
     }   
   }
   
   
- }//nav	
+ }//end nav
   
 
 // @Main Content // 
-
 // extends
 .content-sections { 
   @include columns(13);
@@ -231,15 +246,17 @@ nav {
   min-height: 700px;
   max-height: 100%;
 }
-
 .content-container{ 
    @include columns(7);     
    @include clearfix;
    border-bottom: 1px solid $secondary-color;
    height:33.33%;
-
+   @include transition-property(background);
+   @include transition-duration(.5s);
+   &:hover, &:active{ 
+     background: $secondary-color;
+   }
 }
-
 .content_rails{ 
   @include offset(3);
   height: 100%;
@@ -249,10 +266,14 @@ nav {
 
 section.intro{ 
   @extend .content-sections;
+
 }
    .intro_container {
      @extend .content-container;
      margin-top: 30%;
+     &:hover, &:active { 
+       background: none;
+     } 
    }  
    
    .intro_container_desktop{ 
@@ -281,7 +302,7 @@ section.intro{
    // avrg sizes
    width: 275px;
    height: 100px;
-   margin-left: 32%;
+   margin-left: 33%;
    margin-top: $proj-img-top-margin;   
 }
 
@@ -299,12 +320,13 @@ section.ux {
     .stampede_image {
       @extend .project-image;
       background-position: -5px -185px;
-      margin-left: 31%;
+      margin-left: 32%;
     }
 
     .sudo_image {
       @extend .project-image;
       background-position: -10px -290px;
+      margin-top: 100px;
     }
   }
 }
