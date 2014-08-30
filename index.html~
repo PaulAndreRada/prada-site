@@ -33,7 +33,9 @@
 	       class="home_icon_container"
 	       data-nav-location="home">
 	      <div class="home_icon"> 
-		home
+		<span class="visuallyhidden">
+		  home
+		</span>
 	      </div>
 	    </a>
 	    
@@ -43,6 +45,9 @@
 	       data-nav-location="ux">
 	      <div class="ux_icon">
 		UX/UI
+		<span class="visuallyhidden">
+		  user interface design
+		</span>
 	      </div>
 	    </a>
 
@@ -52,6 +57,9 @@
 	       data-nav-location="gpx">
 	      <div class="gpx_icon">
 		GPX
+		<span class="visuallyhidden">
+		  graphic design
+		</span>
 	      </div> 
 	    </a>
 	    
@@ -61,6 +69,9 @@
 	       data-nav-location="code">
 	      <div class="code_icon"> 
 		{CD}
+		<span class="visuallyhidden">
+		  Code links
+		</span>
 	      </div>
 	    </a>
 	    
@@ -69,7 +80,9 @@
 	       class="links_icon_container"
 	       data-nav-location="links">
 	      <div class="links_icon">
-		links
+		<span class="visuallyhidden">
+		  links
+		</span>
 	      </div> 
 	    </a>
 	    
@@ -83,7 +96,7 @@
 	      <div class="intro_container_desktop"
 		   id="introContainer">
 		<div class="intro"> 
-		  Hi, I’m <a href="#">Paul Rada</a>, a Product Designer that specializes in web and mobile apps.
+		  Hi, I’m <a href="https://www.linkedin.com/profile/view?id=358349209&trk=nav_responsive_tab_profile_pic">Paul Rada</a>, a Product Designer that specializes in web and mobile apps.
 		</div>
 	      </div> <!--intro_container-->
 	      
@@ -94,22 +107,19 @@
 		     id="ux">
 	      
 	      <a href="#" class="project_block"> 
-		<div class="project_image">
-		  <img src="http://placehold.it/450x200"/>
+		<div class="riotry_image">
 		</div>
 	      </a>
 	      
 	      
 	      <a href="#" class="project_block"> 
-		<div class="project_image">
-		  <img src="http://placehold.it/450x200"/>
+		<div class="stampede_image">
 		</div>
 	      </a>
 	      
 	      
 	      <a href="#" class="project_block"> 
-		<div class="project_image">
-		  <img src="http://placehold.it/450x200"/>
+		<div class="sudo_image">
 		</div>
 	      </a>
 	      
@@ -119,26 +129,19 @@
 	    <!-- @gpx -->
 	    <section class="gpx"
 		     id="gpx">
-	    
-	      <a href="#" class="project_block"> 
-		<div class="project_image">
-		  <img src="http://placehold.it/450x200"/>
+
+	      
+	      <a href="#" class="project_block_sudotouch"> 
+		<div class="sudotouch_image">
 		</div>
 	      </a>
 	    
 	      
-	      <a href="#" class="project_block"> 
-		<div class="project_image">
-		  <img src="http://placehold.it/450x200"/>
+	      <a href="#" class="project_block_cervantes"> 
+		<div class="cervantes_image">
 		</div>
 	      </a>
 	      
-	      
-	      <a href="#" class="project_block"> 
-		<div class="project_image">
-		  <img src="http://placehold.it/450x200"/>
-		</div>
-	      </a>
 	      
 	    </section>
 	    
@@ -146,51 +149,93 @@
 	  <section class="code"
 		   id="code">
 	    
-	    <a href="#" class="project_block"> 
-	      <div class="project_image">
-		<img src="http://placehold.it/450x200"/>
+	    <a href="https://github.com/PaulAndreRada/OAT" 
+	       class="project_block"> 
+	      <div class="oat_image">
 	      </div>
+    	      <span>
+		Objective App Template
+	      </span>
 	    </a>
 	    
 	    
-	    <a href="#" class="project_block"> 
-	      <div class="project_image">
-		<img src="http://placehold.it/450x200"/>
+	    <a href="https://github.com/PaulAndreRada/dataSpider"
+	       class="project_block"> 
+	      <div class="data_spider_image">
 	      </div>
+	      <span>
+		Data Spiders
+	      </span>
 	    </a>
 	    
 	    
-	    <a href="#" class="project_block"> 
-	      <div class="project_image">
-		<img src="http://placehold.it/450x200"/>
+	    <a href="https://github.com/PaulAndreRada/riotry-demo-code" 
+	       class="project_block"> 
+	      <div class="riotry_demo_image">
 	      </div>
+	      <span>
+		demo code
+	      </span>
 	    </a>
 	    
 	    
 	  </section>
 	  
 	  <!-- @links -->
-	  <section class="networks"
-		   id="networks">
+	  <section class="links"
+		   id="links">
 	    
-	    <a href="#" class="link_block"> 
-	      <div class="project_image">
-		<img src="http://placehold.it/450x200"/>
+	    <a href="mailto:info@paulrada.com" 
+	       class="link_block"> 
+	      <div class="email_image">
 	      </div>
+	      <span>
+		email me
+	      </span>
 	    </a>
 	    
 	    
-	    <a href="#" class="link_block"> 
-	      <div class="project_image">
-		<img src="http://placehold.it/450x200"/>
+	    <a href="http://www.linkedin.com/pub/paul-rada/a0/16/21" 
+	       class="link_block"> 
+	      <div class="linkedin_image">
 	      </div>
+	      <span>
+		linkedIn
+	      </span>
 	    </a>
 	    
 	    
-	    <a href="#" class="link_block"> 
-	      <div class="project_image">
-		<img src="http://placehold.it/450x200"/>
+	    <a href="https://github.com/PaulAndreRada" class="link_block"> 
+	      <div class="github_image">
 	      </div>
+	      <span>
+		github
+	      </span>
+	    </a>
+	    
+	    
+	    <a href="http://instagram.com/paulrada" class="link_block"> 
+	      <div class="instagram_image">
+	      </div>
+	      <span>
+		instagram
+	      </span>
+	    </a>
+	    
+	    <a href="https://www.quora.com/Paul-Rada" class="link_block"> 
+	      <div class="quora_image">
+	      </div>
+	      <span>
+		quora
+	      </span>
+	    </a>
+
+	    <a href="http://www.rdio.com/people/paulrada/" class="link_block"> 
+	      <div class="rdio_image">
+	      </div>
+	      <span>
+		rdio
+	      </span>
 	    </a>
 	    
 	    

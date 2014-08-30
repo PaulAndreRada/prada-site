@@ -1,5 +1,7 @@
+@import "compass/css3/transition";
 @import "_normalize";
 @import "_skeleton";
+
 
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
@@ -100,9 +102,11 @@ textarea {
 }
 
 /* ==========================================================================
+   @main   
    Author's custom styles
    ========================================================================== */
-
+   
+   
    // @vars
    // Style variables 
    $main-color : rgb( 61, 61, 61 );
@@ -111,8 +115,7 @@ textarea {
    $BG-color : white;
    
    // Position variables
-   $marg-from-top: 60%;   
-   
+   $proj-img-top-margin: 70px;   
 
    html{
      max-height: 100%;	
@@ -138,15 +141,11 @@ textarea {
 ///* nav extends */ 
 .icon-container { 
    position: relative;
-   float:left;
+   float: left;
    width: 100%;
    margin-top:80px;
 }
-.nav-icon { 
-  
-   
 
-}
 .nav-text{
   font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif; 
   font-weight: 100; 
@@ -155,20 +154,55 @@ textarea {
   font-size: 34px;
   text-align : center;
   color : $secondary-color;
+  @include transition-property(color);
+  @include transition-duration(.2s);
+
+  
+  &:hover, &:active { 
+    color: $main-color;
+  }
 }
+.nav-icon { 
+   background: url('../img/sprites/main_sprite_big.png') no-repeat;
+   background-size: 480%;
+   // avrg sizes
+   width: 70px;
+   height: 70px;
+}
+.home_icon_focused{ 
+  background-position : -260px, -402px;
+}
+.link_icon_focused{ 
+  background-position: -249px -532px;    
+}		    
+
+
+
+.focused_nav { 
+   @extend .nav-text;
+   color: $main-color !important;
+};
 
 nav {
   @include columns(3); 
   position: fixed;
   height: 100%;
-  max-height:100%; 
-
+  max-height:100%;
  
   .home_icon_container{
     @extend .icon-container;  
     
-    .home_icon{
-      @extend .nav-text;
+    .home_icon{	
+      @extend .nav-icon;
+      margin-left: 39%;
+      background-position: -260px -342px;
+      // add a step for fade
+      //      @include transition-property(background);
+      //      @include transition-duration(1s);
+      
+      &:hover, &:active { 
+        @extend .home_icon_focused;
+      }
         
     }
   }
@@ -178,7 +212,6 @@ nav {
 
     .ux_icon{ 
       @extend .nav-text;
-
     }   
   }
   
@@ -187,7 +220,6 @@ nav {
 
     .gpx_icon{ 
       @extend .nav-text;
-
     }   
   }
   
@@ -196,7 +228,6 @@ nav {
 
     .code_icon{ 
       @extend .nav-text;
-
     }   
   }
  
@@ -204,33 +235,41 @@ nav {
     @extend .icon-container;
 
     .links_icon{ 
-      @extend .nav-text;
-
+      @extend .nav-icon;
+      margin-left: 36%;
+      background-position: -249px -461px;
+      
+      &:hover, &:active { 
+        @extends .links_icon_focused;
+      }
     }   
   }
   
   
- }//nav	
+ }//end nav
   
 
 // @Main Content // 
-
 // extends
 .content-sections { 
   @include columns(13);
   @include alpha;
   @include omega;
   height: 100%;
+  min-height: 700px;
   max-height: 100%;
 }
-
 .content-container{ 
-   @include columns(9);     
-   border-top: 1px solid $secondary-color;
+   @include columns(7);     
+   @include clearfix;
    border-bottom: 1px solid $secondary-color;
-   height:auto;
+   height:33.33%;
+   @include transition-property(background);
+   @include transition-duration(.5s);
+   &:hover, &:active{ 
+     background: $secondary-color;
+   }
 }
-
 .content_rails{ 
   @include offset(3);
   height: 100%;
@@ -240,17 +279,20 @@ nav {
 
 section.intro{ 
   @extend .content-sections;
+
 }
    .intro_container {
      @extend .content-container;
      margin-top: 30%;
-     border-top: none;
+     &:hover, &:active { 
+       background: none;
+     } 
    }  
    
    .intro_container_desktop{ 
      @extend .intro_container;	
-     padding-left: 20%;
-     padding-right: 20%;
+     padding-left: 11%;
+     padding-right: 11%;
       
      .intro{
 	font-size : 30px;
@@ -269,8 +311,12 @@ section.intro{
 // project extend classes
 .project-image{
    background: url('../img/sprites/main_sprite_big.png') no-repeat;
-   background-size: 170%;
-   margin-top: 9%;   
+   background-size: 150%;
+   // avrg sizes
+   width: 275px;
+   height: 100px;
+   margin-left: 33%;
+   margin-top: $proj-img-top-margin;   
 }
 
 section.ux { 
@@ -278,37 +324,170 @@ section.ux {
 
   .project_block { 
     @extend .content-container;
-    height:33.33%;
 
     .riotry_image {
       @extend .project-image;
-      background-position: 0px -100px;
-      width: 245px;
-      height: 91px;
-      margin-left: 32%;
+      background-position: -10px -80px;
     }
     
     .stampede_image {
       @extend .project-image;
-      background-position: -0px -200px;
-      width: 245px;
-      height: 91px;
+      background-position: -5px -185px;
       margin-left: 32%;
     }
 
     .sudo_image {
       @extend .project-image;
-      background-position: -10px -300px;
-      width: 245px;
-      height: 91px;
-      margin-left: 32%;
+      background-position: -10px -290px;
+      margin-top: 100px;
     }
   }
 }
 
 
+section.gpx { 
+  @extend .content-sections;
 
 
+  .project_block_sudotouch { 
+    @extend .content-container;
+    height: 50%;
+   
+    .sudotouch_image {
+      @extend .project-image;
+      background-position: -10px -380px;
+      margin-left: 27%;
+      margin-top: $proj-img-top-margin*2;
+    }
+   }
+
+   .project_block_cervantes { 
+    @extend .content-container;
+    height: 50%;
+    border: none;
+
+    .cervantes_image {
+      @extend .project-image;
+      background-position: -5px -450px;
+      margin-left: 27%;
+    }
+  }
+}
+
+// project code image class
+.code-project-image{
+   background: url('../img/sprites/main_sprite_big.png') no-repeat;
+   background-size: 150%;
+   // avrg sizes
+   width: 270px;
+   height: 120px;
+   margin-left: 25%;
+   margin-top: 9%;
+}
+.code-icons-text{   
+
+}
+	
+
+section.code { 
+  @extend .content-sections;
+
+  .project_block { 
+    @extend .content-container;
+    
+    .oat_image {
+      @extend .code-project-image;
+      background-position: -200px -90px;
+    }
+    
+    .data_spider_image {
+      @extend .code-project-image;
+      background-position: -200px -202px;
+    }
+    
+    .riotry_demo_image {
+      @extend .code-project-image;
+      background-position: 18px -610px;
+    }
+    
+    span { 
+       display: block;
+       margin-top:10px;
+       color: $main-color;
+       font-weight: bolder;
+       text-align: center;
+    }
+  }
+}
+
+
+// link section extends
+.link-sections {
+   @extends .content-sections;
+}
+.link-container{
+   @extend .content-container;
+   @include columns(5);
+   margin-top:80px;
+   height:20%;  
+   border: none;
+}
+.link-images{ 
+   background: url('../img/sprites/main_sprite_big.png') no-repeat;
+   background-size: 613%;
+   // avrg sizes
+   width: 70px;
+   height: 100px;
+   margin-left: 41.5%;
+   margin-top: 3%;   
+}				
+
+
+section.links { 
+  @extend .content-sections;
+
+  .link_block { 
+    @extend .link-container;
+
+    .email_image {
+      @extend .link-images;
+      background-position: -7px 0px;
+    }
+    
+    .linkedin_image {
+      @extend .link-images;
+      background-position: -79px 0px;
+    }
+    
+    .github_image {
+      @extend .link-images;
+      background-position: -226px 0px;
+    }
+    
+    .instagram_image {
+      @extend .link-images;
+      background-position: -150px 0px;
+    }
+    
+    .quora_image {
+      @extend .link-images;
+      background-position: -300px 0px;
+    }
+    
+    .rdio_image {
+      @extend .link-images;
+      background-position: -333px -357px;
+    }
+    
+    span{
+      display: block;
+      margin-top:-10px;	
+      color: $main-color;
+      font-weight: bolder;
+      text-align: center;
+    }
+  }
+}
 
 
 

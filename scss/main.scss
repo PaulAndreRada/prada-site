@@ -169,6 +169,17 @@ textarea {
    width: 70px;
    height: 70px;
 }
+.home_icon_focused{ 
+  background-position : -260px -402px !important;
+}
+.link_icon_focused{ 
+  background-position : -249px -532px !important;    
+}		    
+.focused_nav { 
+   @extend .nav-text;
+   color: $main-color !important;
+};
+
 
 nav {
   @include columns(3); 
@@ -188,7 +199,7 @@ nav {
       //      @include transition-duration(1s);
       
       &:hover, &:active { 
-        background-position: -260px -402px;
+        @extend .home_icon_focused;
       }
         
     }
@@ -227,7 +238,7 @@ nav {
       background-position: -249px -461px;
       
       &:hover, &:active { 
-        background-position: -249px -532px;
+        @extend .link_icon_focused;
       }
     }   
   }

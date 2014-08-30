@@ -1,4 +1,4 @@
-//
+
 //
 // @codekit-prepend "plugins.js";
 
@@ -6,6 +6,11 @@
 
 $(function(){ 	
 	'use strict';
+	
+
+
+
+	// enquire code
 	/*
 	var $doc = $(document),
 	    $introCon = $doc.find( '#introContainer' ),
