@@ -170,18 +170,16 @@ textarea {
    height: 70px;
 }
 .home_icon_focused{ 
-  background-position : -260px, -402px;
+  background-position : -260px -402px !important;
 }
 .link_icon_focused{ 
-  background-position: -249px -532px;    
+  background-position : -249px -532px !important;    
 }		    
-
-
-
 .focused_nav { 
    @extend .nav-text;
    color: $main-color !important;
 };
+
 
 nav {
   @include columns(3); 
@@ -240,7 +238,7 @@ nav {
       background-position: -249px -461px;
       
       &:hover, &:active { 
-        @extends .links_icon_focused;
+        @extend .link_icon_focused;
       }
     }   
   }
