@@ -825,7 +825,8 @@ nav {
 .content_rails {
   padding-left: 262.5px;
   height: 100%;
-  max-height: 100%; }
+  max-height: 100%;
+  overflow: hidden; }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
     /* line 271, ../scss/main.scss */
     .content_rails {
@@ -835,28 +836,28 @@ nav {
     .content_rails {
       padding-left: 0; } }
 
-/* line 282, ../scss/main.scss */
+/* line 283, ../scss/main.scss */
 .intro_container, .intro_container_desktop {
   margin-top: 30%; }
-  /* line 285, ../scss/main.scss */
+  /* line 286, ../scss/main.scss */
   .intro_container:hover, .intro_container_desktop:hover, .intro_container:active, .intro_container_desktop:active {
     background: none; }
 
-/* line 290, ../scss/main.scss */
+/* line 291, ../scss/main.scss */
 .intro_container_desktop {
   padding-left: 11%;
   padding-right: 11%; }
-  /* line 295, ../scss/main.scss */
+  /* line 296, ../scss/main.scss */
   .intro_container_desktop .intro {
     font-size: 30px;
     font-weight: normal;
     color: #3d3d3d;
     padding-bottom: 15%; }
-    /* line 301, ../scss/main.scss */
+    /* line 302, ../scss/main.scss */
     .intro_container_desktop .intro a {
       color: #cdc8ae; }
 
-/* line 310, ../scss/main.scss */
+/* line 311, ../scss/main.scss */
 .project-image, section.ux .project_block .riotry_image, section.ux .project_block .stampede_image, section.ux .project_block .sudo_image, section.gpx .project_block_sudotouch .sudotouch_image, section.gpx .project_block_cervantes .cervantes_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 150%;
@@ -865,36 +866,36 @@ nav {
   margin-left: 33%;
   margin-top: 70px; }
 
-/* line 326, ../scss/main.scss */
+/* line 327, ../scss/main.scss */
 section.ux .project_block .riotry_image {
   background-position: -10px -80px; }
-/* line 331, ../scss/main.scss */
+/* line 332, ../scss/main.scss */
 section.ux .project_block .stampede_image {
   background-position: -5px -185px;
   margin-left: 32%; }
-/* line 337, ../scss/main.scss */
+/* line 338, ../scss/main.scss */
 section.ux .project_block .sudo_image {
   background-position: -10px -290px;
   margin-top: 100px; }
 
-/* line 350, ../scss/main.scss */
+/* line 351, ../scss/main.scss */
 section.gpx .project_block_sudotouch {
   height: 50%; }
-  /* line 354, ../scss/main.scss */
+  /* line 355, ../scss/main.scss */
   section.gpx .project_block_sudotouch .sudotouch_image {
     background-position: -10px -380px;
     margin-left: 27%;
     margin-top: 140px; }
-/* line 362, ../scss/main.scss */
+/* line 363, ../scss/main.scss */
 section.gpx .project_block_cervantes {
   height: 50%;
   border: none; }
-  /* line 367, ../scss/main.scss */
+  /* line 368, ../scss/main.scss */
   section.gpx .project_block_cervantes .cervantes_image {
     background-position: -5px -450px;
     margin-left: 27%; }
 
-/* line 376, ../scss/main.scss */
+/* line 377, ../scss/main.scss */
 .code-project-image, section.code .project_block .oat_image, section.code .project_block .data_spider_image, section.code .project_block .riotry_demo_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 150%;
@@ -903,16 +904,16 @@ section.gpx .project_block_cervantes {
   margin-left: 25%;
   margin-top: 9%; }
 
-/* line 396, ../scss/main.scss */
+/* line 397, ../scss/main.scss */
 section.code .project_block .oat_image {
   background-position: -200px -90px; }
-/* line 401, ../scss/main.scss */
+/* line 402, ../scss/main.scss */
 section.code .project_block .data_spider_image {
   background-position: -200px -202px; }
-/* line 406, ../scss/main.scss */
+/* line 407, ../scss/main.scss */
 section.code .project_block .riotry_demo_image {
   background-position: 18px -610px; }
-/* line 411, ../scss/main.scss */
+/* line 412, ../scss/main.scss */
 section.code .project_block span {
   display: block;
   margin-top: 10px;
@@ -920,11 +921,11 @@ section.code .project_block span {
   font-weight: bolder;
   text-align: center; }
 
-/* line 423, ../scss/main.scss */
+/* line 424, ../scss/main.scss */
 .link-sections {
   @extends .content-sections; }
 
-/* line 426, ../scss/main.scss */
+/* line 427, ../scss/main.scss */
 .link-container, section.links .link_block {
   float: left;
   display: inline;
@@ -935,24 +936,24 @@ section.code .project_block span {
   height: 20%;
   border: none; }
   @media only screen and (max-width: 767px) {
-    /* line 426, ../scss/main.scss */
+    /* line 427, ../scss/main.scss */
     .link-container, section.links .link_block {
       margin-left: 0;
       margin-right: 0; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 426, ../scss/main.scss */
+    /* line 427, ../scss/main.scss */
     .link-container, section.links .link_block {
       width: 220px; } }
   @media only screen and (max-width: 767px) {
-    /* line 426, ../scss/main.scss */
+    /* line 427, ../scss/main.scss */
     .link-container, section.links .link_block {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 426, ../scss/main.scss */
+    /* line 427, ../scss/main.scss */
     .link-container, section.links .link_block {
       width: 420px; } }
 
-/* line 433, ../scss/main.scss */
+/* line 434, ../scss/main.scss */
 .link-images, section.links .link_block .email_image, section.links .link_block .linkedin_image, section.links .link_block .github_image, section.links .link_block .instagram_image, section.links .link_block .quora_image, section.links .link_block .rdio_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 613%;
@@ -961,25 +962,25 @@ section.code .project_block span {
   margin-left: 41.5%;
   margin-top: 3%; }
 
-/* line 450, ../scss/main.scss */
+/* line 451, ../scss/main.scss */
 section.links .link_block .email_image {
   background-position: -7px 0px; }
-/* line 455, ../scss/main.scss */
+/* line 456, ../scss/main.scss */
 section.links .link_block .linkedin_image {
   background-position: -79px 0px; }
-/* line 460, ../scss/main.scss */
+/* line 461, ../scss/main.scss */
 section.links .link_block .github_image {
   background-position: -226px 0px; }
-/* line 465, ../scss/main.scss */
+/* line 466, ../scss/main.scss */
 section.links .link_block .instagram_image {
   background-position: -150px 0px; }
-/* line 470, ../scss/main.scss */
+/* line 471, ../scss/main.scss */
 section.links .link_block .quora_image {
   background-position: -300px 0px; }
-/* line 475, ../scss/main.scss */
+/* line 476, ../scss/main.scss */
 section.links .link_block .rdio_image {
   background-position: -333px -357px; }
-/* line 480, ../scss/main.scss */
+/* line 481, ../scss/main.scss */
 section.links .link_block span {
   display: block;
   margin-top: -10px;
@@ -993,7 +994,7 @@ section.links .link_block span {
 /*
  * Image replacement
  */
-/* line 501, ../scss/main.scss */
+/* line 502, ../scss/main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -1001,7 +1002,7 @@ section.links .link_block span {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 509, ../scss/main.scss */
+/* line 510, ../scss/main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -1011,7 +1012,7 @@ section.links .link_block span {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 521, ../scss/main.scss */
+/* line 522, ../scss/main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -1019,7 +1020,7 @@ section.links .link_block span {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 530, ../scss/main.scss */
+/* line 531, ../scss/main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1034,7 +1035,7 @@ section.links .link_block span {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 547, ../scss/main.scss */
+/* line 548, ../scss/main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -1047,7 +1048,7 @@ section.links .link_block span {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 560, ../scss/main.scss */
+/* line 561, ../scss/main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -1055,7 +1056,7 @@ section.links .link_block span {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 569, ../scss/main.scss */
+/* line 570, ../scss/main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -1064,7 +1065,7 @@ section.links .link_block span {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 579, ../scss/main.scss */
+  /* line 580, ../scss/main.scss */
   * {
     background: transparent !important;
     color: #000 !important;
@@ -1072,59 +1073,59 @@ section.links .link_block span {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 587, ../scss/main.scss */
+  /* line 588, ../scss/main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 591, ../scss/main.scss */
+  /* line 592, ../scss/main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 595, ../scss/main.scss */
+  /* line 596, ../scss/main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 605, ../scss/main.scss */
+  /* line 606, ../scss/main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 610, ../scss/main.scss */
+  /* line 611, ../scss/main.scss */
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
 
-  /* line 615, ../scss/main.scss */
+  /* line 616, ../scss/main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 620, ../scss/main.scss */
+  /* line 621, ../scss/main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 624, ../scss/main.scss */
+  /* line 625, ../scss/main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 634, ../scss/main.scss */
+  /* line 635, ../scss/main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 640, ../scss/main.scss */
+  /* line 641, ../scss/main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }

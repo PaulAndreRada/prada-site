@@ -101,9 +101,9 @@ $(function(){
 
 	// @carousel
 	
-	var verticalCarousel = function( element ){ 
+	var VerticalCarousel = function( element ){ 
 	    
-	    var VC = this,
+	    var VC = {},
 	    $doc = $( document ),
 	    $element = $doc.find( element ), // div on top of rails
 	    $container = $element.children(), // would be rails
@@ -112,9 +112,10 @@ $(function(){
 	    paneCount = $panes.length,
 	    currentPane = 0;
 	    
+	    console.log( VC );
 	    VC.init = function(){ 
 		//
-		VC.setDimensions();
+		VC.setPaneDimensions();
 		//
 		$(window).on("load resize orientationchange", 
 			     function() {
@@ -231,7 +232,10 @@ $(function(){
 
 
        
-	var vertTest = verticalCarousel( '#vertCarousel' );
+	var vertTest = VerticalCarousel( '#vertCarousel' );
+	
+	console.log( vertTest );
+	
 	vertTest.init();
 
 
