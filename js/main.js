@@ -1,10 +1,11 @@
 //
 // @codekit-prepend "plugins.js";
-
+// @codekit-prepend "vertical-carousel.js";
 
 $(function(){ 	
 	'use strict';
 
+	/*
 	var $doc =$(document),
 	    // style classes 
 	    NAV_FOCUS = 'focused_nav',
@@ -86,7 +87,7 @@ $(function(){
 		// highlight nav link
 		updateNav( locClicked  );
 	    });
-
+	*/
 	//
 	// DONE BY SUNDAY
 	// @TODO @Curr
