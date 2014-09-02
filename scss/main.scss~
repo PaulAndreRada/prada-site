@@ -1,7 +1,7 @@
 @import "compass/css3/transition";
 @import "_normalize";
 @import "_skeleton";
-
+@import "_carousel";
 
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
@@ -250,6 +250,7 @@ nav {
 // @Main Content // 
 // extends
 .content-sections { 
+  @extend .carousel-pane;
   @include columns(13);
   @include alpha;
   @include omega;
@@ -269,10 +270,18 @@ nav {
    }
 }
 .content_rails{ 
+  @extend .carousel-container;
   @include offset(3);
   height: 100%;
   max-height: 100%;
+  overflow: hidden;
 }
+
+
+#vertCarousel { 
+  @extend .carousel-element;
+}
+
 
 
 section.intro{ 

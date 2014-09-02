@@ -522,6 +522,48 @@ table {
 /* #Clearing
 ================================================== */
 /* You can also use a @include clear to clear columns */
+/* line 3, ../scss/_carousel.scss */
+.carousel-setup {
+  min-height: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative; }
+
+/* line 12, ../scss/_carousel.scss */
+.carousel-element {
+  overflow: hidden;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  -webkit-transform-style: preserve-3d; }
+
+/* line 21, ../scss/_carousel.scss */
+.carousel-container {
+  transform: translate3d(0, 0%, 0) scale3d(1, 1, 1);
+  -o-transform: translate3d(0, 0%, 0) scale3d(1, 1, 1);
+  -ms-transform: translate3d(0, 0%, 0) scale3d(1, 1, 1);
+  -moz-transform: translate3d(0, 0%, 0) scale3d(1, 1, 1);
+  -webkit-transform: translate3d(0, 0%, 0) scale3d(1, 1, 1);
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  list-style-type: none; }
+
+/* line 33, ../scss/_carousel.scss */
+.carousel-pane {
+  float: left;
+  width: 100%;
+  overflow: hidden;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 0, 0); }
+
+/* line 41, ../scss/_carousel.scss */
+.animate {
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -o-transition: all .3s;
+  transition: all .3s; }
+
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
  * What follows is the result of much research on cross-browser styling.
@@ -619,18 +661,16 @@ textarea {
    Author's custom styles
    ========================================================================== */
 /* line 120, ../scss/main.scss */
-html {
+html, body {
   max-height: 100%;
   height: 100%; }
 
-/* line 125, ../scss/main.scss */
+/* line 128, ../scss/main.scss */
 body {
-  max-height: 100%;
-  height: 100%;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   background: white; }
 
-/* line 132, ../scss/main.scss */
+/* line 133, ../scss/main.scss */
 .page-wrap {
   position: relative;
   margin: 0 auto;
@@ -646,26 +686,26 @@ body {
     clear: both;
     visibility: hidden; }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 132, ../scss/main.scss */
+    /* line 133, ../scss/main.scss */
     .page-wrap {
       width: 768px; } }
   @media only screen and (max-width: 767px) {
-    /* line 132, ../scss/main.scss */
+    /* line 133, ../scss/main.scss */
     .page-wrap {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 132, ../scss/main.scss */
+    /* line 133, ../scss/main.scss */
     .page-wrap {
       width: 420px; } }
 
-/* line 142, ../scss/main.scss */
+/* line 143, ../scss/main.scss */
 .icon-container, nav .home_icon_container, nav .ux_icon_container, nav .gpx_icon_container, nav .code_icon_container, nav .links_icon_container {
   position: relative;
   float: left;
   width: 100%;
   margin-top: 80px; }
 
-/* line 149, ../scss/main.scss */
+/* line 150, ../scss/main.scss */
 .nav-text, .focused_nav, nav .ux_icon_container .ux_icon, nav .gpx_icon_container .gpx_icon, nav .code_icon_container .code_icon {
   font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: 100;
@@ -682,30 +722,30 @@ body {
   -moz-transition-duration: 0.2s;
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s; }
-  /* line 161, ../scss/main.scss */
+  /* line 162, ../scss/main.scss */
   .nav-text:hover, .focused_nav:hover, nav .ux_icon_container .ux_icon:hover, nav .gpx_icon_container .gpx_icon:hover, nav .code_icon_container .code_icon:hover, .nav-text:active, .focused_nav:active, nav .ux_icon_container .ux_icon:active, nav .gpx_icon_container .gpx_icon:active, nav .code_icon_container .code_icon:active {
     color: #3d3d3d; }
 
-/* line 165, ../scss/main.scss */
+/* line 166, ../scss/main.scss */
 .nav-icon, nav .home_icon_container .home_icon, nav .links_icon_container .links_icon {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 480%;
   width: 70px;
   height: 70px; }
 
-/* line 172, ../scss/main.scss */
+/* line 173, ../scss/main.scss */
 .home_icon_focused, nav .home_icon_container .home_icon:hover, nav .home_icon_container .home_icon:active {
   background-position: -260px -402px !important; }
 
-/* line 175, ../scss/main.scss */
+/* line 176, ../scss/main.scss */
 .link_icon_focused, nav .links_icon_container .links_icon:hover, nav .links_icon_container .links_icon:active {
   background-position: -249px -532px !important; }
 
-/* line 178, ../scss/main.scss */
+/* line 179, ../scss/main.scss */
 .focused_nav {
   color: #3d3d3d !important; }
 
-/* line 184, ../scss/main.scss */
+/* line 185, ../scss/main.scss */
 nav {
   float: left;
   display: inline;
@@ -716,33 +756,33 @@ nav {
   height: 100%;
   max-height: 100%; }
   @media only screen and (max-width: 767px) {
-    /* line 184, ../scss/main.scss */
+    /* line 185, ../scss/main.scss */
     nav {
       margin-left: 0;
       margin-right: 0; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 184, ../scss/main.scss */
+    /* line 185, ../scss/main.scss */
     nav {
       width: 124px; } }
   @media only screen and (max-width: 767px) {
-    /* line 184, ../scss/main.scss */
+    /* line 185, ../scss/main.scss */
     nav {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 184, ../scss/main.scss */
+    /* line 185, ../scss/main.scss */
     nav {
       width: 420px; } }
-  /* line 193, ../scss/main.scss */
+  /* line 194, ../scss/main.scss */
   nav .home_icon_container .home_icon {
     margin-left: 39%;
     background-position: -260px -342px; }
-  /* line 235, ../scss/main.scss */
+  /* line 236, ../scss/main.scss */
   nav .links_icon_container .links_icon {
     margin-left: 36%;
     background-position: -249px -461px; }
 
-/* line 252, ../scss/main.scss */
-.content-sections, section.intro, section.ux, section.gpx, section.code, section.links {
+/* line 253, ../scss/main.scss */
+.content-sections, li.intro, li.ux, li.gpx, li.code, li.links {
   float: left;
   display: inline;
   margin-left: 10px;
@@ -754,25 +794,25 @@ nav {
   min-height: 700px;
   max-height: 100%; }
   @media only screen and (max-width: 767px) {
-    /* line 252, ../scss/main.scss */
-    .content-sections, section.intro, section.ux, section.gpx, section.code, section.links {
+    /* line 253, ../scss/main.scss */
+    .content-sections, li.intro, li.ux, li.gpx, li.code, li.links {
       margin-left: 0;
       margin-right: 0; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 252, ../scss/main.scss */
-    .content-sections, section.intro, section.ux, section.gpx, section.code, section.links {
+    /* line 253, ../scss/main.scss */
+    .content-sections, li.intro, li.ux, li.gpx, li.code, li.links {
       width: 604px; } }
   @media only screen and (max-width: 767px) {
-    /* line 252, ../scss/main.scss */
-    .content-sections, section.intro, section.ux, section.gpx, section.code, section.links {
+    /* line 253, ../scss/main.scss */
+    .content-sections, li.intro, li.ux, li.gpx, li.code, li.links {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 252, ../scss/main.scss */
-    .content-sections, section.intro, section.ux, section.gpx, section.code, section.links {
+    /* line 253, ../scss/main.scss */
+    .content-sections, li.intro, li.ux, li.gpx, li.code, li.links {
       width: 420px; } }
 
-/* line 260, ../scss/main.scss */
-.content-container, .intro_container, .intro_container_desktop, section.ux .project_block, section.gpx .project_block_sudotouch, section.gpx .project_block_cervantes, section.code .project_block, .link-container, section.links .link_block {
+/* line 262, ../scss/main.scss */
+.content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
   float: left;
   display: inline;
   margin-left: 10px;
@@ -790,75 +830,75 @@ nav {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s; }
   @media only screen and (max-width: 767px) {
-    /* line 260, ../scss/main.scss */
-    .content-container, .intro_container, .intro_container_desktop, section.ux .project_block, section.gpx .project_block_sudotouch, section.gpx .project_block_cervantes, section.code .project_block, .link-container, section.links .link_block {
+    /* line 262, ../scss/main.scss */
+    .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
       margin-left: 0;
       margin-right: 0; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 260, ../scss/main.scss */
-    .content-container, .intro_container, .intro_container_desktop, section.ux .project_block, section.gpx .project_block_sudotouch, section.gpx .project_block_cervantes, section.code .project_block, .link-container, section.links .link_block {
+    /* line 262, ../scss/main.scss */
+    .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
       width: 316px; } }
   @media only screen and (max-width: 767px) {
-    /* line 260, ../scss/main.scss */
-    .content-container, .intro_container, .intro_container_desktop, section.ux .project_block, section.gpx .project_block_sudotouch, section.gpx .project_block_cervantes, section.code .project_block, .link-container, section.links .link_block {
+    /* line 262, ../scss/main.scss */
+    .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 260, ../scss/main.scss */
-    .content-container, .intro_container, .intro_container_desktop, section.ux .project_block, section.gpx .project_block_sudotouch, section.gpx .project_block_cervantes, section.code .project_block, .link-container, section.links .link_block {
+    /* line 262, ../scss/main.scss */
+    .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
       width: 420px; } }
   /* line 123, ../scss/_skeleton.scss */
-  .content-container:after, .intro_container:after, .intro_container_desktop:after, section.ux .project_block:after, section.gpx .project_block_sudotouch:after, section.gpx .project_block_cervantes:after, section.code .project_block:after, .link-container:after, section.links .link_block:after {
+  .content-container:after, .intro_container:after, .intro_container_desktop:after, li.ux .project_block:after, li.gpx .project_block_sudotouch:after, li.gpx .project_block_cervantes:after, li.code .project_block:after, .link-container:after, li.links .link_block:after {
     clear: both; }
   /* line 124, ../scss/_skeleton.scss */
-  .content-container:before, .intro_container:before, .intro_container_desktop:before, section.ux .project_block:before, section.gpx .project_block_sudotouch:before, section.gpx .project_block_cervantes:before, section.code .project_block:before, .link-container:before, section.links .link_block:before, .content-container:after, .intro_container:after, .intro_container_desktop:after, section.ux .project_block:after, section.gpx .project_block_sudotouch:after, section.gpx .project_block_cervantes:after, section.code .project_block:after, .link-container:after, section.links .link_block:after {
+  .content-container:before, .intro_container:before, .intro_container_desktop:before, li.ux .project_block:before, li.gpx .project_block_sudotouch:before, li.gpx .project_block_cervantes:before, li.code .project_block:before, .link-container:before, li.links .link_block:before, .content-container:after, .intro_container:after, .intro_container_desktop:after, li.ux .project_block:after, li.gpx .project_block_sudotouch:after, li.gpx .project_block_cervantes:after, li.code .project_block:after, .link-container:after, li.links .link_block:after {
     content: '\0020';
     display: block;
     overflow: hidden;
     visibility: hidden;
     width: 0;
     height: 0; }
-  /* line 267, ../scss/main.scss */
-  .content-container:hover, .intro_container:hover, .intro_container_desktop:hover, section.ux .project_block:hover, section.gpx .project_block_sudotouch:hover, section.gpx .project_block_cervantes:hover, section.code .project_block:hover, .link-container:hover, section.links .link_block:hover, .content-container:active, .intro_container:active, .intro_container_desktop:active, section.ux .project_block:active, section.gpx .project_block_sudotouch:active, section.gpx .project_block_cervantes:active, section.code .project_block:active, .link-container:active, section.links .link_block:active {
+  /* line 269, ../scss/main.scss */
+  .content-container:hover, .intro_container:hover, .intro_container_desktop:hover, li.ux .project_block:hover, li.gpx .project_block_sudotouch:hover, li.gpx .project_block_cervantes:hover, li.code .project_block:hover, .link-container:hover, li.links .link_block:hover, .content-container:active, .intro_container:active, .intro_container_desktop:active, li.ux .project_block:active, li.gpx .project_block_sudotouch:active, li.gpx .project_block_cervantes:active, li.code .project_block:active, .link-container:active, li.links .link_block:active {
     background: #cdc8ae; }
 
-/* line 271, ../scss/main.scss */
-.content_rails {
+/* line 273, ../scss/main.scss */
+ul.content_rails {
   padding-left: 262.5px;
   height: 100%;
   max-height: 100%;
   overflow: hidden; }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 271, ../scss/main.scss */
-    .content_rails {
+    /* line 273, ../scss/main.scss */
+    ul.content_rails {
       padding-left: 144px; } }
   @media only screen and (max-width: 767px) {
-    /* line 271, ../scss/main.scss */
-    .content_rails {
+    /* line 273, ../scss/main.scss */
+    ul.content_rails {
       padding-left: 0; } }
 
-/* line 283, ../scss/main.scss */
+/* line 292, ../scss/main.scss */
 .intro_container, .intro_container_desktop {
   margin-top: 30%; }
-  /* line 286, ../scss/main.scss */
+  /* line 295, ../scss/main.scss */
   .intro_container:hover, .intro_container_desktop:hover, .intro_container:active, .intro_container_desktop:active {
     background: none; }
 
-/* line 291, ../scss/main.scss */
+/* line 300, ../scss/main.scss */
 .intro_container_desktop {
   padding-left: 11%;
   padding-right: 11%; }
-  /* line 296, ../scss/main.scss */
+  /* line 305, ../scss/main.scss */
   .intro_container_desktop .intro {
     font-size: 30px;
     font-weight: normal;
     color: #3d3d3d;
     padding-bottom: 15%; }
-    /* line 302, ../scss/main.scss */
+    /* line 311, ../scss/main.scss */
     .intro_container_desktop .intro a {
       color: #cdc8ae; }
 
-/* line 311, ../scss/main.scss */
-.project-image, section.ux .project_block .riotry_image, section.ux .project_block .stampede_image, section.ux .project_block .sudo_image, section.gpx .project_block_sudotouch .sudotouch_image, section.gpx .project_block_cervantes .cervantes_image {
+/* line 320, ../scss/main.scss */
+.project-image, li.ux .project_block .riotry_image, li.ux .project_block .stampede_image, li.ux .project_block .sudo_image, li.gpx .project_block_sudotouch .sudotouch_image, li.gpx .project_block_cervantes .cervantes_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 150%;
   width: 275px;
@@ -866,37 +906,37 @@ nav {
   margin-left: 33%;
   margin-top: 70px; }
 
-/* line 327, ../scss/main.scss */
-section.ux .project_block .riotry_image {
+/* line 336, ../scss/main.scss */
+li.ux .project_block .riotry_image {
   background-position: -10px -80px; }
-/* line 332, ../scss/main.scss */
-section.ux .project_block .stampede_image {
+/* line 341, ../scss/main.scss */
+li.ux .project_block .stampede_image {
   background-position: -5px -185px;
   margin-left: 32%; }
-/* line 338, ../scss/main.scss */
-section.ux .project_block .sudo_image {
+/* line 347, ../scss/main.scss */
+li.ux .project_block .sudo_image {
   background-position: -10px -290px;
   margin-top: 100px; }
 
-/* line 351, ../scss/main.scss */
-section.gpx .project_block_sudotouch {
+/* line 360, ../scss/main.scss */
+li.gpx .project_block_sudotouch {
   height: 50%; }
-  /* line 355, ../scss/main.scss */
-  section.gpx .project_block_sudotouch .sudotouch_image {
+  /* line 364, ../scss/main.scss */
+  li.gpx .project_block_sudotouch .sudotouch_image {
     background-position: -10px -380px;
     margin-left: 27%;
     margin-top: 140px; }
-/* line 363, ../scss/main.scss */
-section.gpx .project_block_cervantes {
+/* line 372, ../scss/main.scss */
+li.gpx .project_block_cervantes {
   height: 50%;
   border: none; }
-  /* line 368, ../scss/main.scss */
-  section.gpx .project_block_cervantes .cervantes_image {
+  /* line 377, ../scss/main.scss */
+  li.gpx .project_block_cervantes .cervantes_image {
     background-position: -5px -450px;
     margin-left: 27%; }
 
-/* line 377, ../scss/main.scss */
-.code-project-image, section.code .project_block .oat_image, section.code .project_block .data_spider_image, section.code .project_block .riotry_demo_image {
+/* line 386, ../scss/main.scss */
+.code-project-image, li.code .project_block .oat_image, li.code .project_block .data_spider_image, li.code .project_block .riotry_demo_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 150%;
   width: 270px;
@@ -904,29 +944,29 @@ section.gpx .project_block_cervantes {
   margin-left: 25%;
   margin-top: 9%; }
 
-/* line 397, ../scss/main.scss */
-section.code .project_block .oat_image {
+/* line 406, ../scss/main.scss */
+li.code .project_block .oat_image {
   background-position: -200px -90px; }
-/* line 402, ../scss/main.scss */
-section.code .project_block .data_spider_image {
+/* line 411, ../scss/main.scss */
+li.code .project_block .data_spider_image {
   background-position: -200px -202px; }
-/* line 407, ../scss/main.scss */
-section.code .project_block .riotry_demo_image {
+/* line 416, ../scss/main.scss */
+li.code .project_block .riotry_demo_image {
   background-position: 18px -610px; }
-/* line 412, ../scss/main.scss */
-section.code .project_block span {
+/* line 421, ../scss/main.scss */
+li.code .project_block span {
   display: block;
   margin-top: 10px;
   color: #3d3d3d;
   font-weight: bolder;
   text-align: center; }
 
-/* line 424, ../scss/main.scss */
+/* line 433, ../scss/main.scss */
 .link-sections {
   @extends .content-sections; }
 
-/* line 427, ../scss/main.scss */
-.link-container, section.links .link_block {
+/* line 436, ../scss/main.scss */
+.link-container, li.links .link_block {
   float: left;
   display: inline;
   margin-left: 10px;
@@ -936,25 +976,25 @@ section.code .project_block span {
   height: 20%;
   border: none; }
   @media only screen and (max-width: 767px) {
-    /* line 427, ../scss/main.scss */
-    .link-container, section.links .link_block {
+    /* line 436, ../scss/main.scss */
+    .link-container, li.links .link_block {
       margin-left: 0;
       margin-right: 0; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 427, ../scss/main.scss */
-    .link-container, section.links .link_block {
+    /* line 436, ../scss/main.scss */
+    .link-container, li.links .link_block {
       width: 220px; } }
   @media only screen and (max-width: 767px) {
-    /* line 427, ../scss/main.scss */
-    .link-container, section.links .link_block {
+    /* line 436, ../scss/main.scss */
+    .link-container, li.links .link_block {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 427, ../scss/main.scss */
-    .link-container, section.links .link_block {
+    /* line 436, ../scss/main.scss */
+    .link-container, li.links .link_block {
       width: 420px; } }
 
-/* line 434, ../scss/main.scss */
-.link-images, section.links .link_block .email_image, section.links .link_block .linkedin_image, section.links .link_block .github_image, section.links .link_block .instagram_image, section.links .link_block .quora_image, section.links .link_block .rdio_image {
+/* line 443, ../scss/main.scss */
+.link-images, li.links .link_block .email_image, li.links .link_block .linkedin_image, li.links .link_block .github_image, li.links .link_block .instagram_image, li.links .link_block .quora_image, li.links .link_block .rdio_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 613%;
   width: 70px;
@@ -962,26 +1002,26 @@ section.code .project_block span {
   margin-left: 41.5%;
   margin-top: 3%; }
 
-/* line 451, ../scss/main.scss */
-section.links .link_block .email_image {
+/* line 460, ../scss/main.scss */
+li.links .link_block .email_image {
   background-position: -7px 0px; }
-/* line 456, ../scss/main.scss */
-section.links .link_block .linkedin_image {
+/* line 465, ../scss/main.scss */
+li.links .link_block .linkedin_image {
   background-position: -79px 0px; }
-/* line 461, ../scss/main.scss */
-section.links .link_block .github_image {
+/* line 470, ../scss/main.scss */
+li.links .link_block .github_image {
   background-position: -226px 0px; }
-/* line 466, ../scss/main.scss */
-section.links .link_block .instagram_image {
+/* line 475, ../scss/main.scss */
+li.links .link_block .instagram_image {
   background-position: -150px 0px; }
-/* line 471, ../scss/main.scss */
-section.links .link_block .quora_image {
+/* line 480, ../scss/main.scss */
+li.links .link_block .quora_image {
   background-position: -300px 0px; }
-/* line 476, ../scss/main.scss */
-section.links .link_block .rdio_image {
+/* line 485, ../scss/main.scss */
+li.links .link_block .rdio_image {
   background-position: -333px -357px; }
-/* line 481, ../scss/main.scss */
-section.links .link_block span {
+/* line 490, ../scss/main.scss */
+li.links .link_block span {
   display: block;
   margin-top: -10px;
   color: #3d3d3d;
@@ -994,7 +1034,7 @@ section.links .link_block span {
 /*
  * Image replacement
  */
-/* line 502, ../scss/main.scss */
+/* line 511, ../scss/main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -1002,7 +1042,7 @@ section.links .link_block span {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 510, ../scss/main.scss */
+/* line 519, ../scss/main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -1012,7 +1052,7 @@ section.links .link_block span {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 522, ../scss/main.scss */
+/* line 531, ../scss/main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -1020,7 +1060,7 @@ section.links .link_block span {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 531, ../scss/main.scss */
+/* line 540, ../scss/main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1035,7 +1075,7 @@ section.links .link_block span {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 548, ../scss/main.scss */
+/* line 557, ../scss/main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -1048,7 +1088,7 @@ section.links .link_block span {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 561, ../scss/main.scss */
+/* line 570, ../scss/main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -1056,7 +1096,7 @@ section.links .link_block span {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 570, ../scss/main.scss */
+/* line 579, ../scss/main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -1065,7 +1105,7 @@ section.links .link_block span {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 580, ../scss/main.scss */
+  /* line 589, ../scss/main.scss */
   * {
     background: transparent !important;
     color: #000 !important;
@@ -1073,59 +1113,59 @@ section.links .link_block span {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 588, ../scss/main.scss */
+  /* line 597, ../scss/main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 592, ../scss/main.scss */
+  /* line 601, ../scss/main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 596, ../scss/main.scss */
+  /* line 605, ../scss/main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 606, ../scss/main.scss */
+  /* line 615, ../scss/main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 611, ../scss/main.scss */
+  /* line 620, ../scss/main.scss */
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
 
-  /* line 616, ../scss/main.scss */
+  /* line 625, ../scss/main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 621, ../scss/main.scss */
+  /* line 630, ../scss/main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 625, ../scss/main.scss */
+  /* line 634, ../scss/main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 635, ../scss/main.scss */
+  /* line 644, ../scss/main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 641, ../scss/main.scss */
+  /* line 650, ../scss/main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }
