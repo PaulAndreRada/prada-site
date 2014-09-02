@@ -23,8 +23,7 @@
         
 
 	<!-- main -->
-	<div class="page-wrap">
-	  
+	<div class="page-wrap">	  
 	 
 	  <nav> 
 	    
@@ -90,11 +89,11 @@
 
 	  <div class="content_rails">
 	    
-	    <section class="intro">
+	    <section class="intro"
+		      data-section="home">
 	      
 	      <!-- @intro -->
-	      <div class="intro_container_desktop"
-		   id="introContainer">
+	      <div class="intro_container_desktop">
 		<div class="intro"> 
 		  Hi, I’m <a href="https://www.linkedin.com/profile/view?id=358349209&trk=nav_responsive_tab_profile_pic">Paul Rada</a>, a Product Designer that specializes in web and mobile apps.
 		</div>
@@ -104,7 +103,7 @@
 	    
 	    <!-- @ux --> 
 	    <section class="ux"
-		     id="ux">
+		     data-section="ux">
 	      
 	      <a href="#" class="project_block"> 
 		<div class="riotry_image">
@@ -128,7 +127,7 @@
 	    
 	    <!-- @gpx -->
 	    <section class="gpx"
-		     id="gpx">
+		     data-section="gpx">
 
 	      
 	      <a href="#" class="project_block_sudotouch"> 
@@ -147,7 +146,7 @@
 	    
 	    <!-- code -->
 	  <section class="code"
-		   id="code">
+		   data-section="code">
 	    
 	    <a href="https://github.com/PaulAndreRada/OAT" 
 	       class="project_block"> 
@@ -183,7 +182,7 @@
 	  
 	  <!-- @links -->
 	  <section class="links"
-		   id="links">
+		   data-section="links">
 	    
 	    <a href="mailto:info@paulrada.com" 
 	       class="link_block"> 
@@ -252,8 +251,8 @@
 		 <div class="closing">
 		   Paul Rada 2014
 		 </div>
-</div>
-	       --> 
+	       </div>
+	  --> 
 	  
 	  
 	  
