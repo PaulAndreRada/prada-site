@@ -21,7 +21,8 @@
     }
 }());
 
-// @enquire @onepage-scroll
+
+// @enquire 
 /*!
  * @enquire.js v2.1.2 - Awesome Media Queries in JavaScript
  * Copyright (c) 2014 Nick Williams - http://wicky.nillia.ms/enquire.js
@@ -41,626 +42,214 @@
 //# sourceMappingURL=jquery.hammer-full.min.map
 
 
-// @scroll  @onepage-scroll @start
-/* ===========================================================
- * jquery-onepage-scroll.js v1.3.1
- * ===========================================================
- * Copyright 2013 Pete Rojwongsuriya.
- * http://www.thepetedesign.com
- *
- * Create an Apple-like website that let user scroll
- * one page at a time
- *
- * Credit: Eike Send for the awesome swipe event
- * https://github.com/peachananr/onepage-scroll
- *
- * License: GPL v3
- *
- * ========================================================== */
 
-!function($){
 
-  var defaults = {
-    sectionContainer: "section",
-    easing: "ease",
-    animationTime: 1000,
-    pagination: true,
-    updateURL: false,
-    keyboard: true,
-    beforeMove: null,
-    afterMove: null,
-    loop: true,
-    responsiveFallback: false,
-    direction : 'vertical'
-    };
 
-    /*------------------------------------------------*/
-    /*  Credit: Eike Send for the awesome swipe event */
-    /*------------------------------------------------*/
 
-    $.fn.swipeEvents = function() {
-      return this.each(function() {
 
-        var startX,
-            startY,
-            $this = $(this);
+/* **********************************************
+     Begin vertical-carousel.js
+********************************************** */
 
-        $this.bind('touchstart', touchstart);
+$.fn.verticalCarousel = function( element ){ 
 
-        function touchstart(event) {
-          var touches = event.originalEvent.touches;
-          if (touches && touches.length) {
-            startX = touches[0].pageX;
-            startY = touches[0].pageY;
-            $this.bind('touchmove', touchmove);
-          }
-        }
+    var VC = {},
+    $doc = $( document ),
+    $element = $doc.find( element ), 
+    $container = $element.find( 'ul' ), 
+    $panes = $container.find( 'li' ), 
+    paneHeight = 0,
+    paneCount = $panes.length,
+    currentPane = 0,
+    animationTime = 450,
+    lastAnimationTime;	    
 
-        function touchmove(event) {
-          var touches = event.originalEvent.touches;
-          if (touches && touches.length) {
-            var deltaX = startX - touches[0].pageX;
-            var deltaY = startY - touches[0].pageY;
-
-            if (deltaX >= 50) {
-              $this.trigger("swipeLeft");
-            }
-            if (deltaX <= -50) {
-              $this.trigger("swipeRight");
-            }
-            if (deltaY >= 50) {
-              $this.trigger("swipeUp");
-            }
-            if (deltaY <= -50) {
-              $this.trigger("swipeDown");
-            }
-            if (Math.abs(deltaX) >= 50 || Math.abs(deltaY) >= 50) {
-              $this.unbind('touchmove', touchmove);
-            }
-          }
-        }
-
-      });
+    VC.init = function(){ 
+	//
+	VC.setPaneDimensions();
+	//
+	$(window).on("load resize orientationchange", 
+		     function() {
+			 VC.setPaneDimensions();
+		     });
+	//
+	return VC;
     };
 
 
-  $.fn.onepage_scroll = function(options){
-    var settings = $.extend({}, defaults, options),
-        el = $(this),
-        sections = $(settings.sectionContainer)
-        total = sections.length,
-        status = "off",
-        topPos = 0,
-        leftPos = 0,
-        lastAnimation = 0,
-        quietPeriod = 500,
-        paginationList = "";
+    VC.setPaneDimensions = function(){ 
+	//
+	paneHeight = $element.height();
+	//
+	for ( var i=0; i<paneCount; i++ ){ 
+	    // 
+	    $panes.height( paneHeight );
+	};
+	//
+	$container.height( paneHeight * paneCount );
+	//
+	return VC;
+    };
+	        
+	        
+    VC.showPane = function( index ) { 
+	//
+	// prevent going under or over
+	var index = Math.max( 0, Math.min( index,
+					   paneCount -1 ));
+	//
+	currentPane = index;
+	// 
+	// create the offset value for the container
+	// starting at 0
+	var offset = -(( 100/paneCount ) * currentPane );
+	//
+	VC.setContainerOffset( offset, true );
+	//
+	return VC;
+    };
+	        
 
-    $.fn.transformPage = function(settings, pos, index) {
-      if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
+    VC.setContainerOffset = function( percent, animate ){ 
+	$container.removeClass("animate");
 
-      // Just a simple edit that makes use of modernizr to detect an IE8 browser and changes the transform method into
-        // an top animate so IE8 users can also use this script.
-        if($('html').hasClass('ie8')){
-        if (settings.direction == 'horizontal') {
-          var toppos = (el.width()/100)*pos;
-          $(this).animate({left: toppos+'px'},settings.animationTime);
-        } else {
-          var toppos = (el.height()/100)*pos;
-          $(this).animate({top: toppos+'px'},settings.animationTime);
-        }
-        } else{
-          $(this).css({
-            "-webkit-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "-webkit-transition": "all " + settings.animationTime + "ms " + settings.easing,
-         "-moz-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "-moz-transition": "all " + settings.animationTime + "ms " + settings.easing,
-         "-ms-transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "-ms-transition": "all " + settings.animationTime + "ms " + settings.easing,
-         "transform": ( settings.direction == 'horizontal' ) ? "translate3d(" + pos + "%, 0, 0)" : "translate3d(0, " + pos + "%, 0)",
-         "transition": "all " + settings.animationTime + "ms " + settings.easing
-          });
-        }
-      $(this).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(e) {
-        if (typeof settings.afterMove == 'function') settings.afterMove(index);
-      });
-    }
+	if(animate) {
+	    $container.addClass("animate");
+	}
+	if(Modernizr.csstransforms3d) {
+	    $container.css("transform", "translate3d(0,"
+			   + percent +"%,0) scale3d(1,1,1)");
+	}
+	else if(Modernizr.csstransforms) {
+	    $container.css("transform", "translate(0,"
+			   + percent +"%)");
+	}
+	else {
+	    //
+	    var px = (( paneHeight * paneCount ) / 100) * percent;
+	    //
+	    $container.css("top", px+"px");
+	}
+    };
+	        
 
-    $.fn.moveDown = function() {
-      var el = $(this)
-      index = $(settings.sectionContainer +".active").data("index");
-      current = $(settings.sectionContainer + "[data-index='" + index + "']");
-      next = $(settings.sectionContainer + "[data-index='" + (index + 1) + "']");
-      if(next.length < 1) {
-        if (settings.loop == true) {
-          pos = 0;
-          next = $(settings.sectionContainer + "[data-index='1']");
-        } else {
-          return
-        }
-
-      }else {
-        pos = (index * 100) * -1;
-      }
-      if (typeof settings.beforeMove == 'function') settings.beforeMove( next.data("index"));
-      current.removeClass("active")
-      next.addClass("active");
-      if(settings.pagination == true) {
-        $(".onepage-pagination li a" + "[data-index='" + index + "']").removeClass("active");
-        $(".onepage-pagination li a" + "[data-index='" + next.data("index") + "']").addClass("active");
-      }
-
-      $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-      $("body").addClass("viewing-page-"+next.data("index"))
-
-      if (history.replaceState && settings.updateURL == true) {
-        var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (index + 1);
-        history.pushState( {}, document.title, href );
-      }
-      el.transformPage(settings, pos, next.data("index"));
-    }
-
-    $.fn.moveUp = function() {
-      var el = $(this)
-      index = $(settings.sectionContainer +".active").data("index");
-      current = $(settings.sectionContainer + "[data-index='" + index + "']");
-      next = $(settings.sectionContainer + "[data-index='" + (index - 1) + "']");
-
-      if(next.length < 1) {
-        if (settings.loop == true) {
-          pos = ((total - 1) * 100) * -1;
-          next = $(settings.sectionContainer + "[data-index='"+total+"']");
-        }
-        else {
-          return
-        }
-      }else {
-        pos = ((next.data("index") - 1) * 100) * -1;
-      }
-      if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
-      current.removeClass("active")
-      next.addClass("active")
-      if(settings.pagination == true) {
-        $(".onepage-pagination li a" + "[data-index='" + index + "']").removeClass("active");
-        $(".onepage-pagination li a" + "[data-index='" + next.data("index") + "']").addClass("active");
-      }
-      $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-      $("body").addClass("viewing-page-"+next.data("index"))
-
-      if (history.replaceState && settings.updateURL == true) {
-        var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (index - 1);
-        history.pushState( {}, document.title, href );
-      }
-      el.transformPage(settings, pos, next.data("index"));
-    }
-
-    $.fn.moveTo = function(page_index) {
-      current = $(settings.sectionContainer + ".active")
-      next = $(settings.sectionContainer + "[data-index='" + (page_index) + "']");
-      if(next.length > 0) {
-        if (typeof settings.beforeMove == 'function') settings.beforeMove(next.data("index"));
-        current.removeClass("active")
-        next.addClass("active")
-        $(".onepage-pagination li a" + ".active").removeClass("active");
-        $(".onepage-pagination li a" + "[data-index='" + (page_index) + "']").addClass("active");
-        $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-        $("body").addClass("viewing-page-"+next.data("index"))
-
-        pos = ((page_index - 1) * 100) * -1;
-
-        if (history.replaceState && settings.updateURL == true) {
-            var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (page_index - 1);
-            history.pushState( {}, document.title, href );
-        }
-        el.transformPage(settings, pos, page_index);
-      }
-    }
-
-    function responsive() {
-      //start modification
-      var valForTest = false;
-      var typeOfRF = typeof settings.responsiveFallback
-
-      if(typeOfRF == "number"){
-        valForTest = $(window).width() < settings.responsiveFallback;
-      }
-      if(typeOfRF == "boolean"){
-        valForTest = settings.responsiveFallback;
-      }
-      if(typeOfRF == "function"){
-        valFunction = settings.responsiveFallback();
-        valForTest = valFunction;
-        typeOFv = typeof valForTest;
-        if(typeOFv == "number"){
-            valForTest = $(window).width() < valFunction;
-        }
-      }
-
-      //end modification
-      if (valForTest) {
-        $("body").addClass("disabled-onepage-scroll");
-        $(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
-        el.swipeEvents().unbind("swipeDown swipeUp");
-      } else {
-        if($("body").hasClass("disabled-onepage-scroll")) {
-          $("body").removeClass("disabled-onepage-scroll");
-          $("html, body, .wrapper").animate({ scrollTop: 0 }, "fast");
-        }
-
-
-        el.swipeEvents().bind("swipeDown",  function(event){
-          if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-          el.moveUp();
-        }).bind("swipeUp", function(event){
-          if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-          el.moveDown();
-        });
-
-        $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
-          event.preventDefault();
-          var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
-          init_scroll(event, delta);
-        });
-      }
-    }
-
-
-    function init_scroll(event, delta) {
-        deltaOfInterest = delta;
-        var timeNow = new Date().getTime();
-        // Cancel scroll if currently animating or within quiet period
-        if(timeNow - lastAnimation < quietPeriod + settings.animationTime) {
-            event.preventDefault();
-            return;
-        }
-
-        if (deltaOfInterest < 0) {
-          el.moveDown()
-        } else {
-          el.moveUp()
-        }
-        lastAnimation = timeNow;
-    }
-
-    // Prepare everything before binding wheel scroll
-
-    el.addClass("onepage-wrapper").css("position","relative");
-    $.each( sections, function(i) {
-      $(this).css({
-        position: "absolute",
-        top: topPos + "%"
-      }).addClass("section").attr("data-index", i+1);
-
-
-      $(this).css({
-        position: "absolute",
-        left: ( settings.direction == 'horizontal' )
-          ? leftPos + "%"
-          : 0,
-        top: ( settings.direction == 'vertical' || settings.direction != 'horizontal' )
-          ? topPos + "%"
-          : 0
-      });
-
-      if (settings.direction == 'horizontal')
-        leftPos = leftPos + 100;
-      else
-        topPos = topPos + 100;
-
-
-      if(settings.pagination == true) {
-        paginationList += "<li><a data-index='"+(i+1)+"' href='#" + (i+1) + "'></a></li>"
-      }
-    });
-
-    el.swipeEvents().bind("swipeDown",  function(event){
-      if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-      el.moveUp();
-    }).bind("swipeUp", function(event){
-      if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-      el.moveDown();
-    });
-
-    // Create Pagination and Display Them
-    if (settings.pagination == true) {
-      if ($('ul.onepage-pagination').length < 1) $("<ul class='onepage-pagination'></ul>").prependTo("body");
-
-      if( settings.direction == 'horizontal' ) {
-        posLeft = (el.find(".onepage-pagination").width() / 2) * -1;
-        el.find(".onepage-pagination").css("margin-left", posLeft);
-      } else {
-        posTop = (el.find(".onepage-pagination").height() / 2) * -1;
-        el.find(".onepage-pagination").css("margin-top", posTop);
-      }
-      $('ul.onepage-pagination').html(paginationList);
-    }
-
-    if(window.location.hash != "" && window.location.hash != "#1") {
-      init_index =  window.location.hash.replace("#", "")
-
-      if (parseInt(init_index) <= total && parseInt(init_index) > 0) {
-        $(settings.sectionContainer + "[data-index='" + init_index + "']").addClass("active")
-        $("body").addClass("viewing-page-"+ init_index)
-        if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='" + init_index + "']").addClass("active");
-
-        next = $(settings.sectionContainer + "[data-index='" + (init_index) + "']");
-        if(next) {
-          next.addClass("active")
-          if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='" + (init_index) + "']").addClass("active");
-          $("body")[0].className = $("body")[0].className.replace(/\bviewing-page-\d.*?\b/g, '');
-          $("body").addClass("viewing-page-"+next.data("index"))
-          if (history.replaceState && settings.updateURL == true) {
-            var href = window.location.href.substr(0,window.location.href.indexOf('#')) + "#" + (init_index);
-            history.pushState( {}, document.title, href );
-          }
-        }
-        pos = ((init_index - 1) * 100) * -1;
-        el.transformPage(settings, pos, init_index);
-      } else {
-        $(settings.sectionContainer + "[data-index='1']").addClass("active")
-        $("body").addClass("viewing-page-1")
-        if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='1']").addClass("active");
-      }
-    }else{
-      $(settings.sectionContainer + "[data-index='1']").addClass("active")
-      $("body").addClass("viewing-page-1")
-      if(settings.pagination == true) $(".onepage-pagination li a" + "[data-index='1']").addClass("active");
-    }
-
-    if(settings.pagination == true)  {
-      $(".onepage-pagination li a").click(function (){
-        var page_index = $(this).data("index");
-        el.moveTo(page_index);
-      });
-    }
-
-
-    $(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
-      event.preventDefault();
-      var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
-      if(!$("body").hasClass("disabled-onepage-scroll")) init_scroll(event, delta);
-    });
-
-
-    if(settings.responsiveFallback != false) {
-      $(window).resize(function() {
-        responsive();
-      });
-
-      responsive();
-    }
-
-    if(settings.keyboard == true) {
-      $(document).keydown(function(e) {
-        var tag = e.target.tagName.toLowerCase();
-
-        if (!$("body").hasClass("disabled-onepage-scroll")) {
-          switch(e.which) {
-            case 38:
-              if (tag != 'input' && tag != 'textarea') el.moveUp()
-            break;
-            case 40:
-              if (tag != 'input' && tag != 'textarea') el.moveDown()
-            break;
-            case 32: //spacebar
-              if (tag != 'input' && tag != 'textarea') el.moveDown()
-            break;
-            case 33: //pageg up
-              if (tag != 'input' && tag != 'textarea') el.moveUp()
-            break;
-            case 34: //page dwn
-              if (tag != 'input' && tag != 'textarea') el.moveDown()
-            break;
-            case 36: //home
-              el.moveTo(1);
-            break;
-            case 35: //end
-              el.moveTo(total);
-            break;
-            default: return;
-          }
-        }
-
-      });
-    }
-    return false;
-  }
-
-
-}(window.jQuery);
-
-
-// @scrollTo @start
-/*!
- * jQuery.scrollTo
- * Copyright (c) 2007-2014 Ariel Flesler - aflesler<a>gmail<d>com | http://flesler.blogspot.com
- * Licensed under MIT
- * http://flesler.blogspot.com/2007/10/jqueryscrollto.html
- * @projectDescription Easy element scrolling using jQuery.
- * @author Ariel Flesler
- * @version 1.4.13
- */
-;(function (define) {
-  'use strict';
-
-  define(['jquery'], function ($) {
-
-    var $scrollTo = $.scrollTo = function( target, duration, settings ) {
-      return $(window).scrollTo( target, duration, settings );
+    VC.next = function(){ 
+	// 
+	return VC.showPane( currentPane + 1 );
+	//
     };
 
-    $scrollTo.defaults = {
-      axis:'xy',
-      duration: parseFloat($.fn.jquery) >= 1.3 ? 0 : 1,
-      limit:true
+    VC.prev = function(){ 
+	//
+	return VC.showPane( currentPane - 1);
+	//
     };
 
-    // Returns the element that needs to be animated to scroll the window.
-    // Kept for backwards compatibility (specially for localScroll & serialScroll)
-    $scrollTo.window = function( scope ) {
-      return $(window)._scrollable();
+
+    var handleTouch = function( ev ){ 
+	//
+	// disable browser scrolling
+	ev.gesture.preventDefault();
+
+	switch(ev.type) {
+	case 'dragup':
+	case 'dragdown':
+
+	    // stick to the finger
+	    var pane_offset = -(100/paneCount)*currentPane;
+	    var drag_offset = ((100/paneHeight)*ev.gesture.deltaY)/ paneCount;
+	    //
+	    // slow down at the first and last pane
+	    if((currentPane == 0 && 
+		ev.gesture.direction == Hammer.DIRECTION_DOWN ) ||
+	       (currentPane == paneCount-1 &&
+		ev.gesture.direction == Hammer.DIRECTION_UP )) {
+		drag_offset *= .4;
+	    }
+	    //
+	    VC.setContainerOffset(drag_offset + pane_offset);
+	    //
+	    break;
+
+	case 'swipeup':
+	    VC.next();
+	    ev.gesture.stopDetect();
+	    break;
+
+	case 'swipedown':
+	    VC.prev();
+	    ev.gesture.stopDetect();
+	    break;
+
+	case 'release':
+	    // more then 50% moved, navigate
+	    if(Math.abs(ev.gesture.deltaY) > paneHeight/2) {
+		if(ev.gesture.direction === 'down') {
+		    //
+		    VC.prev();
+		    //
+		} else {
+		    //
+		    VC.next();
+		    //
+		}
+	    }
+	    else {
+		//
+		VC.showPane(currentPane, true);
+		//
+	    }
+	    break;
+	}
     };
-
-    // Hack, hack, hack :)
-    // Returns the real elements to scroll (supports window/iframes, documents and regular nodes)
-    $.fn._scrollable = function() {
-      return this.map(function() {
-        var elem = this,
-          isWin = !elem.nodeName || $.inArray( elem.nodeName.toLowerCase(), ['iframe','#document','html','body'] ) != -1;
-
-          if (!isWin)
-            return elem;
-
-        var doc = (elem.contentWindow || elem).document || elem.ownerDocument || elem;
-
-        return /webkit/i.test(navigator.userAgent) || doc.compatMode == 'BackCompat' ?
-          doc.body :
-          doc.documentElement;
-      });
+	    
+    var handleScroll = function( e ){ 
+	//
+	var $this = $(this),
+	timeNow = new Date().getTime();
+		
+		
+	if ( lastAnimationTime + animationTime >= timeNow ){ 
+	    //
+	    // leave function as the slide is still adjusting
+	    e.preventDefault();
+	    e.stopPropagation();
+	    return;
+	    //
+	} else { 
+	    //
+	    if ( $this.scrollTop() === 1 ){
+		e.preventDefault();
+		e.stopPropagation();
+		//
+		VC.next();
+		//
+		lastAnimationTime = timeNow;
+		//
+	    } else if ( $this.scrollTop() === -1){ 
+		e.preventDefault();
+		e.stopPropagation();
+		//
+		VC.prev();
+		//
+		lastAnimationTime = timeNow;
+		//
+	    };
+		    
+	}
     };
-
-    $.fn.scrollTo = function( target, duration, settings ) {
-      if (typeof duration == 'object') {
-        settings = duration;
-        duration = 0;
-      }
-      if (typeof settings == 'function')
-        settings = { onAfter:settings };
-
-      if (target == 'max')
-        target = 9e9;
-
-      settings = $.extend( {}, $scrollTo.defaults, settings );
-      // Speed is still recognized for backwards compatibility
-      duration = duration || settings.duration;
-      // Make sure the settings are given right
-      settings.queue = settings.queue && settings.axis.length > 1;
-
-      if (settings.queue)
-        // Let's keep the overall duration
-        duration /= 2;
-      settings.offset = both( settings.offset );
-      settings.over = both( settings.over );
-
-      return this._scrollable().each(function() {
-        // Null target yields nothing, just like jQuery does
-        if (target == null) return;
-
-        var elem = this,
-          $elem = $(elem),
-          targ = target, toff, attr = {},
-          win = $elem.is('html,body');
-
-        switch (typeof targ) {
-          // A number will pass the regex
-          case 'number':
-          case 'string':
-            if (/^([+-]=?)?\d+(\.\d+)?(px|%)?$/.test(targ)) {
-              targ = both( targ );
-              // We are done
-              break;
-            }
-            // Relative/Absolute selector, no break!
-            targ = win ? $(targ) : $(targ, this);
-            if (!targ.length) return;
-          case 'object':
-            // DOMElement / jQuery
-            if (targ.is || targ.style)
-              // Get the real position of the target
-              toff = (targ = $(targ)).offset();
-        }
-
-        var offset = $.isFunction(settings.offset) && settings.offset(elem, targ) || settings.offset;
-
-        $.each( settings.axis.split(''), function( i, axis ) {
-          var Pos = axis == 'x' ? 'Left' : 'Top',
-            pos = Pos.toLowerCase(),
-            key = 'scroll' + Pos,
-            old = elem[key],
-            max = $scrollTo.max(elem, axis);
-
-          if (toff) {// jQuery / DOMElement
-            attr[key] = toff[pos] + ( win ? 0 : old - $elem.offset()[pos] );
-
-            // If it's a dom element, reduce the margin
-            if (settings.margin) {
-              attr[key] -= parseInt(targ.css('margin'+Pos)) || 0;
-              attr[key] -= parseInt(targ.css('border'+Pos+'Width')) || 0;
-            }
-
-            attr[key] += offset[pos] || 0;
-
-            if(settings.over[pos])
-              // Scroll to a fraction of its width/height
-              attr[key] += targ[axis=='x'?'width':'height']() * settings.over[pos];
-          } else {
-            var val = targ[pos];
-            // Handle percentage values
-            attr[key] = val.slice && val.slice(-1) == '%' ?
-              parseFloat(val) / 100 * max
-              : val;
-          }
-
-          // Number or 'number'
-          if (settings.limit && /^\d+$/.test(attr[key]))
-            // Check the limits
-            attr[key] = attr[key] <= 0 ? 0 : Math.min( attr[key], max );
-
-          // Queueing axes
-          if (!i && settings.queue) {
-            // Don't waste time animating, if there's no need.
-            if (old != attr[key])
-              // Intermediate animation
-              animate( settings.onAfterFirst );
-            // Don't animate this axis again in the next iteration.
-            delete attr[key];
-          }
-        });
-
-        animate( settings.onAfter );
-
-        function animate( callback ) {
-          $elem.animate( attr, duration, settings.easing, callback && function() {
-            callback.call(this, targ, settings);
-          });
-        }
-      }).end();
-    };
-
-    // Max scrolling position, works on quirks mode
-    // It only fails (not too badly) on IE, quirks mode.
-    $scrollTo.max = function( elem, axis ) {
-      var Dim = axis == 'x' ? 'Width' : 'Height',
-        scroll = 'scroll'+Dim;
-
-      if (!$(elem).is('html,body'))
-        return elem[scroll] - $(elem)[Dim.toLowerCase()]();
-
-      var size = 'client' + Dim,
-        html = elem.ownerDocument.documentElement,
-        body = elem.ownerDocument.body;
-
-      return Math.max( html[scroll], body[scroll] ) - Math.min( html[size]  , body[size]   );
-    };
-
-    function both( val ) {
-      return $.isFunction(val) || typeof val == 'object' ? val : { top:val, left:val };
-    }
-
-    // AMD requirement
-    return $scrollTo;
-  })
-}(typeof define === 'function' && define.amd ? define : function (deps, factory) {
-  if (typeof module !== 'undefined' && module.exports) {
-    // Node
-    module.exports = factory(require('jquery'));
-  } else {
-    factory(jQuery);
-  }
-}));
-
-
-
+	    
+    // activate the carousel event handler for the desktop
+    $(window).scroll( handleScroll );
+    //
+    // activate the carousel event handler for mobile
+    $element.hammer({ drag_to_lock_target : true })
+    .on( 'release dragdown dragup swipeleft swiperight swipeup swipedown',
+	 handleTouch );
+    //
+    return VC;
+    //
+};//verticalCarousel
 
 
 /* **********************************************
@@ -671,25 +260,38 @@
 // @codekit-prepend "plugins.js";
 // @codekit-prepend "vertical-carousel.js";
 
-$(function(){ 	
+	//
+	// DONE BY SUNDAY
+	// @TODO @Curr
+	// find the current section and highlight it on the nav //DONE
+	// remove the hashtag issue from the navs ( less jittery ) //DONE
+	// MAKE Vertical carousel plugin //DONE BITCHES!
+	// seamlessly merge the two plugins // MINE DINT NEED THE OTHER
+	// rewrite the code to make it beutifull - later
+	// enquire till the layout is mobile perfect
+	// just the project images and descriptions left
+
+$(function(){
 	'use strict';
 
-	/*
 	var $doc =$(document),
-	    // style classes 
+	    // style classes
 	    NAV_FOCUS = 'focused_nav',
-	    LINK_FOCUS = 'link_icon_focused', 
+	    LINK_FOCUS = 'link_icon_focused',
 	    HOME_FOCUS = 'home_icon_focused',
 	    // data tags
 	    NAVTAG = 'data-nav-location',
 	    SECTAG = 'data-section',
+	    PANETAG = 'data-go-to-pane',
 	    // data tags data
     	    HOME = 'home',
 	    LINKS = 'links',
 	    $navLinks = $doc.find( '[' + NAVTAG + ']' );
 
+	var carousel = $.fn.verticalCarousel( "#vertical-carousel" );
+	carousel.init();
 
-	var unFocusNav = function(){ 
+	var unFocusNav = function(){
 	    //
 	    $navLinks.children().removeClass( NAV_FOCUS )
 	    .removeClass( HOME_FOCUS )
@@ -699,22 +301,22 @@ $(function(){
 	};
 
 
-	var updateIcon = function( $icon, section ){ 
+	var updateIcon = function( $icon, section ){
 	    //
-	    if ( section === HOME ){ 
+	    if ( section === HOME ){
 		//
 		$icon.children().addClass( HOME_FOCUS );
 		//
-	    } else if ( section === LINKS ){ 
+	    } else if ( section === LINKS ){
 		//
 		$icon.children().addClass( LINK_FOCUS );
 		//
 	    };
-	    
+
 	};
 
 
-	var updateNav = function( section ){ 
+	var updateNav = function( section ){
 	    //
 	    unFocusNav();
 	    //
@@ -722,7 +324,7 @@ $(function(){
 	    $navEl = $navLinks.filter('['+ NAVTAG +'='+section+']' );
 	    //
 	    // check for icons
-	    if ( section === HOME || section === LINKS ){ 
+	    if ( section === HOME || section === LINKS ){
 		//
 		updateIcon( $navEl, section );
 		//
@@ -739,7 +341,7 @@ $(function(){
 	    //
 	};
 
-	
+
 	// Scroll to section on click
 	$navLinks.on('click', function(e){
 		//
@@ -748,77 +350,104 @@ $(function(){
 		// get the element that was clicked
 		var $this = $(this),
 		    locClicked = $this.attr( NAVTAG ),
+		    pane = ($this.attr( PANETAG )) -1,
 		    section = $doc.find( '['+SECTAG+'='+locClicked+']' );
 		//
 		//scroll there
-		$.scrollTo(section, 900);
-		// 
+		carousel.showPane( pane );
+		//
 		// highlight nav link
 		updateNav( locClicked  );
 	    });
-	*/
-	//
-	// DONE BY SUNDAY
-	// @TODO @Curr
-	// find the current section and highlight it on the nav //DONE
-	// remove the hashtag issue from the navs ( less jittery ) //DONE 
-	// use the onepage scroll
-	// seamlessly merge the two plugins 
-	// rewrite the code to make it beutifull
-	// enquire till the layout is mobile perfect
-	// just the project images and descriptions left
 
 
+	// window thresholds
+	var base_width = 960,
+	    tablet_width =  768,
+	    mobile_portrait_width = 300,
+	    mobile_landscape_width = 420,
+	    margin = 10,
+	    topMaxWidth = base_width -1,
+	    topMinWidth = tablet_width,
+	    medMaxWidth = 781,
+	    medMinWidth = 481,
+	    botMaxWidth = 480,
+	    $html = $doc.find( 'html' );
+		
+	var changeModeTo = function( screenMode ){ 
+	    //
+	    var screenMode = screenMode || 'desktop',
+	    tablet = 'tablet_size',
+	    mobile = 'mobile_size',
+	    mobile_small = 'mobile_sm_size';
 
-	// enquire code
-	/*
-	var $doc = $(document),
-	    $introCon = $doc.find( '#introContainer' ),
-	    $contentCon = $doc.find( '#contentCon' ),
-	    $decorations = $doc.find( '#tear' ),
-	    desktopIntro = 'intro_container_desktop',
-	    mobileIntro = 'intro_container_mobile',
-	    desktopContent = 'content_container_desktop',
-	    mobileContent = 'content_container_mobile';
-	
-	enquire.register("screen and (max-width: 767px)", { 
+	    switch( screenMode ){ 
 		//
-		match : function(){ 
-		    // 
-		    // change the intro case node when in mobile size
-		    $introCon.addClass( mobileIntro )
-			.removeClass( desktopIntro );
-		    //
-		    // change the content_container's margins
-		    $contentCon.addClass( mobileContent )
-			.removeClass( desktopContent );
-		    //
-		    //
-		    // hide the decorations
-		    $decorations.hide();
-		    //
-		},unmatch : function(){ 
-		    //
-		    // change back to the desktop mode
-		    $introCon.addClass( desktopIntro )
-			.removeClass( mobileIntro );
-		    //
-		    //
-		    $contentCon.addClass( desktopContent )
-		      .removeClass( mobileContent );
-		    //
-		    // show the decorations
-		    $decorations.show()
-		    //
-		}
+	    case "desktop": 
 		//
-	    });
-	
-	
-	
-	*/
-	
-	
-	
+		$html.removeClass( tablet +" "+ mobile +" "+ mobile_small );
+		//
+		console.log( screenMode );
+		break;
+	    case "tablet": 
+		//
+		$html.removeClass( mobile +" "+ mobile_small );
+		//
+		$html.addClass( tablet );
+		//
+		console.log( screenMode );
+		break;	    
+	    case "mobile": 
+		//
+		$html.removeClass( tablet +" "+ mobile_small );
+		//
+		$html.addClass( mobile );
+		//
+		console.log( screenMode );
+		break;	    
+	    case "mobile_small": 
+		//
+		$html.removeClass( tablet +" "+ mobile);
+		//
+		$html.addClass( mobile_small );
+		//
+		console.log( screenMode );
+		break;
+	    };
+	}
+
+
+
+	enquire
+	    .register("screen and (min-width: "+topMaxWidth+"px )", {
+		    //
+		    match : function(){
+			//
+			changeModeTo( 'desktop' );
+			//
+		    }
+		    
+		}).register("screen and (min-width: "+topMinWidth+"px ) and (max-width: "+topMaxWidth+"px )", {
+			//
+			match : function(){
+			    //
+			    changeModeTo( 'tablet' );
+			    //
+			}
+		    }).register("screen and (min-width: "+medMinWidth+"px ) and (max-width: "+medMaxWidth+"px ) ", {
+			    //
+			    match : function(){
+				//
+				changeModeTo( 'mobile' );
+				//
+			    }
+			}).register("screen and (max-width: "+botMaxWidth+"px)", {
+				// 
+				match: function(){ 
+				    //
+				changeModeTo( 'mobile_small' );
+				//
+				}
+			    });
     });
 

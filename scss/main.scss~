@@ -182,7 +182,8 @@ nav {
   @include columns(3); 
   position: fixed;
   height: 100%;
-  max-height:100%;
+  z-index: 1000;
+  
  
   .home_icon_container{
     @extend .icon-container;  
@@ -267,7 +268,7 @@ nav {
   // max-height of 100 might be needed for mobile
 }
 .content-container{ 
-   @include columns(7);     
+   @include columns(10);     
    @include clearfix;
    border-bottom: 1px solid $secondary-color;
    height:33.33%;
@@ -492,6 +493,46 @@ li.links {
 }
 
 
+//===========================================================
+   @tablet css
+//===========================================================
+
+html .tablet_size {
+
+li.code { 
+  @extend .content-sections;
+
+  .project_block { 
+    @extend .content-container;
+    
+    .oat_image {
+      @extend .code-project-image;
+      background-position: -200px -90px;
+    }
+    
+    .data_spider_image {
+      @extend .code-project-image;
+      background-position: -200px -202px;
+    }
+    
+    .riotry_demo_image {
+      @extend .code-project-image;
+      margin-left: 0px;	
+      background-position: 18px -610px;
+    }
+    
+    span { 
+       display: block;
+       margin-top:10px;
+       color: $main-color;
+       font-weight: bolder;
+       text-align: center;
+    }
+  }
+}
+
+}
+
 
 
 /* ==========================================================================
@@ -573,6 +614,7 @@ li.links {
 .clearfix {
     *zoom: 1;
 }
+
 
 /* ==========================================================================
    Print styles.
