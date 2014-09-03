@@ -1,25 +1,39 @@
 //
 // @codekit-prepend "plugins.js";
+// @codekit-prepend "vertical-carousel.js";
 
+	//
+	// DONE BY SUNDAY
+	// @TODO @Curr
+	// find the current section and highlight it on the nav //DONE
+	// remove the hashtag issue from the navs ( less jittery ) //DONE
+	// MAKE Vertical carousel plugin //DONE BITCHES!
+	// seamlessly merge the two plugins // MINE DINT NEED THE OTHER
+	// rewrite the code to make it beutifull - later
+	// enquire till the layout is mobile perfect
+	// just the project images and descriptions left
 
-$(function(){ 	
+$(function(){
 	'use strict';
 
 	var $doc =$(document),
-	    // style classes 
+	    // style classes
 	    NAV_FOCUS = 'focused_nav',
-	    LINK_FOCUS = 'link_icon_focused', 
+	    LINK_FOCUS = 'link_icon_focused',
 	    HOME_FOCUS = 'home_icon_focused',
 	    // data tags
 	    NAVTAG = 'data-nav-location',
 	    SECTAG = 'data-section',
+	    PANETAG = 'data-go-to-pane',
 	    // data tags data
     	    HOME = 'home',
 	    LINKS = 'links',
 	    $navLinks = $doc.find( '[' + NAVTAG + ']' );
 
+	var carousel = $.fn.verticalCarousel( "#vertical-carousel" );
+	carousel.init();
 
-	var unFocusNav = function(){ 
+	var unFocusNav = function(){
 	    //
 	    $navLinks.children().removeClass( NAV_FOCUS )
 	    .removeClass( HOME_FOCUS )
@@ -29,22 +43,22 @@ $(function(){
 	};
 
 
-	var updateIcon = function( $icon, section ){ 
+	var updateIcon = function( $icon, section ){
 	    //
-	    if ( section === HOME ){ 
+	    if ( section === HOME ){
 		//
 		$icon.children().addClass( HOME_FOCUS );
 		//
-	    } else if ( section === LINKS ){ 
+	    } else if ( section === LINKS ){
 		//
 		$icon.children().addClass( LINK_FOCUS );
 		//
 	    };
-	    
+
 	};
 
 
-	var updateNav = function( section ){ 
+	var updateNav = function( section ){
 	    //
 	    unFocusNav();
 	    //
@@ -52,7 +66,7 @@ $(function(){
 	    $navEl = $navLinks.filter('['+ NAVTAG +'='+section+']' );
 	    //
 	    // check for icons
-	    if ( section === HOME || section === LINKS ){ 
+	    if ( section === HOME || section === LINKS ){
 		//
 		updateIcon( $navEl, section );
 		//
@@ -69,86 +83,68 @@ $(function(){
 	    //
 	};
 
-	
+
 	// Scroll to section on click
 	$navLinks.on('click', function(e){
 		//
 		e.preventDefault();
+		console.log( 'you clicked the nav! - bitch' );
 		//
 		// get the element that was clicked
 		var $this = $(this),
 		    locClicked = $this.attr( NAVTAG ),
+		    pane = ($this.attr( PANETAG )) -1,
 		    section = $doc.find( '['+SECTAG+'='+locClicked+']' );
 		//
 		//scroll there
-		$.scrollTo(section, 900);
-		// 
+		carousel.showPane( pane );
+		//
 		// highlight nav link
 		updateNav( locClicked  );
 	    });
 
-	//
-	// DONE BY SUNDAY
-	// @TODO @Curr
-	// find the current section and highlight it on the nav //DONE
-	// remove the hashtag issue from the navs ( less jittery ) //DONE 
-	// use the onepage scroll
-	// seamlessly merge the two plugins 
-	// rewrite the code to make it beutifull
-	// enquire till the layout is mobile perfect
-	// just the project images and descriptions left
 
 
-
-	// enquire code
-	/*
-	var $doc = $(document),
-	    $introCon = $doc.find( '#introContainer' ),
-	    $contentCon = $doc.find( '#contentCon' ),
-	    $decorations = $doc.find( '#tear' ),
-	    desktopIntro = 'intro_container_desktop',
-	    mobileIntro = 'intro_container_mobile',
-	    desktopContent = 'content_container_desktop',
-	    mobileContent = 'content_container_mobile';
+	var base_width = 960,
+	    tablet_width =  768,
+	    mobile_portrait_width = 300,
+	    mobile_landscape_width = 420,
+	    margin = 10,
+	    topMaxWidth = base_width -1,
+	    topMinWidth = tablet_width,
+	    medMaxWidth = topMinWidth - 1,
+	    botMaxWidth = medMaxWidth,
+	    botMinWidth = 480,
+	    $body = $doc.find( 'html' ),
+	//treshold classes
+	    tablet = 'tablet_size',
+	    mobile = 'mobile_size';
+	    
 	
-	enquire.register("screen and (max-width: 767px)", { 
-		//
-		match : function(){ 
-		    // 
-		    // change the intro case node when in mobile size
-		    $introCon.addClass( mobileIntro )
-			.removeClass( desktopIntro );
+	enquire
+	    .register("screen and (max-width:"+tablet+"px)", {
 		    //
-		    // change the content_container's margins
-		    $contentCon.addClass( mobileContent )
-			.removeClass( desktopContent );
+		    match : function(){
+			//
+			console.log( 'tablet size' );
+			$body.addClass( tablet );
+			//
+		    },unmatch : function(){
+			//
+			$body.removeClass( tablet );
+		    }
+		})
+	    .register("screen and (max-width:"+mobile+"px)", {
 		    //
-		    //
-		    // hide the decorations
-		    $decorations.hide();
-		    //
-		},unmatch : function(){ 
-		    //
-		    // change back to the desktop mode
-		    $introCon.addClass( desktopIntro )
-			.removeClass( mobileIntro );
-		    //
-		    //
-		    $contentCon.addClass( desktopContent )
-		      .removeClass( mobileContent );
-		    //
-		    // show the decorations
-		    $decorations.show()
-		    //
-		}
-		//
+		    match : function(){
+			//
+			console.log( 'mobile size' );
+			$body.addClass( mobile );
+			//
+		    },unmatch : function(){
+			//
+			$body.removeClass( mobile );
+		    }
+                });
 	    });
-	
-	
-	
-	*/
-	
-	
-	
-    });
 
