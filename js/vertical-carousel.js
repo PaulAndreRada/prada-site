@@ -1,4 +1,4 @@
-$.fn.verticalCarousel = function( element ){ 
+$.fn.verticalCarousel = function( element , callBack ){
 
     var VC = {},
     $doc = $( document ),
@@ -52,6 +52,13 @@ $.fn.verticalCarousel = function( element ){
 	var offset = -(( 100/paneCount ) * currentPane );
 	//
 	VC.setContainerOffset( offset, true );
+	//
+	// if theres a callback activate it
+	if( callBack ){ 
+	    //
+	    callBack.call( VC , currentPane );
+	    //
+	}
 	//
 	return VC;
     };
@@ -154,13 +161,13 @@ $.fn.verticalCarousel = function( element ){
 	//
 	var $this = $(this),
 	timeNow = new Date().getTime();
-		
+	//
+	e.preventDefault();
+	e.stopPropagation();
 		
 	if ( lastAnimationTime + animationTime >= timeNow ){ 
 	    //
 	    // leave function as the slide is still adjusting
-	    e.preventDefault();
-	    e.stopPropagation();
 	    return;
 	    //
 	} else { 

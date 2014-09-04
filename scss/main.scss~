@@ -190,7 +190,7 @@ nav {
     
     .home_icon{	
       @extend .nav-icon;
-      margin-left: 39%;
+      margin-left: 34%;
       background-position: -260px -342px;
       // add a step for fade
       //      @include transition-property(background);
@@ -232,7 +232,7 @@ nav {
 
     .links_icon{ 
       @extend .nav-icon;
-      margin-left: 36%;
+      margin-left: 30%;
       background-position: -249px -461px;
       
       &:hover, &:active { 
@@ -241,9 +241,18 @@ nav {
     }   
   }
   
-  
  }//end nav
-  
+
+// @tablet nav
+html.tablet_size body nav {
+  .home_icon_container .home_icon {
+     margin-left: 29%;
+   } 
+  .links_icon_container .links_icon { 
+     margin-left: 23%;
+  }   
+}
+
 
 // @carousel
 .vertical-carousel{ 
@@ -303,7 +312,7 @@ li.intro{
 	color: $main-color;
 	padding-bottom: 15%;
 
-	a {
+		a {
 	  color: $secondary-color;
 	}
      }     
@@ -441,7 +450,7 @@ li.code {
    // avrg sizes
    width: 70px;
    height: 100px;
-   margin-left: 41.5%;
+   margin-left: 38%;
    margin-top: 3%;   
 }				
 
@@ -460,6 +469,7 @@ li.links {
     .linkedin_image {
       @extend .link-images;
       background-position: -79px 0px;
+      margin-left: 37%;
     }
     
     .github_image {
@@ -470,6 +480,7 @@ li.links {
     .instagram_image {
       @extend .link-images;
       background-position: -150px 0px;
+      margin-left: 37%;
     }
     
     .quora_image {
@@ -493,46 +504,90 @@ li.links {
 }
 
 
-//===========================================================
-   @tablet css
-//===========================================================
 
-html .tablet_size {
 
-li.code { 
-  @extend .content-sections;
+// @tablet sections
+html.tablet_size body ul {
 
-  .project_block { 
-    @extend .content-container;
+    // ux		  
+    .project_block { 
+
+      .riotry_image {
+      	margin-left: 30%;
+      }
     
+      .stampede_image {
+        margin-left: 27%;     
+      }
+
+      .sudo_image {
+        margin-left: 30%;     
+     }
+   }
+   
+  // graphics
+  .project_block_sudotouch { 
+    .sudotouch_image {
+      margin-left: 22%;
+    }
+   }
+
+   .project_block_cervantes {    
+    .cervantes_image {
+      margin-left: 21%;
+    }
+  }
+
+  // code
+  .project_block { 
+      
     .oat_image {
-      @extend .code-project-image;
-      background-position: -200px -90px;
+      margin-left: 19%;
     }
     
     .data_spider_image {
-      @extend .code-project-image;
-      background-position: -200px -202px;
+      margin-left: 19%;
     }
     
     .riotry_demo_image {
-      @extend .code-project-image;
-      margin-left: 0px;	
-      background-position: 18px -610px;
+      margin-left: 19%;
+    }
+  }
+
+  // links
+   .link_block { 
+
+    .email_image {
+      margin-left: 35%;
+      margin-top: 8%;
     }
     
-    span { 
-       display: block;
-       margin-top:10px;
-       color: $main-color;
-       font-weight: bolder;
-       text-align: center;
+    .linkedin_image {
+      margin-left: 34%;
+      margin-top: 8%;
+    }
+    
+    .github_image {
+      margin-left: 35%;
+      margin-top: 8%;
+    }
+    
+    .instagram_image {
+      margin-left: 34%;
+      margin-top: 8%;
+    }
+    
+    .quora_image {
+      margin-left: 35%;
+      margin-top: 8%;
+    }
+    
+    .rdio_image {
+      margin-left: 35%;
+      margin-top: 8%;
     }
   }
 }
-
-}
-
 
 
 /* ==========================================================================

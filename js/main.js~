@@ -88,7 +88,6 @@ $(function(){
 	$navLinks.on('click', function(e){
 		//
 		e.preventDefault();
-		console.log( 'you clicked the nav! - bitch' );
 		//
 		// get the element that was clicked
 		var $this = $(this),
@@ -104,7 +103,7 @@ $(function(){
 	    });
 
 
-
+	// window thresholds
 	var base_width = 960,
 	    tablet_width =  768,
 	    mobile_portrait_width = 300,
@@ -112,39 +111,95 @@ $(function(){
 	    margin = 10,
 	    topMaxWidth = base_width -1,
 	    topMinWidth = tablet_width,
-	    medMaxWidth = topMinWidth - 1,
-	    botMaxWidth = medMaxWidth,
-	    botMinWidth = 480,
-	    $body = $doc.find( 'html' ),
-	//treshold classes
+	    medMaxWidth = 781,
+	    medMinWidth = 481,
+	    botMaxWidth = 480,
+	    $html = $doc.find( 'html' );
+		
+	var changeModeTo = function( screenMode ){ 
+	    //
+	    var screenMode = screenMode || 'desktop',
 	    tablet = 'tablet_size',
-	    mobile = 'mobile_size';
-	    
-	
+	    mobile = 'mobile_size',
+	    mobile_small = 'mobile_sm_size';
+
+	    switch( screenMode ){ 
+		//
+	    case "desktop": 
+		//
+		$html.removeClass( tablet 
+				   +" "+ mobile 
+				   +" "+ mobile_small );
+		//
+		console.log( screenMode );
+		break;
+	    case "tablet": 
+		//
+		$html.removeClass( mobile 
+				   +" "+ mobile_small );
+		//
+		$html.addClass( tablet );
+		//
+		console.log( screenMode );
+		break;	    
+	    case "mobile": 
+		//
+		$html.removeClass( tablet 
+				   +" "+ mobile_small );
+		//
+		$html.addClass( mobile );
+		//
+		console.log( screenMode );
+		break;	    
+	    case "mobile_small": 
+		//
+		$html.removeClass( tablet 
+				   +" "+ mobile);
+		//
+		$html.addClass( mobile_small );
+		//
+		console.log( screenMode );
+		break;
+	    };
+	}
+
+
+
 	enquire
-	    .register("screen and (max-width:"+tablet+"px)", {
+	    .register("screen and (min-width: "+topMaxWidth+"px )", {
 		    //
 		    match : function(){
 			//
-			console.log( 'tablet size' );
-			$body.addClass( tablet );
+			changeModeTo( 'desktop' );
 			//
-		    },unmatch : function(){
-			//
-			$body.removeClass( tablet );
 		    }
+		    
 		})
-	    .register("screen and (max-width:"+mobile+"px)", {
-		    //
-		    match : function(){
+	    .register("screen and (min-width: "+topMinWidth+
+		      "px ) and (max-width: "+topMaxWidth+"px )", {
 			//
-			console.log( 'mobile size' );
-			$body.addClass( mobile );
-			//
-		    },unmatch : function(){
-			//
-			$body.removeClass( mobile );
-		    }
-                });
-	    });
+			match : function(){
+			    //
+			    changeModeTo( 'tablet' );
+			    //
+			}
+		    })
+	    .register("screen and (min-width: "+medMinWidth+
+		      "px ) and (max-width: "+medMaxWidth+"px ) ", {
+			    //
+			    match : function(){
+				//
+				changeModeTo( 'mobile' );
+				//
+			    }
+			})
+	    .register("screen and (max-width: "+botMaxWidth+"px)", {
+				// 
+				match: function(){ 
+				    //
+				changeModeTo( 'mobile_small' );
+				//
+				}
+			    });
+    });
 

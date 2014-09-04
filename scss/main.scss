@@ -177,6 +177,9 @@ textarea {
    color: $main-color !important;
 };
 
+.nav_toggle { 
+  display: hidden;
+}
 
 nav {
   @include columns(3); 
@@ -588,6 +591,319 @@ html.tablet_size body ul {
     }
   }
 }
+
+// @mobile
+html.mobile_size body {
+  
+  nav { 
+    background: white;
+    
+    .home_icon_container .home_icon { 
+      margin-left: 43.5%;
+    } 
+    
+    .links_icon_container .links_icon { 
+      margin-left: 42%;	      
+    } 
+  }
+
+
+  .nav_toggle{ 
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 0px;
+    top: 5px;
+    z-index: 1001;
+
+    .nav_icon_hamburger { 
+      position:relative;
+      float: left;
+      width: 50%;
+      height: 100%;
+      content:"";
+      background: url('../img/sprites/second_sprite_big.png') 
+      no-repeat;
+      background-position: -5% -1.8%;
+      background-size: 350%;	  
+   }
+  
+   .nav_icon_x { 
+      @extend .nav_icon_hamburger;
+      background-position: -5% 7%;
+   }
+
+   .home_mini { 
+      @extend .nav_icon_hamburger;
+      background-size: 550%;	  
+      background-position: 5% 64.8%;
+   }
+
+   .ux_mini { 
+     @extend .home_mini;
+     background-position: 3% 17%;
+   }
+
+   .gpx_mini { 
+     @extend .home_mini;
+     background-position: 3% 28.5%;
+   }
+  
+   .code_mini { 
+     @extend .home_mini;
+     background-position: 3% 40%;
+   } 
+
+   .links_mini { 
+     @extend .home_mini;
+     background-position: 5% 82%;
+   }
+  }
+
+
+  // @mobile projects
+     // ux		  
+    .project_block { 
+
+      .riotry_image {
+      	margin-left: 29%;
+      }
+    
+      .stampede_image {
+        margin-left: 27%;     
+      }
+
+      .sudo_image {
+        margin-left: 29%;     
+     }
+   }
+   
+  // graphics
+  .project_block_sudotouch { 
+    .sudotouch_image {
+      margin-left: 20%;
+    }
+   }
+
+   .project_block_cervantes {    
+    .cervantes_image {
+      margin-left: 18%;
+    }
+  }
+
+  // code
+  .project_block { 
+      
+    .oat_image {
+      margin-left: 16%;
+    }
+    
+    .data_spider_image {
+      margin-left: 16%;
+    }
+    
+    .riotry_demo_image {
+      margin-left: 16%;
+    }
+  }
+
+  // links
+   .link_block { 
+
+    .email_image {
+      margin-left: 42%;
+      margin-top: 8%;
+    }
+    
+    .linkedin_image {
+      margin-left: 42%;
+      margin-top: 8%;
+    }
+    
+    .github_image {
+      margin-left: 42%;
+      margin-top: 8%;
+    }
+    
+    .instagram_image {
+      margin-left: 42%;
+      margin-top: 8%;
+    }
+    
+    .quora_image {
+      margin-left: 42%;
+      margin-top: 8%;
+    }
+    
+    .rdio_image {
+      margin-left: 42%;
+      margin-top: 8%;
+    }
+  }
+}
+
+
+
+// @mobile_sm
+html.mobile_sm_size body {
+  
+  nav { 
+    background: white;
+
+    .home_icon_container .home_icon { 
+      margin-left: 41.5%;
+    } 
+    
+    .links_icon_container .links_icon { 
+      margin-left: 38%;	      
+    } 
+  }
+
+
+  .nav_toggle{ 
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    left: 0px;
+    top: 5px;
+    z-index: 1001;
+
+
+    .nav_icon_hamburger { 
+      position:relative;
+      float: left;
+      width: 50%;
+      height: 100%;
+      content:"";
+      background: url('../img/sprites/second_sprite_big.png') 
+      no-repeat;
+      background-position: -5% -1.8%;
+      background-size: 350%;	  
+   }
+  
+   .nav_icon_x { 
+      @extend .nav_icon_hamburger;
+      background-position: -5% 7%;
+   }
+
+   .home_mini { 
+      @extend .nav_icon_hamburger;
+      background-size: 550%;	  
+      background-position: 5% 64.8%;
+   }
+
+   .ux_mini { 
+     @extend .home_mini;
+     background-position: 3% 17%;
+   }
+
+   .gpx_mini { 
+     @extend .home_mini;
+     background-position: 3% 28.5%;
+   }
+  
+   .code_mini { 
+     @extend .home_mini;
+     background-position: 3% 40%;
+   } 
+
+   .links_mini { 
+     @extend .home_mini;
+     background-position: 5% 82%;
+   }
+  }
+
+
+  // @mobile_sm projects
+     // ux		  
+    .project_block { 
+
+      .riotry_image {
+      	margin-left: 22%;
+      }
+    
+      .stampede_image {
+        margin-left: 17%;     
+      }
+
+      .sudo_image {
+        margin-left: 22%;     
+     }
+   }
+   
+  // graphics
+  .project_block_sudotouch { 
+    .sudotouch_image {
+      margin-left: 7%;
+    }
+   }
+
+   .project_block_cervantes {    
+    .cervantes_image {
+      margin-left: 5%;
+    }
+  }
+
+  // code
+  .project_block { 
+      
+    .oat_image {
+      margin-left: 3%;
+    }
+    
+    .data_spider_image {
+      margin-left: 3%;
+    }
+    
+    .riotry_demo_image {
+      margin-left: 1%;
+    }
+  }
+
+  // links
+   .link_block { 
+
+    .email_image {
+      margin-left: 39%;
+      margin-top: 8%;
+    }
+    
+    .linkedin_image {
+      margin-left: 38.5%;
+      margin-top: 8%;
+    }
+    
+    .github_image {
+      margin-left: 39%;
+      margin-top: 8%;
+    }
+    
+    .instagram_image {
+      margin-left: 38%;
+      margin-top: 8%;
+    }
+    
+    .quora_image {
+      margin-left: 39%;
+      margin-top: 8%;
+    }
+    
+    .rdio_image {
+      margin-left: 39%;
+      margin-top: 8%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /* ==========================================================================

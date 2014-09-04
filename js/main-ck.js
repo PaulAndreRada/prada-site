@@ -51,7 +51,7 @@
      Begin vertical-carousel.js
 ********************************************** */
 
-$.fn.verticalCarousel = function( element ){ 
+$.fn.verticalCarousel = function( element , callBack ){
 
     var VC = {},
     $doc = $( document ),
@@ -105,6 +105,13 @@ $.fn.verticalCarousel = function( element ){
 	var offset = -(( 100/paneCount ) * currentPane );
 	//
 	VC.setContainerOffset( offset, true );
+	//
+	// if theres a callback activate it
+	if( callBack ){ 
+	    //
+	    callBack.call( VC , currentPane );
+	    //
+	}
 	//
 	return VC;
     };
@@ -207,13 +214,13 @@ $.fn.verticalCarousel = function( element ){
 	//
 	var $this = $(this),
 	timeNow = new Date().getTime();
-		
+	//
+	e.preventDefault();
+	e.stopPropagation();
 		
 	if ( lastAnimationTime + animationTime >= timeNow ){ 
 	    //
 	    // leave function as the slide is still adjusting
-	    e.preventDefault();
-	    e.stopPropagation();
 	    return;
 	    //
 	} else { 
@@ -257,19 +264,11 @@ $.fn.verticalCarousel = function( element ){
 ********************************************** */
 
 //
+// Needs some seious cleanup and organizing
+//
 // @codekit-prepend "plugins.js";
 // @codekit-prepend "vertical-carousel.js";
 
-	//
-	// DONE BY SUNDAY
-	// @TODO @Curr
-	// find the current section and highlight it on the nav //DONE
-	// remove the hashtag issue from the navs ( less jittery ) //DONE
-	// MAKE Vertical carousel plugin //DONE BITCHES!
-	// seamlessly merge the two plugins // MINE DINT NEED THE OTHER
-	// rewrite the code to make it beutifull - later
-	// enquire till the layout is mobile perfect
-	// just the project images and descriptions left
 
 $(function(){
 	'use strict';
@@ -279,18 +278,27 @@ $(function(){
 	    NAV_FOCUS = 'focused_nav',
 	    LINK_FOCUS = 'link_icon_focused',
 	    HOME_FOCUS = 'home_icon_focused',
+	    HIDDEN = 'hidden',
+	    // id tags
+	    miniGuideIcon = 'navGuideIcon',
 	    // data tags
 	    NAVTAG = 'data-nav-location',
 	    SECTAG = 'data-section',
 	    PANETAG = 'data-go-to-pane',
+	    NAV_STATE_TAG = 'data-nav-state',
 	    // data tags data
-    	    HOME = 'home',
+	    HOME = 'home',
+	    UX = 'ux',
+	    GRAPHICS = 'gpx',
+	    CODE = 'code',
 	    LINKS = 'links',
-	    $navLinks = $doc.find( '[' + NAVTAG + ']' );
-
-	var carousel = $.fn.verticalCarousel( "#vertical-carousel" );
-	carousel.init();
-
+	    // $elements
+	    $navLinks = $doc.find( '[' + NAVTAG + ']' ),
+	    $nav = $navLinks.parent(),
+	    $navToggle = $doc.find( '#navToggle' ),
+	    $miniGuideIcon = $navToggle.find( "#"+miniGuideIcon ),
+	    $navIcon = $doc.find( '['+NAV_STATE_TAG+']' );
+	    		    
 	var unFocusNav = function(){
 	    //
 	    $navLinks.children().removeClass( NAV_FOCUS )
@@ -303,7 +311,7 @@ $(function(){
 
 	var updateIcon = function( $icon, section ){
 	    //
-	    if ( section === HOME ){
+	    if ( section === data.HOME ){
 		//
 		$icon.children().addClass( HOME_FOCUS );
 		//
@@ -320,7 +328,7 @@ $(function(){
 	    //
 	    unFocusNav();
 	    //
-	    var section = section || HOME,
+	    var section = section || dataTagsHOME,
 	    $navEl = $navLinks.filter('['+ NAVTAG +'='+section+']' );
 	    //
 	    // check for icons
@@ -335,13 +343,60 @@ $(function(){
 		//
 		// Focus on the current section
 		$navEl.children().addClass( NAV_FOCUS );
+		//
 	    };
 	    //
 	    return;
 	    //
 	};
 
+	var updateNavToggle = function( section ){ 
+	    //
+	    // if we only have the index
+	    if( typeof section === 'number' ){
+		//
+		switch( section ){ 
+		    //
+		case 0: 
+		section = HOME;
+		break;
+		//
+		case 1: 
+		section = UX;
+		break;
+		//
+		case 2: 
+		section = GRAPHICS;
+		break;
+		//
+		case 3: 
+		section = CODE;
+		break;
+		//
+		case 4: 
+		section = LINKS;
+		break;
+		}
+		//console.log( 'section' );
+		//console.log( section );
+		//
+	    } else {
+		//
+		var section = section || HOME;
+		//
+	    };
+		$miniGuideIcon.removeClass();
+		//
+		$miniGuideIcon.addClass( section+'_mini' );
+		//		    
+	};
 
+	
+	var carousel = $.fn.verticalCarousel( "#vertical-carousel" , 
+					      updateNavToggle );
+	carousel.init();
+
+	
 	// Scroll to section on click
 	$navLinks.on('click', function(e){
 		//
@@ -358,8 +413,11 @@ $(function(){
 		//
 		// highlight nav link
 		updateNav( locClicked  );
+		//
+		// for @mobile only
+		updateNavToggle( locClicked );
 	    });
-
+	
 
 	// window thresholds
 	var base_width = 960,
@@ -373,6 +431,72 @@ $(function(){
 	    medMinWidth = 481,
 	    botMaxWidth = 480,
 	    $html = $doc.find( 'html' );
+
+
+	var toggleNav = function( navState ){ 
+	    
+	    var state = state || $navIcon.attr( NAV_STATE_TAG );
+	    //
+	    if( !$toggleIcon ) {
+		var $toggleIcon= $doc.find( '#menuIcon' );
+	    }
+	    //
+	    if( navState === "off" ){ 
+		//
+		$nav.removeClass( HIDDEN );
+		//
+		$toggleIcon.attr( NAV_STATE_TAG , "on" ); 
+		//
+	    } else if ( navState === "on" ){ 
+		//
+		$nav.addClass( HIDDEN );
+		//
+		$toggleIcon.attr( NAV_STATE_TAG , "off" );
+		//
+	    };
+	    	    
+	};
+	
+
+	var toggleNavClick = function( e ){ 
+	    //
+	    e.preventDefault();
+	    //
+	    var $this = $(this),
+	    $toggleIcon = $this.find( '#menuIcon' ),
+	    navState = $toggleIcon.attr( NAV_STATE_TAG ); 
+	    //
+	    toggleNav( navState );
+	};	
+	
+	
+	// mobile Nav Mode
+	var mobileNavMode = function( state ){ 
+	    //
+	    if( state ){ 
+		//
+		$nav.addClass( HIDDEN );
+		//
+		$navToggle.on( 'click', toggleNavClick );
+		//
+		$navLinks.on( 'click' , function(){ 
+			//
+			toggleNav();
+			//
+		    });
+		//
+	    } else { 
+		//
+		$nav.removeClass( HIDDEN );
+		//
+		$navToggle.off( 'click' );
+		//
+		$navLinks.off( 'click' );
+		//
+	    };
+	};
+
+
 		
 	var changeModeTo = function( screenMode ){ 
 	    //
@@ -385,33 +509,44 @@ $(function(){
 		//
 	    case "desktop": 
 		//
-		$html.removeClass( tablet +" "+ mobile +" "+ mobile_small );
+		$html.removeClass( tablet 
+				   +" "+ mobile 
+				   +" "+ mobile_small );
 		//
-		console.log( screenMode );
+		$nav.removeClass( HIDDEN );
+		//
+		mobileNavMode( false );
+		//
 		break;
 	    case "tablet": 
 		//
-		$html.removeClass( mobile +" "+ mobile_small );
+		$html.removeClass( mobile 
+				   +" "+ mobile_small );
 		//
 		$html.addClass( tablet );
 		//
-		console.log( screenMode );
+		mobileNavMode( false );
+		//
 		break;	    
 	    case "mobile": 
 		//
-		$html.removeClass( tablet +" "+ mobile_small );
+		$html.removeClass( tablet 
+				   +" "+ mobile_small );
 		//
 		$html.addClass( mobile );
 		//
-		console.log( screenMode );
+		mobileNavMode( true );
+		//
 		break;	    
 	    case "mobile_small": 
 		//
-		$html.removeClass( tablet +" "+ mobile);
+		$html.removeClass( tablet 
+				   +" "+ mobile);
 		//
 		$html.addClass( mobile_small );
 		//
-		console.log( screenMode );
+		mobileNavMode( true );
+		//
 		break;
 	    };
 	}
@@ -427,21 +562,26 @@ $(function(){
 			//
 		    }
 		    
-		}).register("screen and (min-width: "+topMinWidth+"px ) and (max-width: "+topMaxWidth+"px )", {
+		})
+	    .register("screen and (min-width: "+topMinWidth+
+		      "px ) and (max-width: "+topMaxWidth+"px )", {
 			//
 			match : function(){
 			    //
 			    changeModeTo( 'tablet' );
 			    //
 			}
-		    }).register("screen and (min-width: "+medMinWidth+"px ) and (max-width: "+medMaxWidth+"px ) ", {
+		    })
+	    .register("screen and (min-width: "+medMinWidth+
+		      "px ) and (max-width: "+medMaxWidth+"px ) ", {
 			    //
 			    match : function(){
 				//
 				changeModeTo( 'mobile' );
 				//
 			    }
-			}).register("screen and (max-width: "+botMaxWidth+"px)", {
+			})
+	    .register("screen and (max-width: "+botMaxWidth+"px)", {
 				// 
 				match: function(){ 
 				    //
