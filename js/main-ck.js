@@ -62,13 +62,14 @@ $.verticalCarousel = function( element , options ){
     $panes = $container.find( 'li' ), 
     paneHeight = 0,
     paneCount = $panes.length,
-    currentPane = 0,
+    currentPane = VC.startPane || 0,
     animationTime = 450,
     lastAnimationTime,
     callBack;
     //
     // add any new options to the carousel object
     VC = $.extend( VC , options );
+
 
     VC.init = function(){ 
 	//
@@ -285,8 +286,93 @@ $(function(){
 	    // 
 	    // site objects
 	    navigation,
+	    hashManager,
 	    //
 	    HIDDEN = 'hidden';
+	
+
+	var HashManager = function( options ){ 
+	    
+	    var that = { 
+		settings : { 
+		    currentHash : 'home',
+		    $link : {},
+		    onChange : function(){},
+		}
+	    };
+	    var HM = (function(){ return that; }()),
+	    s = $.extend( HM.settings, options );
+	    //
+	    
+	    HM.init() = function(){ 
+		//
+		// check the url for change
+		$( window ).on( 'load hashchange', function(){ 
+			//
+			HM
+			//
+			.compareHash( HM.grabHash() )
+			//
+		    });
+		    
+		//
+		return HM
+	    };
+
+
+	    HM.grabHash = function(){ 
+		//
+		var hashNow = window.location.hash;
+		//
+		return hashNow;
+		//
+	    };
+
+
+	    HM.compareHash = function( newHash ){ 
+		//
+		var prevHash = s.currentHash,
+		newHash =  newHash; 
+		//
+		// check if the newhash changed is the same as the last
+		if( newHash === s.currentHash ){ 
+		    //
+		    // leave function
+		    return HM;
+		    //
+		} else if( newHash === "" || newHash === undefined ){ 
+		    //
+		    HM.changeHashTo( 'home' );
+		    //
+		} else { 
+		    //
+		    // if the hash is different
+		    // call the callback function
+		    // with that hash info 
+		    onChange.call( HM, s );
+		    // 
+		};
+		return HM;
+		//
+	    }; 
+		
+		
+	    HM.changeHashTo = function( hash ){ 
+		//
+		s.currentHash = hash;
+		//
+		window.location.hash = s.currentHash;
+		// 
+		return HM;
+	    };
+		
+		
+	    return HM;
+	    //
+	};
+	
+	    
+	    
 
 	var Navigation = function( options ){ 
 	    //
@@ -296,6 +382,8 @@ $(function(){
 		    //
 		    mode : 'desktop',
 		    toggleState : 'on',
+		    currentHash : 'home',
+		    section : 'home',
 		    // carousel Object
 		    // NOTE: The nav object controls 
 		    // the carousel object
@@ -303,8 +391,9 @@ $(function(){
 		    //ids
 		    NAV_ID : 'navigation',
 		    TOG_BUTTON_ID : 'toggleButton',
+		    MENU_ICON_ID : 'menuIcon',
 		    // Data tags
-		    LINK_TAG : 'data-link',
+		    LINK_TAG : 'link',
 		    SECTION_INDEX_TAG : 'section-index',
 		    SECTION_TYPE_TAG : 'section-type',
 		    NAV_STATE_TAG : 'nav-state',
@@ -329,26 +418,24 @@ $(function(){
 	    //
 	    // jQuery elements
 	    $nav =  $doc.find( '#'+s.NAV_ID ),
-	    $links = $nav.find( '['+s.LINK_TAG +']' ),
+	    $links = $nav.find( '[data-'+s.LINK_TAG+']' ),
 	    $linkClicked = '',
 	    // Navigation toggle
 	    $navToggle =  $doc.find( '#'+s.TOG_BUTTON_ID ),
 	    $menuIcon =  $navToggle.find( '#'+s.MENU_ICON_ID ),
-	    $guideIcon =  $navToggle.siblings();
+	    $guideIcon =  $menuIcon.siblings();
 
-	    console.log( $nav );
-	    console.log( $links );
-	    //console.log( $linkClicked );
-	    //console.log( $navToggle );
-	    //console.log( $menuIcon );
-	    //console.log( $guideIcon );
 	    // @INIT METHODS ----------------------------------------//
 	    
+
 	    // ACTIONS
 	    NAV.init = function(){
 		//
+		// update the carousel and nav
+		// if any links are clicked
 		$nav.on( 'click', function(e){ 
 			//
+			// need a prevent for if target === null @FIX
 			e.preventDefault();
 			//
 			// Store the nav and its links
@@ -371,11 +458,30 @@ $(function(){
 			//
 			NAV.callPane()
 			//
+			.changeHash()
+			//
 			.updateMobileGuide();
 			//			
 		    });
 		//
-		return NAV
+		NAV. setupPage();
+		//
+		return NAV;
+	    };
+
+	    
+	    NAV.setupPage = function(){ 
+		//
+		$(window).on( 'load hashchange' , function(){
+			//
+			NAV.changeHash()
+			//
+			.triggerLinkOnHash();
+			//
+			
+		    });
+		//
+		return NAV;
 	    };
 
 
@@ -401,46 +507,6 @@ $(function(){
 		//
 	    };
 
-	    
-	    // @MODES ----------------------------------------//
-
-	    NAV.desktopMode = function(){ 
-		//
-		// show the nav
-		$nav.removeClass( HIDDEN );
-		//
-		// hide the nav toggle button
-		$navToggle.addClass( HIDDEN )
-		.off( 'click' );
-		//
-		// report the mode
-		s.mode = 'desktop';
-		//
-		return NAV;
-	    };
-	    
-
-	    NAV.mobileMode = function(){  
-		//
-		// hide the nav 
-		$nav.addClass( HIDDEN );
-		//
-		// activate the toggle button's click event
-		$navToggle.on( 'click', function(){ 
-			//
-			NAV.toggleNav();
-			//
-		    });
-		//
-		// show the nav toggle button
-		$navToggle.removeClass( HIDDEN );
-		//
-		// report the mode
-		s.mode = 'mobile';
-		//
-		return NAV;
-		//
-	    };
 	    
 
 	    // NAV @ACTIONS ----------------------------------//
@@ -491,7 +557,65 @@ $(function(){
 		return NAV;
 	    };
 	    
+	    
+	    NAV.listenToHash = function(){ 
+		//
+		// click link on hash change
+		$(window).on('load hashchange',function(){ 
+			//
+			
+			s.currentHash = window.location.hash.slice(1);
+			//
+			console.log( 'I hash CHANGE! to' );
+			console.log( s.currentHash )
+			//
+			NAV.triggerLinkOnHash();
+		    });
+		//
+		return NAV;
+	    };
+	    
 
+	    NAV.setHash = function(){ 
+		//
+		s.currentHash = window.location.hash.slice(1);
+		//
+		return NAV;
+	    };
+
+
+	    NAV.changeHash = function( $link ){
+		//
+		var section;
+		//
+		console.log( 'hash changed to :'+ section );
+		// check for the $link argument
+		if ( $link ){ 
+		    //
+		    // extract that links href for the hash
+		    section = $link.parent().attr( 'href' );
+		    //
+		} else if( !$linkClicked ){ 
+		    //
+		    // use the default hash
+		    section = s.currentHash;
+		    //
+		} else { 
+		    //
+		    // use the clicked links href as the hash 
+		    section = $linkClicked.parent().attr( 'href' );
+		    //
+		}
+		//
+		s.currentHash = section;
+
+		// set the new hash
+		document.location.hash = section;
+		//
+		return NAV;
+	    };
+
+	    
 	    NAV.callPane = function( ){ 
 		//
 		var index = $linkClicked.parent().data( s.SECTION_INDEX_TAG );
@@ -502,23 +626,92 @@ $(function(){
 	    };
 
 
+	    NAV.triggerLinkOnHash = function(){
+		//
+		var $section = $links.children().filter( '[data-'+s.LINK_TAG+'='+s.currentHash+']' );
+		//
+		console.log( 'triggered click' );
+		$section.trigger( 'click' );
+		//
+		return NAV;
+		//
+	    };
+
+	    
 	    NAV.updateMobileGuide = function(){ 
 		//
-		var section = $linkClicked.parent().attr( 'href' );
+		var section;
+		/*
 		//
-		$guideIcon.addClass( section + '_mini' );
+		if ( !$linkClicked ){ 
+		    //
+		    // use the currentHash @FIX NEED TO CHECK FOR CLICKS!
+		    section = s.currentHash;
+		    //
+		} else {
+		    //
+		    section = $linkClicked.parent().attr( 'href' );
+		    //
+		}
+		//
+		$guideIcon.removeClass().addClass( section + '_mini' );
+		*/
 		//
 		return NAV;
 	    };
 	    
+	    
+	    // @MODES ----------------------------------------//
+
+	    NAV.desktopMode = function(){ 
+		//
+		// show the nav
+		$nav.removeClass( HIDDEN );
+		//
+		// hide the nav toggle button
+		$navToggle.addClass( HIDDEN )
+		.off( 'click' );
+		//
+		// report the mode
+		s.mode = 'desktop';
+		//
+		return NAV;
+	    };
+	    
+
+	    NAV.mobileMode = function(){  
+		//
+		// hide the nav 
+		$nav.addClass( HIDDEN );
+		//
+		// activate the toggle button's click event
+		$navToggle.on( 'click', function( e ){ 
+			//
+			e.preventDefault();
+			//
+			NAV.toggleNav();
+			//
+		    });
+		//
+		// show the nav toggle button
+		$navToggle.removeClass( HIDDEN );
+		//
+		// report the mode
+		s.mode = 'mobile';
+		//
+		return NAV;
+		//
+	    };
 	    	    
 	    // TOGGLE BUTTON METHODS ----------------------------//
 	    	    
 
 	    NAV.toggleNav = function(){ 
 		//
+		console.log( ' im being toggled!' );
 		if ( s.toggleState === 'off' ){ 
 		    //
+		    console.log( 'toggle state on' );
 		    // show the nav
 		    $nav.removeClass( HIDDEN );
 		    //
@@ -527,6 +720,7 @@ $(function(){
 		    //
 		} else if ( s.toggleState === 'on' ){ 
 		    //
+		    console.log( 'toggle state off' );
 		    // hide the nav
 		    $nav.addClass( HIDDEN );
 		    //
@@ -549,7 +743,11 @@ $(function(){
 		//
 		.clearFocusedLinks()
 		//
-		.handleFocus( $link );
+		.handleFocus( $link )
+		//
+		.changeHash( $link )
+		//
+		.updateMobileGuide();
 		//
 		return NAV;
 	    };
