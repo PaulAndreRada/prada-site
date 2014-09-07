@@ -29,19 +29,19 @@
 	  <div class="nav_icon_hamburger" 
 	     data-nav-state="off"
 	     id="menuIcon"></div>
-	  <div class="gpx_mini"
-	       id="navGuideIcon"></div>  
+	  <div class="gpx_mini"></div>  
 	</a>
 		
 	<!-- main -->
 	<div class="page-wrap">	  
-	  <nav class="hidden"> 
+	  <nav class="hidden" 
+	       id="navigation"> 
 	    
 	    <!-- @homeNav -->
-	    <a href="#" 
+	    <a href="home" 
 	       class="home_icon_container"
-	       data-nav-location="home"
-	       data-go-to-pane=1>
+	       data-link="home"
+	       data-section-index="0">
 	      <div class="home_icon"> 
 		<span class="visuallyhidden">
 		  home
@@ -50,10 +50,10 @@
 	    </a>
 	    
 	    <!-- @uxNav -->
-	    <a href="#" 
+	    <a href="ux" 
 	       class="ux_icon_container"
-	       data-nav-location="ux"
-	      data-go-to-pane=2>
+	       data-link="ux"
+	      data-section-index="1">
 	      <div class="ux_icon">
 		UX/UI
 		<span class="visuallyhidden">
@@ -63,10 +63,10 @@
 	    </a>
 
 	    <!-- @gpxNav -->
-	    <a href="#" 
+	    <a href="gpx" 
 	       class="gpx_icon_container"
-	       data-nav-location="gpx"
-	      data-go-to-pane=3>
+	       data-link="gpx"
+	      data-section-index="2">
 	      <div class="gpx_icon">
 		GPX
 		<span class="visuallyhidden">
@@ -76,10 +76,10 @@
 	    </a>
 	    
 	    <!-- @codeNav -->
-	    <a href="#" 
+	    <a href="code" 
 	       class="code_icon_container"
-	       data-nav-location="code"
-	      data-go-to-pane=4>
+	       data-link="code"
+	      data-section-index="3">
 	      <div class="code_icon"> 
 		{CD}
 		<span class="visuallyhidden">
@@ -89,10 +89,10 @@
 	    </a>
 	    
 	    <!-- @linksNav -->
-	    <a href="#" 
+	    <a href="links" 
 	       class="links_icon_container"
-	       data-nav-location="links"
-	       data-go-to-pane=5>
+	       data-link="links"
+	       data-section-index="4">
 	      <div class="links_icon">
 		<span class="visuallyhidden">
 		  links
@@ -107,7 +107,7 @@
 	    <ul class="content_rails">
 	      
 	      <li class="intro"
-		  data-section="home">
+		  data-section-type="home">
 		
 		<!-- @intro -->
 		<div class="intro_container_desktop">
@@ -120,7 +120,7 @@
 	      
 	      <!-- @ux --> 
 	      <li class="ux"
-		  data-section="ux">
+		  data-section-type="ux">
 		
 		<a href="#" class="project_block"> 
 		  <div class="riotry_image">
@@ -144,7 +144,7 @@
 	    
 	      <!-- @gpx -->
 	      <li class="gpx"
-		  data-section="gpx">
+		  data-section-type="gpx">
 		
 	      
 		<a href="#" class="project_block_sudotouch"> 
@@ -163,7 +163,7 @@
 	      
 	      <!-- code -->
 	      <li class="code"
-		  data-section="code">
+		  data-section-type="code">
 	    
 		<a href="https://github.com/PaulAndreRada/OAT" 
 	       class="project_block"> 
@@ -199,7 +199,7 @@
 	      
 	      <!-- @links -->
 	      <li class="links"
-		  data-section="links">
+		  data-section-type="links">
 		
 		<a href="mailto:info@paulrada.com" 
 		   class="link_block"> 

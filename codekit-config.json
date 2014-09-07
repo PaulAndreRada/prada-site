@@ -72,6 +72,15 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/css\/main.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/main.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/img\/sprites\/main_sprite_sm.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -82,15 +91,6 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_sm.png",
       "initialSize" : 46121,
       "fileType" : 8192
-    },
-    "\/css\/main.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/css\/main.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
     },
     "\/img\/sprites\/second_sprite_big.png" : {
       "ignoreWasSetByUser" : 0,
@@ -209,6 +209,15 @@
       "outputAbbreviatedPath" : "\/js\/vertical-carousel-ck.js",
       "fileType" : 64
     },
+    "\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/img\/sprites\/sprites_crop_inverted.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -219,15 +228,6 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/sprites_crop_inverted.png",
       "initialSize" : 14391,
       "fileType" : 8192
-    },
-    "\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     }
   },
   "manualImportLinks" : [

@@ -1,6 +1,8 @@
-$.fn.verticalCarousel = function( element , callBack ){
+$.verticalCarousel = function( element , options ){
 
-    var VC = {},
+    var VC = {
+	onChange : undefined
+    },
     $doc = $( document ),
     $element = $doc.find( element ), 
     $container = $element.find( 'ul' ), 
@@ -9,7 +11,11 @@ $.fn.verticalCarousel = function( element , callBack ){
     paneCount = $panes.length,
     currentPane = 0,
     animationTime = 450,
-    lastAnimationTime;	    
+    lastAnimationTime,
+    callBack;
+    //
+    // add any new options to the carousel object
+    VC = $.extend( VC , options );
 
     VC.init = function(){ 
 	//
@@ -54,9 +60,9 @@ $.fn.verticalCarousel = function( element , callBack ){
 	VC.setContainerOffset( offset, true );
 	//
 	// if theres a callback activate it
-	if( callBack ){ 
+	if( typeof VC.onChange === 'function' ){ 
 	    //
-	    callBack.call( VC , currentPane );
+	    VC.onChange.call( VC , currentPane );
 	    //
 	}
 	//
@@ -200,7 +206,9 @@ $.fn.verticalCarousel = function( element , callBack ){
     $element.hammer({ drag_to_lock_target : true })
     .on( 'release dragdown dragup swipeleft swiperight swipeup swipedown',
 	 handleTouch );
-    //
+    
+    
+    
     return VC;
     //
 };//verticalCarousel
