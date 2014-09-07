@@ -736,7 +736,7 @@ body {
   background-position: -260px -402px !important; }
 
 /* line 172, ../scss/main.scss */
-.link_icon_focused, nav .links_icon_container .links_icon:hover, nav .links_icon_container .links_icon:active {
+.links_icon_focused {
   background-position: -249px -532px !important; }
 
 /* line 175, ../scss/main.scss */

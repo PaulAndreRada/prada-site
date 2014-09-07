@@ -9,151 +9,508 @@ $(function(){
 	'use strict';
 
 	var $doc =$(document),
-	    // style classes
-	    NAV_FOCUS = 'focused_nav',
-	    LINK_FOCUS = 'link_icon_focused',
-	    HOME_FOCUS = 'home_icon_focused',
-	    HIDDEN = 'hidden',
-	    // id tags
-	    miniGuideIcon = 'navGuideIcon',
-	    // data tags
-	    NAVTAG = 'data-nav-location',
-	    SECTAG = 'data-section',
-	    PANETAG = 'data-go-to-pane',
-	    NAV_STATE_TAG = 'data-nav-state',
-	    // data tags data
-	    HOME = 'home',
-	    UX = 'ux',
-	    GRAPHICS = 'gpx',
-	    CODE = 'code',
-	    LINKS = 'links',
-	    // $elements
-	    $navLinks = $doc.find( '[' + NAVTAG + ']' ),
-	    $nav = $navLinks.parent(),
-	    $navToggle = $doc.find( '#navToggle' ),
-	    $miniGuideIcon = $navToggle.find( "#"+miniGuideIcon ),
-	    $navIcon = $doc.find( '['+NAV_STATE_TAG+']' );
-	    		    
-	var unFocusNav = function(){
+	    // 
+	    // site objects
+	    navigation,
+	    hashManager,
 	    //
-	    $navLinks.children().removeClass( NAV_FOCUS )
-	    .removeClass( HOME_FOCUS )
-	    .removeClass( LINK_FOCUS );
-	    //
-	    return;
-	};
+	    HIDDEN = 'hidden';
+	
 
-
-	var updateIcon = function( $icon, section ){
-	    //
-	    if ( section === data.HOME ){
-		//
-		$icon.children().addClass( HOME_FOCUS );
-		//
-	    } else if ( section === LINKS ){
-		//
-		$icon.children().addClass( LINK_FOCUS );
-		//
-	    };
-
-	};
-
-
-	var updateNav = function( section ){
-	    //
-	    unFocusNav();
-	    //
-	    var section = section || dataTagsHOME,
-	    $navEl = $navLinks.filter('['+ NAVTAG +'='+section+']' );
-	    //
-	    // check for icons
-	    if ( section === HOME || section === LINKS ){
-		//
-		updateIcon( $navEl, section );
-		//
-	    } else {
-		//
-		// unfocus the previous section
-		$navLinks.children().removeClass( NAV_FOCUS );
-		//
-		// Focus on the current section
-		$navEl.children().addClass( NAV_FOCUS );
-		//
-	    };
-	    //
-	    return;
-	    //
-	};
-
-	var updateNavToggle = function( section ){ 
-	    //
-	    // if we only have the index
-	    if( typeof section === 'number' ){
-		//
-		switch( section ){ 
-		    //
-		case 0: 
-		section = HOME;
-		break;
-		//
-		case 1: 
-		section = UX;
-		break;
-		//
-		case 2: 
-		section = GRAPHICS;
-		break;
-		//
-		case 3: 
-		section = CODE;
-		break;
-		//
-		case 4: 
-		section = LINKS;
-		break;
+	var HashManager = function( options ){ 
+	    
+	    var that = { 
+		settings : { 
+		    currentHash : 'home',
+		    $link : {},
+		    onChange : function(){},
 		}
-		//console.log( 'section' );
-		//console.log( section );
+	    };
+	    var HM = (function(){ return that; }()),
+	    s = $.extend( HM.settings, options );
+	    //
+	    
+	    HM.init() = function(){ 
 		//
-	    } else {
+		// check the url for change
+		$( window ).on( 'load hashchange', function(){ 
+			//
+			HM
+			//
+			.compareHash( HM.grabHash() )
+			//
+		    });
+		    
 		//
-		var section = section || HOME;
+		return HM
+	    };
+
+
+	    HM.grabHash = function(){ 
+		//
+		var hashNow = window.location.hash;
+		//
+		return hashNow;
 		//
 	    };
-		$miniGuideIcon.removeClass();
+
+
+	    HM.compareHash = function( newHash ){ 
 		//
-		$miniGuideIcon.addClass( section+'_mini' );
-		//		    
+		var prevHash = s.currentHash,
+		newHash =  newHash; 
+		//
+		// check if the newhash changed is the same as the last
+		if( newHash === s.currentHash ){ 
+		    //
+		    // leave function
+		    return HM;
+		    //
+		} else if( newHash === "" || newHash === undefined ){ 
+		    //
+		    HM.changeHashTo( 'home' );
+		    //
+		} else { 
+		    //
+		    // if the hash is different
+		    // call the callback function
+		    // with that hash info 
+		    onChange.call( HM, s );
+		    // 
+		};
+		return HM;
+		//
+	    }; 
+		
+		
+	    HM.changeHashTo = function( hash ){ 
+		//
+		s.currentHash = hash;
+		//
+		window.location.hash = s.currentHash;
+		// 
+		return HM;
+	    };
+		
+		
+	    return HM;
+	    //
 	};
-
 	
-	var carousel = $.fn.verticalCarousel( "#vertical-carousel" , 
-					      updateNavToggle );
-	carousel.init();
+	    
+	    
 
-	
-	// Scroll to section on click
-	$navLinks.on('click', function(e){
+	var Navigation = function( options ){ 
+	    //
+	    // create the NAV object
+	    var that = { 
+		settings : { 
+		    //
+		    mode : 'desktop',
+		    toggleState : 'on',
+		    currentHash : 'home',
+		    section : 'home',
+		    // carousel Object
+		    // NOTE: The nav object controls 
+		    // the carousel object
+		    carousel : {},
+		    //ids
+		    NAV_ID : 'navigation',
+		    TOG_BUTTON_ID : 'toggleButton',
+		    MENU_ICON_ID : 'menuIcon',
+		    // Data tags
+		    LINK_TAG : 'link',
+		    SECTION_INDEX_TAG : 'section-index',
+		    SECTION_TYPE_TAG : 'section-type',
+		    NAV_STATE_TAG : 'nav-state',
+		    // link and pane types  
+		    HOME : 'home',
+		    UX : 'ux',
+		    GRAPHICS : 'gpx',
+		    CODE : 'code',
+		    LINKS : 'links',
+		    // style classes
+		    NAV_FOCUS : 'focused_nav',
+		    LINK_FOCUS : 'link_icon_focused',
+		    HOME_FOCUS : 'home_icon_focused',
+		}
+	    },
+	    //
+	    // Make the NAV object dynamic through closures
+	    NAV = (function(){ return that; }()),
+	    //
+	    // merge the options object into the default settings
+	    s = $.extend( NAV.settings, options ),
+	    //
+	    // jQuery elements
+	    $nav =  $doc.find( '#'+s.NAV_ID ),
+	    $links = $nav.find( '[data-'+s.LINK_TAG+']' ),
+	    $linkClicked = '',
+	    // Navigation toggle
+	    $navToggle =  $doc.find( '#'+s.TOG_BUTTON_ID ),
+	    $menuIcon =  $navToggle.find( '#'+s.MENU_ICON_ID ),
+	    $guideIcon =  $menuIcon.siblings();
+
+	    // @INIT METHODS ----------------------------------------//
+	    
+
+	    // ACTIONS
+	    NAV.init = function(){
 		//
-		e.preventDefault();
+		// update the carousel and nav
+		// if any links are clicked
+		$nav.on( 'click', function(e){ 
+			//
+			// need a prevent for if target === null @FIX
+			e.preventDefault();
+			//
+			// Store the nav and its links
+			var $this = $(this);
+			$linkClicked = $this.find( e.target );
+			$links = $this.children();
+			// //@currfix
+			NAV
+			//
+			.clearFocusedLinks()
+			//
+			.handleFocus();
+			//
+			if( s.mode === 'mobile' ){ 
+			    //
+			    // hide the Nav
+			    $navToggle.trigger( 'click' );
+			    //
+			};
+			//
+			NAV.callPane()
+			//
+			.changeHash()
+			//
+			.updateMobileGuide();
+			//			
+		    });
 		//
-		// get the element that was clicked
-		var $this = $(this),
-		    locClicked = $this.attr( NAVTAG ),
-		    pane = ($this.attr( PANETAG )) -1,
-		    section = $doc.find( '['+SECTAG+'='+locClicked+']' );
+		NAV. setupPage();
 		//
-		//scroll there
-		carousel.showPane( pane );
+		return NAV;
+	    };
+
+	    
+	    NAV.setupPage = function(){ 
 		//
-		// highlight nav link
-		updateNav( locClicked  );
+		$(window).on( 'load hashchange' , function(){
+			//
+			NAV.changeHash()
+			//
+			.triggerLinkOnHash();
+			//
+			
+		    });
 		//
-		// for @mobile only
-		updateNavToggle( locClicked );
+		return NAV;
+	    };
+
+
+	    // SWITCH @MODES
+	    NAV.switchModeTo = function( mode ){ 
+		//
+		// save for later use
+		s.mode = mode
+		//
+		if( mode === 'desktop' || mode === 'tablet' ){ 
+		    //
+		    NAV.desktopMode();
+		    //
+		} else if ( mode === 'mobile' ){ 
+		    //
+		    NAV.mobileMode();
+		    //
+		} else { 
+		    //
+		    NAV.switchModeTo( 'desktop' );
+		    //
+		} 
+		//
+	    };
+
+	    
+
+	    // NAV @ACTIONS ----------------------------------//
+		
+	    NAV.clearFocusedLinks = function(){ 
+		//
+		$links.children().removeClass( s.NAV_FOCUS )
+		.removeClass( s.HOME_FOCUS )
+		.removeClass( s.LINK_FOCUS );
+		//
+		return NAV;
+	    };
+	    
+	    
+	    NAV.focusIcon = function( $icon ){ 
+		//
+		var iconType = $icon.parent().attr( 'href' );
+		//
+		$icon.addClass( iconType+'_icon_focused' );
+		//
+		return NAV;
+	    };
+	    
+
+	    NAV.focusText = function( $text ){ 
+		//
+		$text.addClass( s.NAV_FOCUS );
+		//
+		return NAV	    
+	    };
+	    
+
+	    NAV.handleFocus = function( $linkEl ){ 
+		//		
+		var $link = $linkEl || $linkClicked,
+		section = $link.parent().attr('href');
+		//
+		// check for icons or text
+		if ( section === s.HOME || section === s.LINKS ){
+		    //
+		    NAV.focusIcon( $link );
+		    //
+		} else {
+		    //
+		    NAV.focusText( $link );
+		};
+		//
+		return NAV;
+	    };
+	    
+	    
+	    NAV.listenToHash = function(){ 
+		//
+		// click link on hash change
+		$(window).on('load hashchange',function(){ 
+			//
+			
+			s.currentHash = window.location.hash.slice(1);
+			//
+			console.log( 'I hash CHANGE! to' );
+			console.log( s.currentHash )
+			//
+			NAV.triggerLinkOnHash();
+		    });
+		//
+		return NAV;
+	    };
+	    
+
+	    NAV.setHash = function(){ 
+		//
+		s.currentHash = window.location.hash.slice(1);
+		//
+		return NAV;
+	    };
+
+
+	    NAV.changeHash = function( $link ){
+		//
+		var section;
+		//
+		console.log( 'hash changed to :'+ section );
+		// check for the $link argument
+		if ( $link ){ 
+		    //
+		    // extract that links href for the hash
+		    section = $link.parent().attr( 'href' );
+		    //
+		} else if( !$linkClicked ){ 
+		    //
+		    // use the default hash
+		    section = s.currentHash;
+		    //
+		} else { 
+		    //
+		    // use the clicked links href as the hash 
+		    section = $linkClicked.parent().attr( 'href' );
+		    //
+		}
+		//
+		s.currentHash = section;
+
+		// set the new hash
+		document.location.hash = section;
+		//
+		return NAV;
+	    };
+
+	    
+	    NAV.callPane = function( ){ 
+		//
+		var index = $linkClicked.parent().data( s.SECTION_INDEX_TAG );
+		//
+		s.carousel.showPane( parseInt(index) );
+		//
+		return NAV;
+	    };
+
+
+	    NAV.triggerLinkOnHash = function(){
+		//
+		var $section = $links.children().filter( '[data-'+s.LINK_TAG+'='+s.currentHash+']' );
+		//
+		console.log( 'triggered click' );
+		$section.trigger( 'click' );
+		//
+		return NAV;
+		//
+	    };
+
+	    
+	    NAV.updateMobileGuide = function(){ 
+		//
+		var section;
+		/*
+		//
+		if ( !$linkClicked ){ 
+		    //
+		    // use the currentHash @FIX NEED TO CHECK FOR CLICKS!
+		    section = s.currentHash;
+		    //
+		} else {
+		    //
+		    section = $linkClicked.parent().attr( 'href' );
+		    //
+		}
+		//
+		$guideIcon.removeClass().addClass( section + '_mini' );
+		*/
+		//
+		return NAV;
+	    };
+	    
+	    
+	    // @MODES ----------------------------------------//
+
+	    NAV.desktopMode = function(){ 
+		//
+		// show the nav
+		$nav.removeClass( HIDDEN );
+		//
+		// hide the nav toggle button
+		$navToggle.addClass( HIDDEN )
+		.off( 'click' );
+		//
+		// report the mode
+		s.mode = 'desktop';
+		//
+		return NAV;
+	    };
+	    
+
+	    NAV.mobileMode = function(){  
+		//
+		// hide the nav 
+		$nav.addClass( HIDDEN );
+		//
+		// activate the toggle button's click event
+		$navToggle.on( 'click', function( e ){ 
+			//
+			e.preventDefault();
+			//
+			NAV.toggleNav();
+			//
+		    });
+		//
+		// show the nav toggle button
+		$navToggle.removeClass( HIDDEN );
+		//
+		// report the mode
+		s.mode = 'mobile';
+		//
+		return NAV;
+		//
+	    };
+	    	    
+	    // TOGGLE BUTTON METHODS ----------------------------//
+	    	    
+
+	    NAV.toggleNav = function(){ 
+		//
+		console.log( ' im being toggled!' );
+		if ( s.toggleState === 'off' ){ 
+		    //
+		    console.log( 'toggle state on' );
+		    // show the nav
+		    $nav.removeClass( HIDDEN );
+		    //
+		    // change the state
+		    s.toggleState = 'on'
+		    //
+		} else if ( s.toggleState === 'on' ){ 
+		    //
+		    console.log( 'toggle state off' );
+		    // hide the nav
+		    $nav.addClass( HIDDEN );
+		    //
+		    // change the state
+		    s.toggleState = 'off';
+		}
+		//
+		return NAV
+		//
+	    };
+	    
+	    // Update Nav with numbers ----------------------------//
+	    
+	    NAV.updateNav = function( sectionIndex ){
+		//
+		var $link = $links.filter( '[data-'+ s.SECTION_INDEX_TAG +
+					   '='+sectionIndex+']' ).children();
+		//
+		NAV
+		//
+		.clearFocusedLinks()
+		//
+		.handleFocus( $link )
+		//
+		.changeHash( $link )
+		//
+		.updateMobileGuide();
+		//
+		return NAV;
+	    };
+
+	    return NAV;
+	    //
+	}// end NAV 
+
+
+
+	// @INIT site objects 
+	//
+	navigation = Navigation({ 
+		//		
+		carousel: $.verticalCarousel( '#vertical-carousel',{
+			onChange : function( currentPane ){ 
+			    //
+			    navigation.updateNav( currentPane );
+			    //
+			}
+		    })
 	    });
+	//
+	// @nav init
+
+	//
+	// @carousel init
+	navigation.settings.carousel.init();
+		navigation.init();
+
 	
 
+
+
+
+	// ENQUIRE SITE MODES
+	
 	// window thresholds
 	var base_width = 960,
 	    tablet_width =  768,
@@ -168,72 +525,8 @@ $(function(){
 	    $html = $doc.find( 'html' );
 
 
-	var toggleNav = function( navState ){ 
-	    
-	    var state = state || $navIcon.attr( NAV_STATE_TAG );
-	    //
-	    if( !$toggleIcon ) {
-		var $toggleIcon= $doc.find( '#menuIcon' );
-	    }
-	    //
-	    if( navState === "off" ){ 
-		//
-		$nav.removeClass( HIDDEN );
-		//
-		$toggleIcon.attr( NAV_STATE_TAG , "on" ); 
-		//
-	    } else if ( navState === "on" ){ 
-		//
-		$nav.addClass( HIDDEN );
-		//
-		$toggleIcon.attr( NAV_STATE_TAG , "off" );
-		//
-	    };
-	    	    
-	};
-	
 
-	var toggleNavClick = function( e ){ 
-	    //
-	    e.preventDefault();
-	    //
-	    var $this = $(this),
-	    $toggleIcon = $this.find( '#menuIcon' ),
-	    navState = $toggleIcon.attr( NAV_STATE_TAG ); 
-	    //
-	    toggleNav( navState );
-	};	
-	
-	
-	// mobile Nav Mode
-	var mobileNavMode = function( state ){ 
-	    //
-	    if( state ){ 
-		//
-		$nav.addClass( HIDDEN );
-		//
-		$navToggle.on( 'click', toggleNavClick );
-		//
-		$navLinks.on( 'click' , function(){ 
-			//
-			toggleNav();
-			//
-		    });
-		//
-	    } else { 
-		//
-		$nav.removeClass( HIDDEN );
-		//
-		$navToggle.off( 'click' );
-		//
-		$navLinks.off( 'click' );
-		//
-	    };
-	};
-
-
-		
-	var changeModeTo = function( screenMode ){ 
+	var siteMode = function( screenMode ){ 
 	    //
 	    var screenMode = screenMode || 'desktop',
 	    tablet = 'tablet_size',
@@ -248,9 +541,7 @@ $(function(){
 				   +" "+ mobile 
 				   +" "+ mobile_small );
 		//
-		$nav.removeClass( HIDDEN );
-		//
-		mobileNavMode( false );
+		navigation.switchModeTo( 'desktop'  );
 		//
 		break;
 	    case "tablet": 
@@ -260,7 +551,7 @@ $(function(){
 		//
 		$html.addClass( tablet );
 		//
-		mobileNavMode( false );
+		navigation.switchModeTo( 'tablet' );
 		//
 		break;	    
 	    case "mobile": 
@@ -270,7 +561,7 @@ $(function(){
 		//
 		$html.addClass( mobile );
 		//
-		mobileNavMode( true );
+		navigation.switchModeTo( 'mobile' );
 		//
 		break;	    
 	    case "mobile_small": 
@@ -280,7 +571,7 @@ $(function(){
 		//
 		$html.addClass( mobile_small );
 		//
-		mobileNavMode( true );
+		navigation.switchModeTo( 'mobile' );
 		//
 		break;
 	    };
@@ -293,7 +584,7 @@ $(function(){
 		    //
 		    match : function(){
 			//
-			changeModeTo( 'desktop' );
+			siteMode( 'desktop' );
 			//
 		    }
 		    
@@ -303,7 +594,7 @@ $(function(){
 			//
 			match : function(){
 			    //
-			    changeModeTo( 'tablet' );
+			    siteMode( 'tablet' );
 			    //
 			}
 		    })
@@ -312,7 +603,7 @@ $(function(){
 			    //
 			    match : function(){
 				//
-				changeModeTo( 'mobile' );
+				siteMode( 'mobile' );
 				//
 			    }
 			})
@@ -320,7 +611,7 @@ $(function(){
 				// 
 				match: function(){ 
 				    //
-				changeModeTo( 'mobile_small' );
+				siteMode( 'mobile_small' );
 				//
 				}
 			    });
