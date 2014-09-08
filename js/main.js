@@ -16,7 +16,7 @@ $(function(){
 	    //
 	    HIDDEN = 'hidden';
 	
-
+	// @hashManager
 	var HashManager = function( options ){ 
 	    
 	    var that = { 
@@ -28,54 +28,58 @@ $(function(){
 	    };
 	    var HM = (function(){ return that; }()),
 	    s = $.extend( HM.settings, options );
-	    //
+
 	    
-	    HM.init() = function(){ 
+	    HM.checkForChanges = function(){ 
 		//
 		// check the url for change
-		$( window ).on( 'load hashchange', function(){ 
+		$( window ).on( 'load hashchange',function(){ 
 			//
-			HM
-			//
-			.compareHash( HM.grabHash() )
+			HM.handleHash( HM.getHash() );
 			//
 		    });
-		    
 		//
 		return HM
 	    };
 
 
-	    HM.grabHash = function(){ 
+	    HM.getHash = function(){ 
 		//
-		var hashNow = window.location.hash;
+		var hashNow = window.location.hash.slice(1);
 		//
 		return hashNow;
 		//
 	    };
 
 
-	    HM.compareHash = function( newHash ){ 
+	    HM.handleHash = function( newHash ){ 
 		//
 		var prevHash = s.currentHash,
-		newHash =  newHash; 
+		newHash =  newHash;
 		//
-		// check if the newhash changed is the same as the last
+		// check if the newhash is the same as the last
 		if( newHash === s.currentHash ){ 
 		    //
+		    console.log( 'leaving func' );
 		    // leave function
 		    return HM;
 		    //
-		} else if( newHash === "" || newHash === undefined ){ 
+		}		
+		// setup the hash to Home under these conditions
+		else if( newHash === 'setup' ||
+			 newHash === "" 
+			 || newHash === undefined ){ 
 		    //
+		    console.log( 'change hash' );
 		    HM.changeHashTo( 'home' );
 		    //
 		} else { 
 		    //
+		    console.log( 'do the callback' );
 		    // if the hash is different
 		    // call the callback function
 		    // with that hash info 
-		    onChange.call( HM, s );
+		    s.onChange.call( HM, newHash );
 		    // 
 		};
 		return HM;
@@ -87,7 +91,9 @@ $(function(){
 		//
 		s.currentHash = hash;
 		//
-		window.location.hash = s.currentHash;
+		if( hash !== undefined ){
+		    window.location.hash = s.currentHash;
+		};
 		// 
 		return HM;
 	    };
@@ -113,7 +119,9 @@ $(function(){
 		    // carousel Object
 		    // NOTE: The nav object controls 
 		    // the carousel object
+		    // and the Hash manager
 		    carousel : {},
+		    hashManager : {},
 		    //ids
 		    NAV_ID : 'navigation',
 		    TOG_BUTTON_ID : 'toggleButton',
@@ -124,11 +132,13 @@ $(function(){
 		    SECTION_TYPE_TAG : 'section-type',
 		    NAV_STATE_TAG : 'nav-state',
 		    // link and pane types  
-		    HOME : 'home',
-		    UX : 'ux',
-		    GRAPHICS : 'gpx',
-		    CODE : 'code',
-		    LINKS : 'links',
+		    sections : {
+			HOME : 'home',
+			UX : 'ux',
+			GRAPHICS : 'gpx',
+			CODE : 'code',
+			LINKS : 'links',
+		    },
 		    // style classes
 		    NAV_FOCUS : 'focused_nav',
 		    LINK_FOCUS : 'link_icon_focused',
@@ -154,7 +164,6 @@ $(function(){
 	    // @INIT METHODS ----------------------------------------//
 	    
 
-	    // ACTIONS
 	    NAV.init = function(){
 		//
 		// update the carousel and nav
@@ -182,7 +191,9 @@ $(function(){
 			    //
 			};
 			//
-			NAV.callPane()
+			NAV
+			//
+			.callPane()
 			//
 			.changeHash()
 			//
@@ -198,14 +209,20 @@ $(function(){
 	    
 	    NAV.setupPage = function(){ 
 		//
-		$(window).on( 'load hashchange' , function(){
+		if( s.hashManager.checkForChanges ){
+		    //
+		    var hash = s.hashManager.getHash();
+		    //
+		    if( !NAV.compareSectionsWith( hash ) ){ 
 			//
-			NAV.changeHash()
+			s.hashManager.handleHash( 'setup' );
 			//
-			.triggerLinkOnHash();
-			//
-			
-		    });
+		    };
+		    //
+		    // listen for hash event changes
+		    s.hashManager.checkForChanges();
+		    //
+		};
 		//
 		return NAV;
 	    };
@@ -271,7 +288,7 @@ $(function(){
 		section = $link.parent().attr('href');
 		//
 		// check for icons or text
-		if ( section === s.HOME || section === s.LINKS ){
+		if ( section === s.sections.HOME || section === s.sections.LINKS ){
 		    //
 		    NAV.focusIcon( $link );
 		    //
@@ -284,80 +301,40 @@ $(function(){
 	    };
 	    
 	    
-	    NAV.listenToHash = function(){ 
-		//
-		// click link on hash change
-		$(window).on('load hashchange',function(){ 
-			//
-			
-			s.currentHash = window.location.hash.slice(1);
-			//
-			console.log( 'I hash CHANGE! to' );
-			console.log( s.currentHash )
-			//
-			NAV.triggerLinkOnHash();
-		    });
-		//
-		return NAV;
-	    };
-	    
-
-	    NAV.setHash = function(){ 
-		//
-		s.currentHash = window.location.hash.slice(1);
-		//
-		return NAV;
-	    };
-
-
-	    NAV.changeHash = function( $link ){
-		//
-		var section;
-		//
-		console.log( 'hash changed to :'+ section );
-		// check for the $link argument
-		if ( $link ){ 
-		    //
-		    // extract that links href for the hash
-		    section = $link.parent().attr( 'href' );
-		    //
-		} else if( !$linkClicked ){ 
-		    //
-		    // use the default hash
-		    section = s.currentHash;
-		    //
-		} else { 
-		    //
-		    // use the clicked links href as the hash 
-		    section = $linkClicked.parent().attr( 'href' );
-		    //
-		}
-		//
-		s.currentHash = section;
-
-		// set the new hash
-		document.location.hash = section;
-		//
-		return NAV;
-	    };
-
-	    
 	    NAV.callPane = function( ){ 
 		//
 		var index = $linkClicked.parent().data( s.SECTION_INDEX_TAG );
 		//
-		s.carousel.showPane( parseInt(index) );
+		if( s.carousel.showPane ){ 
+		    //
+		    s.carousel.showPane( parseInt(index) );
+		    //
+		};
 		//
 		return NAV;
 	    };
 
 
-	    NAV.triggerLinkOnHash = function(){
+	    NAV.changeHash = function(){ 
 		//
-		var $section = $links.children().filter( '[data-'+s.LINK_TAG+'='+s.currentHash+']' );
+		var section = $linkClicked.parent().attr( 'href' );
 		//
-		console.log( 'triggered click' );
-		$section.trigger( 'click' );
+		if( s.hashManager ){ 
+		    //
+		    s.hashManager.changeHashTo( section );
+		};
+		// 
+		return NAV;
+	    };
+
+	    
+	    NAV.triggerLink = function( section ){
+		//
+		var $sectionLink = $links.children().filter( '[data-'+s.LINK_TAG+
+							 '='
+							 +section+']' );
+		//
+		$sectionLink.trigger( 'click' );
 		//
 		return NAV;
 		//
@@ -458,7 +435,7 @@ $(function(){
 		//
 	    };
 	    
-	    // Update Nav with numbers ----------------------------//
+	    // Update Nav  ----------------------------//
 	    
 	    NAV.updateNav = function( sectionIndex ){
 		//
@@ -471,13 +448,83 @@ $(function(){
 		//
 		.handleFocus( $link )
 		//
-		.changeHash( $link )
-		//
 		.updateMobileGuide();
 		//
 		return NAV;
 	    };
 
+
+	    // @Helpers ------------------------------//
+
+
+	    NAV.findIndexFrom = function( section ){ 
+		//
+		// get the link button
+		var $link = $links.filter( '[data-'+ s.LINK_TAG +
+				     '='+section+']' ),
+		//
+		// get its index
+		index = $link.data( s.SECTION_INDEX_TAG );
+		//
+		return index
+		//
+	    };
+	    
+	    NAV.findSectionFrom = function( index ){ 
+		//
+		// get the link button using the index
+		var $link = $links.filter( '[data-'+ s.SECTION_INDEX_TAG +
+				     '='+index+']' ),
+		//
+		// get the section
+		section = $link.attr( 'href' );
+		//
+		//
+		return section; 
+		//
+	    };
+
+	    NAV.findLinkFrom = function( section ){ 
+		//
+		// Accepts number(by index)  or string ( by section name )
+		//
+		if( typeof section === 'string' ){
+		    //
+		    var $link = $links.filter( '[data-'+s.SECTION_INDEX_TAG+
+					       '='+section+']' );
+		    //
+		} else if( typeof section === 'number' ){ 
+		    //
+		    var $link = $links.filter( '[data-'+s.SECTION_TYPE_TAG+
+					       '='+section+']' );
+		    //
+		};
+		//
+		return $link;
+		//
+	    };
+
+
+	    NAV.compareSectionsWith = function( possibleSec ){ 
+		//
+		var sections = s.sections,
+		answer = false;
+		//
+		// check if the argument is  a section
+		for(var prop in sections ){ 
+		    //
+		    if ( sections[ prop ] === possibleSec ){ 
+			//
+			answer = true;
+			//
+			return answer;
+		    };
+		    //
+		};
+		return answer;
+	    };
+
+	    
 	    return NAV;
 	    //
 	}// end NAV 
@@ -489,22 +536,42 @@ $(function(){
 	navigation = Navigation({ 
 		//		
 		carousel: $.verticalCarousel( '#vertical-carousel',{
-			onChange : function( currentPane ){ 
+			//
+			onChange : function( newPane ){ 
 			    //
-			    navigation.updateNav( currentPane );
+			    // show the pane
+			    navigation.updateNav( newPane );
 			    //
+			    // conver the index to its corresponding section name
+			    var section = navigation.findSectionFrom( newPane );
+			    //
+			    // change the hash
+			    navigation.settings
+			    .hashManager.changeHashTo( section );
+			    //
+			} 
+			//			
+		    }),
+		hashManager : HashManager({ 
+			    //
+			onChange : function( hash ){
+			    //
+			    var section = hash,
+			    index = navigation.findIndexFrom( section );
+			    //
+			    console.log( 'section : '+ section );
+			    navigation.settings.carousel.showPane( index );
+			    //
+			    console.log( 'showPane :'+ index );
 			}
 		    })
 	    });
 	//
 	// @nav init
-
 	//
 	// @carousel init
 	navigation.settings.carousel.init();
-		navigation.init();
-
-	
+	navigation.init();
 
 
 
