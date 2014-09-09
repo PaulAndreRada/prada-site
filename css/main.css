@@ -709,7 +709,7 @@ body {
   padding-top: 22%; }
 
 /* line 146, ../scss/main.scss */
-.nav-text, .focused_nav, nav .ux_icon_container .ux_icon, nav .gpx_icon_container .gpx_icon, nav .code_icon_container .code_icon {
+.nav-text, .focused_nav, nav .home_icon_container .home_icon, nav .ux_icon_container .ux_icon, nav .gpx_icon_container .gpx_icon, nav .code_icon_container .code_icon, nav .links_icon_container .links_icon {
   font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: 100;
   text-decoration: none;
@@ -726,18 +726,18 @@ body {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s; }
   /* line 158, ../scss/main.scss */
-  .nav-text:hover, .focused_nav:hover, nav .ux_icon_container .ux_icon:hover, nav .gpx_icon_container .gpx_icon:hover, nav .code_icon_container .code_icon:hover, .nav-text:active, .focused_nav:active, nav .ux_icon_container .ux_icon:active, nav .gpx_icon_container .gpx_icon:active, nav .code_icon_container .code_icon:active {
+  .nav-text:hover, .focused_nav:hover, nav .home_icon_container .home_icon:hover, nav .ux_icon_container .ux_icon:hover, nav .gpx_icon_container .gpx_icon:hover, nav .code_icon_container .code_icon:hover, nav .links_icon_container .links_icon:hover, .nav-text:active, .focused_nav:active, nav .home_icon_container .home_icon:active, nav .ux_icon_container .ux_icon:active, nav .gpx_icon_container .gpx_icon:active, nav .code_icon_container .code_icon:active, nav .links_icon_container .links_icon:active {
     color: #3d3d3d; }
 
 /* line 162, ../scss/main.scss */
-.nav-icon, nav .home_icon_container .home_icon, nav .links_icon_container .links_icon {
+.nav-icon {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 480%;
   width: 70px;
   height: 70px; }
 
 /* line 169, ../scss/main.scss */
-.home_icon_focused, nav .home_icon_container .home_icon:hover, nav .home_icon_container .home_icon:active {
+.home_icon_focused {
   background-position: -260px -402px !important; }
 
 /* line 172, ../scss/main.scss */
@@ -792,35 +792,26 @@ nav {
       width: 420px; } }
   /* line 208, ../scss/main.scss */
   nav .home_icon_container .home_icon {
-    margin-left: 34%;
-    background-position: -260px -342px; }
-  /* line 250, ../scss/main.scss */
+    font-size: 40px; }
+  /* line 242, ../scss/main.scss */
   nav .links_icon_container .links_icon {
-    margin-left: 30%;
-    background-position: -249px -461px; }
+    font-size: 40px; }
 
-/* line 265, ../scss/main.scss */
-html.tablet_size body nav .home_icon_container .home_icon {
-  margin-left: 29%; }
-/* line 268, ../scss/main.scss */
-html.tablet_size body nav .links_icon_container .links_icon {
-  margin-left: 23%; }
-
-/* line 281, ../scss/main.scss */
+/* line 258, ../scss/main.scss */
 .content_rails {
   list-style-type: none;
   padding-left: 180px;
   height: 100%; }
   @media only screen and (min-width: 767px) and (max-width: 959px) {
-    /* line 281, ../scss/main.scss */
+    /* line 258, ../scss/main.scss */
     .content_rails {
       padding-left: 144px; } }
   @media only screen and (max-width: 767px) {
-    /* line 281, ../scss/main.scss */
+    /* line 258, ../scss/main.scss */
     .content_rails {
       padding-left: 0; } }
 
-/* line 287, ../scss/main.scss */
+/* line 264, ../scss/main.scss */
 .content-sections, li.intro, li.ux, li.gpx, li.code, .link-sections, li.links {
   float: left;
   display: inline;
@@ -830,25 +821,25 @@ html.tablet_size body nav .links_icon_container .links_icon {
   margin-left: 0;
   margin-right: 0;
   height: 100%;
-  min-height: 600px; }
+  min-height: 100px; }
   @media only screen and (max-width: 767px) {
-    /* line 287, ../scss/main.scss */
+    /* line 264, ../scss/main.scss */
     .content-sections, li.intro, li.ux, li.gpx, li.code, .link-sections, li.links {
       margin: 0; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 287, ../scss/main.scss */
+    /* line 264, ../scss/main.scss */
     .content-sections, li.intro, li.ux, li.gpx, li.code, .link-sections, li.links {
       width: 604px; } }
   @media only screen and (max-width: 767px) {
-    /* line 287, ../scss/main.scss */
+    /* line 264, ../scss/main.scss */
     .content-sections, li.intro, li.ux, li.gpx, li.code, .link-sections, li.links {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 287, ../scss/main.scss */
+    /* line 264, ../scss/main.scss */
     .content-sections, li.intro, li.ux, li.gpx, li.code, .link-sections, li.links {
       width: 420px; } }
 
-/* line 296, ../scss/main.scss */
+/* line 273, ../scss/main.scss */
 .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
   float: left;
   display: inline;
@@ -867,19 +858,19 @@ html.tablet_size body nav .links_icon_container .links_icon {
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s; }
   @media only screen and (max-width: 767px) {
-    /* line 296, ../scss/main.scss */
+    /* line 273, ../scss/main.scss */
     .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
       margin: 0; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 296, ../scss/main.scss */
+    /* line 273, ../scss/main.scss */
     .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
       width: 460px; } }
   @media only screen and (max-width: 767px) {
-    /* line 296, ../scss/main.scss */
+    /* line 273, ../scss/main.scss */
     .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 296, ../scss/main.scss */
+    /* line 273, ../scss/main.scss */
     .content-container, .intro_container, .intro_container_desktop, li.ux .project_block, li.gpx .project_block_sudotouch, li.gpx .project_block_cervantes, li.code .project_block, .link-container, li.links .link_block {
       width: 420px; } }
   /* line 143, ../scss/_skeleton.scss */
@@ -893,32 +884,43 @@ html.tablet_size body nav .links_icon_container .links_icon {
     visibility: hidden;
     width: 0;
     height: 0; }
-  /* line 303, ../scss/main.scss */
+  /* line 280, ../scss/main.scss */
   .content-container:hover, .intro_container:hover, .intro_container_desktop:hover, li.ux .project_block:hover, li.gpx .project_block_sudotouch:hover, li.gpx .project_block_cervantes:hover, li.code .project_block:hover, .link-container:hover, li.links .link_block:hover, .content-container:active, .intro_container:active, .intro_container_desktop:active, li.ux .project_block:active, li.gpx .project_block_sudotouch:active, li.gpx .project_block_cervantes:active, li.code .project_block:active, .link-container:active, li.links .link_block:active {
     background: #cdc8ae; }
 
-/* line 313, ../scss/main.scss */
+/* line 290, ../scss/main.scss */
 .intro_container, .intro_container_desktop {
   margin-top: 30%; }
-  /* line 316, ../scss/main.scss */
+  @media only screen and (max-width: 767px) {
+    /* line 290, ../scss/main.scss */
+    .intro_container, .intro_container_desktop {
+      font-size: 22px;
+      margin-top: 40%; } }
+  /* line 298, ../scss/main.scss */
   .intro_container:hover, .intro_container_desktop:hover, .intro_container:active, .intro_container_desktop:active {
     background: none; }
 
-/* line 321, ../scss/main.scss */
+/* line 303, ../scss/main.scss */
 .intro_container_desktop {
   padding-left: 11%;
-  padding-right: 11%; }
-  /* line 326, ../scss/main.scss */
+  padding-right: 11%;
+  border: none; }
+  /* line 309, ../scss/main.scss */
   .intro_container_desktop .intro {
-    font-size: 30px;
+    font-size: 27px;
     font-weight: normal;
     color: #3d3d3d;
-    padding-bottom: 15%; }
-    /* line 332, ../scss/main.scss */
+    padding-bottom: 10%;
+    border-bottom: 1px solid #cdc8ae; }
+    @media only screen and (max-width: 767px) {
+      /* line 309, ../scss/main.scss */
+      .intro_container_desktop .intro {
+        font-size: 22px; } }
+    /* line 320, ../scss/main.scss */
     .intro_container_desktop .intro a {
       color: #cdc8ae; }
 
-/* line 341, ../scss/main.scss */
+/* line 329, ../scss/main.scss */
 .project-image, li.ux .project_block .riotry_image, li.ux .project_block .stampede_image, li.ux .project_block .sudo_image, li.gpx .project_block_sudotouch .sudotouch_image, li.gpx .project_block_cervantes .cervantes_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 150%;
@@ -927,36 +929,36 @@ html.tablet_size body nav .links_icon_container .links_icon {
   margin-left: 33%;
   margin-top: 70px; }
 
-/* line 357, ../scss/main.scss */
+/* line 345, ../scss/main.scss */
 li.ux .project_block .riotry_image {
   background-position: -10px -80px; }
-/* line 362, ../scss/main.scss */
+/* line 350, ../scss/main.scss */
 li.ux .project_block .stampede_image {
   background-position: -5px -185px;
   margin-left: 32%; }
-/* line 368, ../scss/main.scss */
+/* line 356, ../scss/main.scss */
 li.ux .project_block .sudo_image {
   background-position: -10px -290px;
   margin-top: 100px; }
 
-/* line 381, ../scss/main.scss */
+/* line 369, ../scss/main.scss */
 li.gpx .project_block_sudotouch {
   height: 50%; }
-  /* line 385, ../scss/main.scss */
+  /* line 373, ../scss/main.scss */
   li.gpx .project_block_sudotouch .sudotouch_image {
     background-position: -10px -380px;
     margin-left: 27%;
     margin-top: 140px; }
-/* line 393, ../scss/main.scss */
+/* line 381, ../scss/main.scss */
 li.gpx .project_block_cervantes {
   height: 50%;
   border: none; }
-  /* line 398, ../scss/main.scss */
+  /* line 386, ../scss/main.scss */
   li.gpx .project_block_cervantes .cervantes_image {
     background-position: -5px -450px;
     margin-left: 27%; }
 
-/* line 407, ../scss/main.scss */
+/* line 395, ../scss/main.scss */
 .code-project-image, li.code .project_block .oat_image, li.code .project_block .data_spider_image, li.code .project_block .riotry_demo_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 150%;
@@ -965,16 +967,16 @@ li.gpx .project_block_cervantes {
   margin-left: 25%;
   margin-top: 9%; }
 
-/* line 427, ../scss/main.scss */
+/* line 415, ../scss/main.scss */
 li.code .project_block .oat_image {
   background-position: -200px -90px; }
-/* line 432, ../scss/main.scss */
+/* line 420, ../scss/main.scss */
 li.code .project_block .data_spider_image {
   background-position: -200px -202px; }
-/* line 437, ../scss/main.scss */
+/* line 425, ../scss/main.scss */
 li.code .project_block .riotry_demo_image {
   background-position: 18px -610px; }
-/* line 442, ../scss/main.scss */
+/* line 430, ../scss/main.scss */
 li.code .project_block span {
   display: block;
   margin-top: 10px;
@@ -982,7 +984,7 @@ li.code .project_block span {
   font-weight: bolder;
   text-align: center; }
 
-/* line 457, ../scss/main.scss */
+/* line 445, ../scss/main.scss */
 .link-container, li.links .link_block {
   float: left;
   display: inline;
@@ -993,23 +995,23 @@ li.code .project_block span {
   height: 20%;
   border: none; }
   @media only screen and (max-width: 767px) {
-    /* line 457, ../scss/main.scss */
+    /* line 445, ../scss/main.scss */
     .link-container, li.links .link_block {
       margin: 0; } }
   @media only screen and (min-width: 768px) and (max-width: 959px) {
-    /* line 457, ../scss/main.scss */
+    /* line 445, ../scss/main.scss */
     .link-container, li.links .link_block {
       width: 220px; } }
   @media only screen and (max-width: 767px) {
-    /* line 457, ../scss/main.scss */
+    /* line 445, ../scss/main.scss */
     .link-container, li.links .link_block {
       width: 300px; } }
   @media only screen and (min-width: 480px) and (max-width: 767px) {
-    /* line 457, ../scss/main.scss */
+    /* line 445, ../scss/main.scss */
     .link-container, li.links .link_block {
       width: 420px; } }
 
-/* line 464, ../scss/main.scss */
+/* line 452, ../scss/main.scss */
 .link-images, li.links .link_block .email_image, li.links .link_block .linkedin_image, li.links .link_block .github_image, li.links .link_block .instagram_image, li.links .link_block .quora_image, li.links .link_block .rdio_image {
   background: url("../img/sprites/main_sprite_big.png") no-repeat;
   background-size: 613%;
@@ -1018,27 +1020,27 @@ li.code .project_block span {
   margin-left: 38%;
   margin-top: 3%; }
 
-/* line 481, ../scss/main.scss */
+/* line 469, ../scss/main.scss */
 li.links .link_block .email_image {
   background-position: -7px 0px; }
-/* line 486, ../scss/main.scss */
+/* line 474, ../scss/main.scss */
 li.links .link_block .linkedin_image {
   background-position: -79px 0px;
   margin-left: 37%; }
-/* line 492, ../scss/main.scss */
+/* line 480, ../scss/main.scss */
 li.links .link_block .github_image {
   background-position: -226px 0px; }
-/* line 497, ../scss/main.scss */
+/* line 485, ../scss/main.scss */
 li.links .link_block .instagram_image {
   background-position: -150px 0px;
   margin-left: 37%; }
-/* line 503, ../scss/main.scss */
+/* line 491, ../scss/main.scss */
 li.links .link_block .quora_image {
   background-position: -300px 0px; }
-/* line 508, ../scss/main.scss */
+/* line 496, ../scss/main.scss */
 li.links .link_block .rdio_image {
   background-position: -333px -357px; }
-/* line 513, ../scss/main.scss */
+/* line 501, ../scss/main.scss */
 li.links .link_block span {
   display: block;
   margin-top: -10px;
@@ -1046,65 +1048,80 @@ li.links .link_block span {
   font-weight: bolder;
   text-align: center; }
 
-/* line 532, ../scss/main.scss */
+/* line 520, ../scss/main.scss */
 html.tablet_size body ul .project_block .riotry_image {
   margin-left: 30%; }
-/* line 536, ../scss/main.scss */
+/* line 524, ../scss/main.scss */
 html.tablet_size body ul .project_block .stampede_image {
   margin-left: 27%; }
-/* line 540, ../scss/main.scss */
+/* line 528, ../scss/main.scss */
 html.tablet_size body ul .project_block .sudo_image {
   margin-left: 30%; }
-/* line 547, ../scss/main.scss */
+/* line 535, ../scss/main.scss */
 html.tablet_size body ul .project_block_sudotouch .sudotouch_image {
   margin-left: 22%; }
-/* line 553, ../scss/main.scss */
+/* line 541, ../scss/main.scss */
 html.tablet_size body ul .project_block_cervantes .cervantes_image {
   margin-left: 21%; }
-/* line 561, ../scss/main.scss */
+/* line 549, ../scss/main.scss */
 html.tablet_size body ul .project_block .oat_image {
   margin-left: 19%; }
-/* line 565, ../scss/main.scss */
+/* line 553, ../scss/main.scss */
 html.tablet_size body ul .project_block .data_spider_image {
   margin-left: 19%; }
-/* line 569, ../scss/main.scss */
+/* line 557, ../scss/main.scss */
 html.tablet_size body ul .project_block .riotry_demo_image {
   margin-left: 19%; }
-/* line 577, ../scss/main.scss */
+/* line 565, ../scss/main.scss */
 html.tablet_size body ul .link_block .email_image {
   margin-left: 35%;
   margin-top: 8%; }
-/* line 582, ../scss/main.scss */
+/* line 570, ../scss/main.scss */
 html.tablet_size body ul .link_block .linkedin_image {
   margin-left: 34%;
   margin-top: 8%; }
-/* line 587, ../scss/main.scss */
+/* line 575, ../scss/main.scss */
 html.tablet_size body ul .link_block .github_image {
   margin-left: 35%;
   margin-top: 8%; }
-/* line 592, ../scss/main.scss */
+/* line 580, ../scss/main.scss */
 html.tablet_size body ul .link_block .instagram_image {
   margin-left: 34%;
   margin-top: 8%; }
-/* line 597, ../scss/main.scss */
+/* line 585, ../scss/main.scss */
 html.tablet_size body ul .link_block .quora_image {
   margin-left: 35%;
   margin-top: 8%; }
-/* line 602, ../scss/main.scss */
+/* line 590, ../scss/main.scss */
 html.tablet_size body ul .link_block .rdio_image {
   margin-left: 35%;
   margin-top: 8%; }
 
-/* line 612, ../scss/main.scss */
+/* line 601, ../scss/main.scss */
 html.mobile_size body nav {
+  float: left;
+  display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 940px;
   background: white; }
-  /* line 615, ../scss/main.scss */
-  html.mobile_size body nav .home_icon_container .home_icon {
-    margin-left: 43.5%; }
-  /* line 619, ../scss/main.scss */
-  html.mobile_size body nav .links_icon_container .links_icon {
-    margin-left: 42%; }
-/* line 625, ../scss/main.scss */
+  @media only screen and (max-width: 767px) {
+    /* line 601, ../scss/main.scss */
+    html.mobile_size body nav {
+      margin: 0; } }
+  @media only screen and (min-width: 768px) and (max-width: 959px) {
+    /* line 601, ../scss/main.scss */
+    html.mobile_size body nav {
+      width: 748px; } }
+  @media only screen and (max-width: 767px) {
+    /* line 601, ../scss/main.scss */
+    html.mobile_size body nav {
+      width: 300px; } }
+  @media only screen and (min-width: 480px) and (max-width: 767px) {
+    /* line 601, ../scss/main.scss */
+    html.mobile_size body nav {
+      width: 420px; } }
+/* line 615, ../scss/main.scss */
 html.mobile_size body .nav_toggle {
   position: absolute;
   width: 150px;
@@ -1112,7 +1129,7 @@ html.mobile_size body .nav_toggle {
   left: 0px;
   top: 5px;
   z-index: 1001; }
-  /* line 633, ../scss/main.scss */
+  /* line 623, ../scss/main.scss */
   html.mobile_size body .nav_toggle .nav_icon_hamburger, html.mobile_size body .nav_toggle .nav_icon_x, html.mobile_size body .nav_toggle .home_mini, html.mobile_size body .nav_toggle .ux_mini, html.mobile_size body .nav_toggle .gpx_mini, html.mobile_size body .nav_toggle .code_mini, html.mobile_size body .nav_toggle .links_mini {
     position: relative;
     float: left;
@@ -1120,86 +1137,81 @@ html.mobile_size body .nav_toggle {
     height: 100%;
     content: "";
     background: url("../img/sprites/second_sprite_big.png") no-repeat;
-    background-position: -5% -1.8%;
-    background-size: 350%; }
-  /* line 645, ../scss/main.scss */
+    background-position: -5% -3.8%;
+    background-size: 300%; }
+  /* line 635, ../scss/main.scss */
   html.mobile_size body .nav_toggle .nav_icon_x {
-    background-position: -5% 7%; }
-  /* line 650, ../scss/main.scss */
+    background-position: -5% 6.5%; }
+  /* line 640, ../scss/main.scss */
   html.mobile_size body .nav_toggle .home_mini, html.mobile_size body .nav_toggle .ux_mini, html.mobile_size body .nav_toggle .gpx_mini, html.mobile_size body .nav_toggle .code_mini, html.mobile_size body .nav_toggle .links_mini {
     background-size: 550%;
-    background-position: 5% 64.8%; }
-  /* line 656, ../scss/main.scss */
+    margin-left: -10px;
+    background-position: 9% 64.8%; }
+  /* line 647, ../scss/main.scss */
   html.mobile_size body .nav_toggle .ux_mini {
-    background-position: 3% 17%; }
-  /* line 661, ../scss/main.scss */
+    background-position: 9% 16.5%; }
+  /* line 652, ../scss/main.scss */
   html.mobile_size body .nav_toggle .gpx_mini {
-    background-position: 3% 28.5%; }
-  /* line 666, ../scss/main.scss */
+    background-position: 9% 28.1%; }
+  /* line 657, ../scss/main.scss */
   html.mobile_size body .nav_toggle .code_mini {
-    background-position: 3% 40%; }
-  /* line 671, ../scss/main.scss */
+    background-position: 9% 39.5%; }
+  /* line 662, ../scss/main.scss */
   html.mobile_size body .nav_toggle .links_mini {
-    background-position: 5% 82%; }
-/* line 682, ../scss/main.scss */
+    background-position: 9% 82%; }
+/* line 673, ../scss/main.scss */
 html.mobile_size body .project_block .riotry_image {
   margin-left: 29%; }
-/* line 686, ../scss/main.scss */
+/* line 677, ../scss/main.scss */
 html.mobile_size body .project_block .stampede_image {
   margin-left: 27%; }
-/* line 690, ../scss/main.scss */
+/* line 681, ../scss/main.scss */
 html.mobile_size body .project_block .sudo_image {
   margin-left: 29%; }
-/* line 697, ../scss/main.scss */
+/* line 688, ../scss/main.scss */
 html.mobile_size body .project_block_sudotouch .sudotouch_image {
   margin-left: 20%; }
-/* line 703, ../scss/main.scss */
+/* line 694, ../scss/main.scss */
 html.mobile_size body .project_block_cervantes .cervantes_image {
   margin-left: 18%; }
-/* line 711, ../scss/main.scss */
+/* line 702, ../scss/main.scss */
 html.mobile_size body .project_block .oat_image {
   margin-left: 16%; }
-/* line 715, ../scss/main.scss */
+/* line 706, ../scss/main.scss */
 html.mobile_size body .project_block .data_spider_image {
   margin-left: 16%; }
-/* line 719, ../scss/main.scss */
+/* line 710, ../scss/main.scss */
 html.mobile_size body .project_block .riotry_demo_image {
   margin-left: 16%; }
-/* line 727, ../scss/main.scss */
+/* line 718, ../scss/main.scss */
 html.mobile_size body .link_block .email_image {
   margin-left: 42%;
   margin-top: 8%; }
-/* line 732, ../scss/main.scss */
+/* line 723, ../scss/main.scss */
 html.mobile_size body .link_block .linkedin_image {
   margin-left: 42%;
   margin-top: 8%; }
-/* line 737, ../scss/main.scss */
+/* line 728, ../scss/main.scss */
 html.mobile_size body .link_block .github_image {
   margin-left: 42%;
   margin-top: 8%; }
-/* line 742, ../scss/main.scss */
+/* line 733, ../scss/main.scss */
 html.mobile_size body .link_block .instagram_image {
   margin-left: 42%;
   margin-top: 8%; }
-/* line 747, ../scss/main.scss */
+/* line 738, ../scss/main.scss */
 html.mobile_size body .link_block .quora_image {
   margin-left: 42%;
   margin-top: 8%; }
-/* line 752, ../scss/main.scss */
+/* line 743, ../scss/main.scss */
 html.mobile_size body .link_block .rdio_image {
   margin-left: 42%;
   margin-top: 8%; }
 
-/* line 764, ../scss/main.scss */
+/* line 755, ../scss/main.scss */
 html.mobile_sm_size body nav {
   background: white; }
-  /* line 767, ../scss/main.scss */
-  html.mobile_sm_size body nav .home_icon_container .home_icon {
-    margin-left: 41.5%; }
-  /* line 771, ../scss/main.scss */
-  html.mobile_sm_size body nav .links_icon_container .links_icon {
-    margin-left: 38%; }
-/* line 777, ../scss/main.scss */
+/* line 768, ../scss/main.scss */
 html.mobile_sm_size body .nav_toggle {
   position: absolute;
   width: 150px;
@@ -1207,7 +1219,7 @@ html.mobile_sm_size body .nav_toggle {
   left: 0px;
   top: 5px;
   z-index: 1001; }
-  /* line 786, ../scss/main.scss */
+  /* line 778, ../scss/main.scss */
   html.mobile_sm_size body .nav_toggle .nav_icon_hamburger, html.mobile_sm_size body .nav_toggle .nav_icon_x, html.mobile_sm_size body .nav_toggle .home_mini, html.mobile_sm_size body .nav_toggle .ux_mini, html.mobile_sm_size body .nav_toggle .gpx_mini, html.mobile_sm_size body .nav_toggle .code_mini, html.mobile_sm_size body .nav_toggle .links_mini {
     position: relative;
     float: left;
@@ -1215,72 +1227,73 @@ html.mobile_sm_size body .nav_toggle {
     height: 100%;
     content: "";
     background: url("../img/sprites/second_sprite_big.png") no-repeat;
-    background-position: -5% -1.8%;
-    background-size: 350%; }
-  /* line 798, ../scss/main.scss */
+    background-position: -5% -3.8%;
+    background-size: 300%; }
+  /* line 790, ../scss/main.scss */
   html.mobile_sm_size body .nav_toggle .nav_icon_x {
-    background-position: -5% 7%; }
-  /* line 803, ../scss/main.scss */
+    background-position: -5% 6.5%; }
+  /* line 795, ../scss/main.scss */
   html.mobile_sm_size body .nav_toggle .home_mini, html.mobile_sm_size body .nav_toggle .ux_mini, html.mobile_sm_size body .nav_toggle .gpx_mini, html.mobile_sm_size body .nav_toggle .code_mini, html.mobile_sm_size body .nav_toggle .links_mini {
+    margin-left: -10px;
     background-size: 550%;
-    background-position: 5% 64.8%; }
-  /* line 809, ../scss/main.scss */
+    background-position: 9% 64.8%; }
+  /* line 802, ../scss/main.scss */
   html.mobile_sm_size body .nav_toggle .ux_mini {
-    background-position: 3% 17%; }
-  /* line 814, ../scss/main.scss */
+    background-position: 9% 16.5%; }
+  /* line 807, ../scss/main.scss */
   html.mobile_sm_size body .nav_toggle .gpx_mini {
-    background-position: 3% 28.5%; }
-  /* line 819, ../scss/main.scss */
+    background-position: 9% 28.1%; }
+  /* line 812, ../scss/main.scss */
   html.mobile_sm_size body .nav_toggle .code_mini {
-    background-position: 3% 40%; }
-  /* line 824, ../scss/main.scss */
+    background-position: 9% 39.5%; }
+  /* line 817, ../scss/main.scss */
   html.mobile_sm_size body .nav_toggle .links_mini {
-    background-position: 5% 82%; }
-/* line 835, ../scss/main.scss */
+    background-position: 9% 82%; }
+/* line 828, ../scss/main.scss */
 html.mobile_sm_size body .project_block .riotry_image {
   margin-left: 22%; }
-/* line 839, ../scss/main.scss */
+/* line 832, ../scss/main.scss */
 html.mobile_sm_size body .project_block .stampede_image {
   margin-left: 17%; }
-/* line 843, ../scss/main.scss */
+/* line 836, ../scss/main.scss */
 html.mobile_sm_size body .project_block .sudo_image {
   margin-left: 22%; }
-/* line 850, ../scss/main.scss */
+/* line 843, ../scss/main.scss */
 html.mobile_sm_size body .project_block_sudotouch .sudotouch_image {
   margin-left: 7%; }
-/* line 856, ../scss/main.scss */
+/* line 849, ../scss/main.scss */
 html.mobile_sm_size body .project_block_cervantes .cervantes_image {
   margin-left: 5%; }
-/* line 864, ../scss/main.scss */
+/* line 857, ../scss/main.scss */
 html.mobile_sm_size body .project_block .oat_image {
   margin-left: 3%; }
-/* line 868, ../scss/main.scss */
+/* line 861, ../scss/main.scss */
 html.mobile_sm_size body .project_block .data_spider_image {
   margin-left: 3%; }
-/* line 872, ../scss/main.scss */
+/* line 865, ../scss/main.scss */
 html.mobile_sm_size body .project_block .riotry_demo_image {
   margin-left: 1%; }
-/* line 880, ../scss/main.scss */
+/* line 873, ../scss/main.scss */
 html.mobile_sm_size body .link_block .email_image {
   margin-left: 39%;
   margin-top: 8%; }
-/* line 885, ../scss/main.scss */
+/* line 878, ../scss/main.scss */
 html.mobile_sm_size body .link_block .linkedin_image {
   margin-left: 38.5%;
   margin-top: 8%; }
-/* line 890, ../scss/main.scss */
+/* line 883, ../scss/main.scss */
 html.mobile_sm_size body .link_block .github_image {
   margin-left: 39%;
   margin-top: 8%; }
-/* line 895, ../scss/main.scss */
+/* line 888, ../scss/main.scss */
 html.mobile_sm_size body .link_block .instagram_image {
   margin-left: 38%;
   margin-top: 8%; }
-/* line 900, ../scss/main.scss */
+/* line 893, ../scss/main.scss */
 html.mobile_sm_size body .link_block .quora_image {
   margin-left: 39%;
   margin-top: 8%; }
-/* line 905, ../scss/main.scss */
+/* line 898, ../scss/main.scss */
 html.mobile_sm_size body .link_block .rdio_image {
   margin-left: 39%;
   margin-top: 8%; }
@@ -1291,7 +1304,7 @@ html.mobile_sm_size body .link_block .rdio_image {
 /*
  * Image replacement
  */
-/* line 931, ../scss/main.scss */
+/* line 924, ../scss/main.scss */
 .ir {
   background-color: transparent;
   border: 0;
@@ -1299,7 +1312,7 @@ html.mobile_sm_size body .link_block .rdio_image {
   /* IE 6/7 fallback */
   *text-indent: -9999px; }
 
-/* line 939, ../scss/main.scss */
+/* line 932, ../scss/main.scss */
 .ir:before {
   content: "";
   display: block;
@@ -1309,7 +1322,7 @@ html.mobile_sm_size body .link_block .rdio_image {
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
-/* line 951, ../scss/main.scss */
+/* line 944, ../scss/main.scss */
 .hidden {
   display: none !important;
   visibility: hidden; }
@@ -1317,7 +1330,7 @@ html.mobile_sm_size body .link_block .rdio_image {
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
-/* line 960, ../scss/main.scss */
+/* line 953, ../scss/main.scss */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -1332,7 +1345,7 @@ html.mobile_sm_size body .link_block .rdio_image {
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
  */
-/* line 977, ../scss/main.scss */
+/* line 970, ../scss/main.scss */
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
   clip: auto;
@@ -1345,7 +1358,7 @@ html.mobile_sm_size body .link_block .rdio_image {
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
-/* line 990, ../scss/main.scss */
+/* line 983, ../scss/main.scss */
 .invisible {
   visibility: hidden; }
 
@@ -1353,7 +1366,7 @@ html.mobile_sm_size body .link_block .rdio_image {
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
-/* line 999, ../scss/main.scss */
+/* line 992, ../scss/main.scss */
 .clearfix {
   *zoom: 1; }
 
@@ -1362,7 +1375,7 @@ html.mobile_sm_size body .link_block .rdio_image {
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
 @media print {
-  /* line 1010, ../scss/main.scss */
+  /* line 1003, ../scss/main.scss */
   * {
     background: transparent !important;
     color: #000 !important;
@@ -1370,59 +1383,59 @@ html.mobile_sm_size body .link_block .rdio_image {
     box-shadow: none !important;
     text-shadow: none !important; }
 
-  /* line 1018, ../scss/main.scss */
+  /* line 1011, ../scss/main.scss */
   a,
   a:visited {
     text-decoration: underline; }
 
-  /* line 1022, ../scss/main.scss */
+  /* line 1015, ../scss/main.scss */
   a[href]:after {
     content: " (" attr(href) ")"; }
 
-  /* line 1026, ../scss/main.scss */
+  /* line 1019, ../scss/main.scss */
   abbr[title]:after {
     content: " (" attr(title) ")"; }
 
   /*
    * Don't show links for images, or javascript/internal links
    */
-  /* line 1036, ../scss/main.scss */
+  /* line 1029, ../scss/main.scss */
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
     content: ""; }
 
-  /* line 1041, ../scss/main.scss */
+  /* line 1034, ../scss/main.scss */
   pre,
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
 
-  /* line 1046, ../scss/main.scss */
+  /* line 1039, ../scss/main.scss */
   thead {
     display: table-header-group;
     /* h5bp.com/t */ }
 
-  /* line 1051, ../scss/main.scss */
+  /* line 1044, ../scss/main.scss */
   tr,
   img {
     page-break-inside: avoid; }
 
-  /* line 1055, ../scss/main.scss */
+  /* line 1048, ../scss/main.scss */
   img {
     max-width: 100% !important; }
 
   @page {
     margin: 0.5cm; }
 
-  /* line 1065, ../scss/main.scss */
+  /* line 1058, ../scss/main.scss */
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3; }
 
-  /* line 1071, ../scss/main.scss */
+  /* line 1064, ../scss/main.scss */
   h2,
   h3 {
     page-break-after: avoid; } }
