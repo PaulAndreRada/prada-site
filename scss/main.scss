@@ -312,10 +312,17 @@ li.intro{
 	color: $main-color;
 	padding-bottom: 10%;
 	border-bottom: 1px solid $secondary-color;	
+<<<<<<< HEAD
 
 	@media only screen and (max-width: $botMaxWidth ){
 		font-size: 22px; 
 
+=======
+
+	@media only screen and (max-width: $botMaxWidth ){
+		font-size: 22px; 
+
+>>>>>>> 9601243e7ce4d926b63b611aae70fb33d8011fcf
 	}
 	a {
 	  color: $secondary-color;

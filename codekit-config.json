@@ -48,17 +48,27 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+<<<<<<< HEAD
     "\/scss\/_normalize.scss" : {
+=======
+    "\/css\/main.css" : {
+>>>>>>> 9601243e7ce4d926b63b611aae70fb33d8011fcf
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
+<<<<<<< HEAD
       "inputAbbreviatedPath" : "\/scss\/_normalize.scss",
       "outputStyle" : 3,
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/css\/_normalize.css",
       "fileType" : 4,
       "debugStyle" : 0
+=======
+      "inputAbbreviatedPath" : "\/css\/main.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+>>>>>>> 9601243e7ce4d926b63b611aae70fb33d8011fcf
     },
     "\/scss\/main.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -72,6 +82,7 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+<<<<<<< HEAD
     "\/css\/main.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -80,6 +91,20 @@
       "inputAbbreviatedPath" : "\/css\/main.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
+    },
+    "\/img\/sprites\/main_sprite_sm.png" : {
+=======
+    "\/scss\/_normalize.scss" : {
+>>>>>>> 9601243e7ce4d926b63b611aae70fb33d8011fcf
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/sprites\/main_sprite_sm.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_sm.png",
+      "initialSize" : 46121,
+      "fileType" : 8192
     },
     "\/img\/sprites\/main_sprite_sm.png" : {
       "ignoreWasSetByUser" : 0,

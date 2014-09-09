@@ -672,7 +672,6 @@ $(function(){
 		// if any links are clicked
 		$nav.on( 'click', function(e){
 			//
-			console.log( e.originalEvent );
 			// need a prevent for if target === null @FIX
 			e.preventDefault();
 			//
@@ -702,7 +701,6 @@ $(function(){
 			//
 			.updateMobileGuide();
 			//			
-			console.log( 'mode :' + s.mode );
 		    });
 		//
 		NAV. setupPage();
@@ -713,8 +711,7 @@ $(function(){
 	    
 	    NAV.setupPage = function(){ 
 		//
-		console.log( 'mode :'+ s.mode );
-
+		//
 		if( s.hashManager.checkForChanges ){
 		    //
 		    var hash = s.hashManager.getHash();
@@ -1123,7 +1120,7 @@ $(function(){
 	    margin = 10,
 	    topMaxWidth = base_width -1,
 	    topMinWidth = tablet_width,
-	    medMaxWidth = 781,
+	    medMaxWidth = 768,
 	    medMinWidth = 481,
 	    botMaxWidth = 480,
 	    $html = $doc.find( 'html' );
@@ -1147,6 +1144,8 @@ $(function(){
 		//
 		navigation.switchModeTo( 'desktop' );
 		//
+		console.log( 'mode : desktop' );
+		//
 		break;
 	    case "tablet": 
 		//
@@ -1157,6 +1156,7 @@ $(function(){
 		//
 		navigation.switchModeTo( 'tablet' );
 		//
+		console.log( 'mode : tablet' );
 		break;	    
 	    case "mobile": 
 		//
@@ -1167,6 +1167,8 @@ $(function(){
 		//
 		navigation.switchModeTo( 'mobile' );
 		//
+		console.log( 'mode : mobile' );
+		//
 		break;	    
 	    case "mobile_small": 
 		//
@@ -1176,6 +1178,8 @@ $(function(){
 		$html.addClass( mobile_small );
 		//
 		navigation.switchModeTo( 'mobile' );
+		//
+		console.log( 'mode : tablet_sm' );
 		//
 		break;
 	    };
