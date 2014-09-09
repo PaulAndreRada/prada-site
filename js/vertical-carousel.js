@@ -11,13 +11,14 @@ $.verticalCarousel = function( element , options ){
     paneCount = $panes.length,
     currentPane = VC.startPane || 0,
     animationTime = 450,
-    lastAnimationTime,
-    callBack;
+    quietPeriod = 800,
+    lastAnimationTime = 0,
+    callback;
     //
     // add any new options to the carousel object
     VC = $.extend( VC , options );
 
-
+    
     VC.init = function(){ 
 	//
 	VC.setPaneDimensions();
@@ -106,16 +107,61 @@ $.verticalCarousel = function( element , options ){
 	//
     };
 
+    var handleScroll = function( event, delta ){ 
+	//
+	var $this = $(this),
+	deltaOfInterest = delta,
+	timeNow = new Date().getTime(),
+	timeElapsed = timeNow - lastAnimationTime,
+	waitTime = animationTime + quietPeriod,
+	scrollTop = $this.scrollTop();
+	//
+	// Cancel scroll if currently animating or within quiet period
+	if( timeElapsed < waitTime ){
+	    //
+	    event.preventDefault();
+	    //
+	    // leave the function
+	    return;
+	}
+	//
+	// if delta is negative call prev()
+	if (deltaOfInterest < 0) {
+	    VC.next()
+	} else {
+	    VC.prev()
+	}
+	// set the last animations time
+	lastAnimationTime = timeNow;
+	//
+    };
+    //	    
+    // @DESKTOP HANDLER
+    // activate the carousel event handler for the desktop
+    // make event handler
+    $doc.bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
+	    //
+	    event.preventDefault();
+	    // 
+	    // assing the delta depending on the brower 
+	    // [ webkit and presto || mozilla ]
+	    var delta = event.originalEvent.wheelDelta 
+		|| -event.originalEvent.detail;
+	    //
+	    // call scroll function
+	    handleScroll(event, delta);
+	});
 
+		
     var handleTouch = function( ev ){ 
 	//
 	// disable browser scrolling
 	ev.gesture.preventDefault();
-
+	//
 	switch(ev.type) {
 	case 'dragup':
 	case 'dragdown':
-
+	    //
 	    // stick to the finger
 	    var pane_offset = -(100/paneCount)*currentPane;
 	    var drag_offset = ((100/paneHeight)*ev.gesture.deltaY)/ paneCount;
@@ -163,46 +209,8 @@ $.verticalCarousel = function( element , options ){
 	    break;
 	}
     };
-	    
-    var handleScroll = function( e ){ 
-	//
-	var $this = $(this),
-	timeNow = new Date().getTime();
-	//
-	e.preventDefault();
-	e.stopPropagation();
-		
-	if ( lastAnimationTime + animationTime >= timeNow ){ 
-	    //
-	    // leave function as the slide is still adjusting
-	    return;
-	    //
-	} else { 
-	    //
-	    if ( $this.scrollTop() === 1 ){
-		e.preventDefault();
-		e.stopPropagation();
-		//
-		VC.next();
-		//
-		lastAnimationTime = timeNow;
-		//
-	    } else if ( $this.scrollTop() === -1){ 
-		e.preventDefault();
-		e.stopPropagation();
-		//
-		VC.prev();
-		//
-		lastAnimationTime = timeNow;
-		//
-	    };
-		    
-	}
-    };
-	    
-    // activate the carousel event handler for the desktop
-    $(window).scroll( handleScroll );
     //
+    // @MOBILE HANDLER
     // activate the carousel event handler for mobile
     $element.hammer({ drag_to_lock_target : true })
     .on( 'release dragdown dragup swipeleft swiperight swipeup swipedown',

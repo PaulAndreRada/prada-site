@@ -1,10 +1,23 @@
-$.fn.verticalCarousel = function( element , callBack ), 
+$.verticalCarousel = function( element , options ){
+
+    var VC = {
+		onChange : undefined
+    },
+    $doc = $( document ),
+    $element = $doc.find( element ), 
+    $container = $element.find( 'ul' ), 
     $panes = $container.find( 'li' ), 
     paneHeight = 0,
     paneCount = $panes.length,
-    currentPane = 0,
-    animationTime = 450,
-    lastAnimationTime;	    
+    currentPane = VC.startPane || 0,
+	animationTime = 450,
+    quietPeriod = 1000,
+    lastAnimationTime = 0,
+    callback;
+    //
+    // add any new options to the carousel object
+    VC = $.extend( VC , options );
+
 
     VC.init = function(){ 
 	//
@@ -49,10 +62,10 @@ $.fn.verticalCarousel = function( element , callBack ),
 	VC.setContainerOffset( offset, true );
 	//
 	// if theres a callback activate it
-	if( callback ){ 
-		//
-		callBack.call( VC, currentPane );
-		//
+	if( typeof VC.onChange === 'function' ){ 
+	    //
+	    VC.onChange.call( VC , currentPane );
+	    //
 	}
 	//
 	return VC;
@@ -94,108 +107,115 @@ $.fn.verticalCarousel = function( element , callBack ),
 	//
     };
 
-
-    var handleTouch = function( ev ){ 
-	//
-	// disable browser scrolling
-	ev.gesture.preventDefault();
-
-	switch(ev.type) {
-	case 'dragup':
-	case 'dragdown':
-
-	    // stick to the finger
-	    var pane_offset = -(100/paneCount)*currentPane;
-	    var drag_offset = ((100/paneHeight)*ev.gesture.deltaY)/ paneCount;
-	    //
-	    // slow down at the first and last pane
-	    if((currentPane == 0 && 
-		ev.gesture.direction == Hammer.DIRECTION_DOWN ) ||
-	       (currentPane == paneCount-1 &&
-		ev.gesture.direction == Hammer.DIRECTION_UP )) {
-		drag_offset *= .4;
-	    }
-	    //
-	    VC.setContainerOffset(drag_offset + pane_offset);
-	    //
-	    break;
-
-	case 'swipeup':
-	    VC.next();
-	    ev.gesture.stopDetect();
-	    break;
-
-	case 'swipedown':
-	    VC.prev();
-	    ev.gesture.stopDetect();
-	    break;
-
-	case 'release':
-	    // more then 50% moved, navigate
-	    if(Math.abs(ev.gesture.deltaY) > paneHeight/2) {
-		if(ev.gesture.direction === 'down') {
+    var handleScroll = function( event, delta ){ 
+		//
+		var $this = $(this),
+		deltaOfInterest = delta,
+		timeNow = new Date().getTime(),
+		timeElapsed = timeNow - lastAnimationTime,
+		waitTime = animationTime + quietPeriod,
+		scrollTop = $this.scrollTop();
+		//
+		//		// Cancel scroll if currently animating or within quiet period
+		if( timeElapsed < waitTime ){
 		    //
-		    VC.prev();
+		    event.preventDefault();
 		    //
-		} else {
-		    //
-		    VC.next();
-		    //
+		    // leave the function
+		    return;
 		}
-	    }
-	    else {
 		//
-		VC.showPane(currentPane, true);
-		//
-	    }
-	    break;
-	}
-    };
-	    
-    var handleScroll = function( e ){ 
-	//
-	var $this = $(this),
-	timeNow = new Date().getTime();
-	//
-	e.preventDefault();
-	e.stopPropagation();
-		
-	if ( lastAnimationTime + animationTime >= timeNow ){ 
-	    //
-	    // leave function as the slide is still adjusting
-	    return;
-	    //
-	} else { 
-	    //
-	    if ( $this.scrollTop() === 1 ){
-		e.preventDefault();
-		e.stopPropagation();
-		//
-		VC.next();
-		//
-		lastAnimationTime = timeNow;
-		//
-	    } else if ( $this.scrollTop() === -1){ 
-		e.preventDefault();
-		e.stopPropagation();
-		//
-		VC.prev();
-		//
+		// if delta is negative call prev()
+		if (deltaOfInterest < 0) {
+		    VC.next()
+		} else {
+		    VC.prev()
+		}
+		// set the last animations time
 		lastAnimationTime = timeNow;
 		//
 	    };
-		    
-	}
-    };
-	    
-    // activate the carousel event handler for the desktop
-    $(window).scroll( handleScroll );
-    //
-    // activate the carousel event handler for mobile
-    $element.hammer({ drag_to_lock_target : true })
-    .on( 'release dragdown dragup swipeleft swiperight swipeup swipedown',
-	 handleTouch );
-    //
+	    //	    
+	    // @DESKTOP HANDLER
+	    // activate the carousel event handler for the desktop
+	    // make event handler
+	    $doc.bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
+		    //
+		    event.preventDefault();
+		    // 
+		    // assing the delta depending on the brower [ webkit and presto || mozilla ]
+		    var delta = event.originalEvent.wheelDelta || -event.originalEvent.detail;
+		    //
+		    // call scroll function
+		    handleScroll(event, delta);
+		});
+
+		
+        var handleTouch = function( ev ){ 
+		//
+		// disable browser scrolling
+		ev.gesture.preventDefault();
+		//
+		switch(ev.type) {
+                case 'dragup':
+                case 'dragdown':
+		    //
+                    // stick to the finger
+                    var pane_offset = -(100/paneCount)*currentPane;
+                    var drag_offset = ((100/paneHeight)*ev.gesture.deltaY)/ paneCount;
+		    //
+                    // slow down at the first and last pane
+                    if((currentPane == 0 && 
+			ev.gesture.direction == Hammer.DIRECTION_DOWN ) ||
+		       (currentPane == paneCount-1 &&
+			ev.gesture.direction == Hammer.DIRECTION_UP )) {
+                        drag_offset *= .4;
+                    }
+		    //
+                    VC.setContainerOffset(drag_offset + pane_offset);
+		    //
+		    break;
+
+                case 'swipeup':
+                    VC.next();
+                    ev.gesture.stopDetect();
+                    break;
+
+                case 'swipedown':
+                    VC.prev();
+                    ev.gesture.stopDetect();
+                    break;
+
+                case 'release':
+                    // more then 50% moved, navigate
+                    if(Math.abs(ev.gesture.deltaY) > paneHeight/2) {
+                        if(ev.gesture.direction === 'down') {
+			    //
+                            VC.prev();
+			    //
+                        } else {
+			    //
+                            VC.next();
+			    //
+                        }
+                    }
+                    else {
+			//
+                        VC.showPane(currentPane, true);
+			//
+                    }
+                    break;
+		}
+	    };
+	    //
+	    // @MOBILE HANDLER
+	    // activate the carousel event handler for mobile
+	    $element.hammer({ drag_to_lock_target : true })
+	    .on( 'release dragdown dragup swipeleft swiperight swipeup swipedown',
+		 handleTouch );
+    
+    
+    
     return VC;
     //
 };//verticalCarousel
