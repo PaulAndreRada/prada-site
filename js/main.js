@@ -225,7 +225,8 @@ $(function(){
 			//
 			NAV.toggleHomeArrow( 'off' );
 			//
-		    } else { 
+		    } else if ( NAV.compareSectionsWith( hash ) &&
+			       hash !== s.sections.HOME ){ 
 			// 
 			NAV.toggleHomeArrow( 'on' );
 			//
@@ -612,9 +613,12 @@ $(function(){
 				//
 				nav.toggleHomeArrow( 'off' );
 				//
-			    } else { 
+			    } else if ( nav.compareSectionsWith( section ) &&
+					section !== nav.settings.sections.HOME ){ 
 				//
 				nav.toggleHomeArrow( 'on' );
+				//
+				
 			    } 
 			} 
 			//			
