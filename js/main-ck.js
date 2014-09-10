@@ -467,7 +467,7 @@ $.verticalCarousel = function( element , options ){
 
 	case 'release':
 	    // more then 50% moved, navigate
-	    if(Math.abs(ev.gesture.deltaY) > paneHeight/2) {
+	    if(Math.abs(ev.gesture.deltaY) > paneHeight/8) {
 		if(ev.gesture.direction === 'down') {
 		    //
 		    VC.prev();
@@ -686,12 +686,6 @@ $(function(){
 			//
 			.handleFocus();
 			//
-			if( s.mode === 'mobile' ){ 
-			    //
-			    // hide the Nav
-			    $navToggle.trigger( 'click' );
-			    //
-			};
 			//
 			NAV
 			//
@@ -700,7 +694,13 @@ $(function(){
 			.changeHash()
 			//
 			.updateMobileGuide();
-			//			
+			//
+			if( s.mode === 'mobile' ){ 
+			    //
+			    // hide the Nav
+			    $navToggle.trigger( 'click' );
+			    //
+			};
 		    });
 		//
 		NAV. setupPage();
@@ -712,19 +712,30 @@ $(function(){
 	    NAV.setupPage = function(){ 
 		//
 		//
-		if( s.hashManager.checkForChanges ){
+		if( s.hashManager ){
 		    //
-		    var hash = s.hashManager.getHash();
+		    var hashMan = s.hashManager,
+		    hash = hashMan.getHash();
 		    //
 		    if( !NAV.compareSectionsWith( hash ) ){ 
 			//
-			s.hashManager.handleHash( 'setup' );
+			hashMan.handleHash( 'setup' );
 			//
 		    };
 		    //
 		    // listen for hash event changes
-		    s.hashManager.checkForChanges();
+		    hashMan.checkForChanges();
 		    //
+		    // toggle home arrow
+		    if( hash === s.sections.HOME ){ 
+			//
+			NAV.toggleHomeArrow( 'off' );
+			//
+		    } else { 
+			// 
+			NAV.toggleHomeArrow( 'on' );
+			//
+		    };
 		};
 		//
 		return NAV;
@@ -736,22 +747,11 @@ $(function(){
 		
 	    NAV.clearFocusedLinks = function(){ 
 		//
-		$links.children().removeClass( s.NAV_FOCUS )
-		.removeClass( s.HOME_FOCUS )
-		.removeClass( s.LINK_FOCUS );
+		$links.children().removeClass( s.NAV_FOCUS );
 		//
 		return NAV;
 	    };
 	    
-	    
-	    NAV.focusIcon = function( $icon ){ 
-		//
-		var iconType = $icon.parent().attr( 'href' );
-		//
-		$icon.addClass( iconType+'_icon_focused' );
-		//
-		return NAV;
-	    };
 	    
 
 	    NAV.focusText = function( $text ){ 
@@ -767,15 +767,7 @@ $(function(){
 		var $link = $linkEl || $linkClicked,
 		section = $link.parent().attr('href');
 		//
-		// check for icons or text
-		if ( section === s.sections.HOME || section === s.sections.LINKS ){
-		    //
-		    NAV.focusIcon( $link );
-		    //
-		} else {
-		    //
-		    NAV.focusText( $link );
-		};
+		NAV.focusText( $link );
 		//
 		return NAV;
 	    };
@@ -783,9 +775,18 @@ $(function(){
 	    
 	    NAV.callPane = function( ){ 
 		//
-		var index = $linkClicked.parent().data( s.SECTION_INDEX_TAG );
+		var index,
+		$link = $linkClicked; 
 		//
-		if( s.carousel.showPane ){ 
+		if( $linkClicked.tagName !== "A" ){ 
+		    //
+		    $link = $link.parent();
+		    //
+		}
+		//
+		index = $link.data( s.SECTION_INDEX_TAG );
+		//
+		if( s.carousel ){ 
 		    //
 		    s.carousel.showPane( parseInt(index) );
 		    //
@@ -947,6 +948,9 @@ $(function(){
 		    // change the menu icon for a cancel icon
 		    $toggleIcon.removeClass().addClass( s.CANCEL_ICON );
 		    //
+		    // hide the guide icon
+		    $guideIcon.addClass( HIDDEN );
+		    //
 		    // change the state
 		    s.toggleState = 'on'
 		    //
@@ -960,6 +964,9 @@ $(function(){
 		    //
 		    // change the menu icon for a cancel icon
 		    $toggleIcon.removeClass().addClass( s.MENU_ICON );
+		    //
+		    // show the guide icon
+		    $guideIcon.removeClass( HIDDEN );
 		    //
 		    // change the state
 		    s.toggleState = 'off';
@@ -1059,7 +1066,26 @@ $(function(){
 		};
 		return answer;
 	    };
+	    
 
+	    NAV.toggleHomeArrow = function( state ){ 
+		//
+		var $homeArrow = $links
+		.filter( '[data-' +s.LINK_TAG+ '=' +s.sections.HOME+ ']' )
+		.children();
+		//
+		if( state === 'on' ){ 
+		    //
+		    $homeArrow.removeClass( HIDDEN );
+		    //
+		} else if ( state === 'off' ){ 
+   		    //
+		    $homeArrow.addClass( HIDDEN );
+		    //
+		}
+		//
+		return NAV
+	    }
 	    
 	    return NAV;
 	    //
@@ -1075,16 +1101,27 @@ $(function(){
 			//
 			onChange : function( newPane ){ 
 			    //
+			    var nav = navigation;
+			    //
 			    // show the pane
-			    navigation.updateNav( newPane );
+			    nav.updateNav( newPane );
 			    //
 			    // conver the index to its corresponding section name
-			    var section = navigation.findSectionFrom( newPane );
+			    var section = nav.findSectionFrom( newPane );
 			    //
 			    // change the hash
-			    navigation.settings
+			    nav.settings
 			    .hashManager.changeHashTo( section );
 			    //
+			    // show or hide the home arrow
+			    if( section === nav.settings.sections.HOME ){ 
+				//
+				nav.toggleHomeArrow( 'off' );
+				//
+			    } else { 
+				//
+				nav.toggleHomeArrow( 'on' );
+			    } 
 			} 
 			//			
 		    }),
@@ -1144,7 +1181,6 @@ $(function(){
 		//
 		navigation.switchModeTo( 'desktop' );
 		//
-		console.log( 'mode : desktop' );
 		//
 		break;
 	    case "tablet": 
@@ -1156,7 +1192,6 @@ $(function(){
 		//
 		navigation.switchModeTo( 'tablet' );
 		//
-		console.log( 'mode : tablet' );
 		break;	    
 	    case "mobile": 
 		//
@@ -1167,7 +1202,6 @@ $(function(){
 		//
 		navigation.switchModeTo( 'mobile' );
 		//
-		console.log( 'mode : mobile' );
 		//
 		break;	    
 	    case "mobile_small": 
@@ -1179,7 +1213,6 @@ $(function(){
 		//
 		navigation.switchModeTo( 'mobile' );
 		//
-		console.log( 'mode : tablet_sm' );
 		//
 		break;
 	    };
