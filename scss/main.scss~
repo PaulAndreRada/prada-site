@@ -206,17 +206,9 @@ nav {
     @extend .icon-container;  
        
     .home_icon{	
-      @extend .nav-icon;
-      margin-left: 34%;
-      background-position: -260px -342px;
-      // add a step for fade
-      //      @include transition-property(background);
-      //      @include transition-duration(1s);
-      
-      &:hover, &:active { 
-        @extend .home_icon_focused;
-      }
-        
+      @extend .nav-text;
+      font-size: 40px;
+                    
     }
   }
 
@@ -248,27 +240,12 @@ nav {
     @extend .icon-container;
 
     .links_icon{ 
-      @extend .nav-icon;
-      margin-left: 30%;
-      background-position: -249px -461px;
-      
-      &:hover, &:active { 
-        @extend .link_icon_focused;
-      }
+      @extend .nav-text;
+      font-size: 40px;	
     }   
   }
   
  }//end nav
-
-// @tablet nav
-html.tablet_size body nav {
-  .home_icon_container .home_icon {
-     margin-left: 29%;
-   } 
-  .links_icon_container .links_icon { 
-     margin-left: 23%;
-  }   
-}
 
 
 // @carousel
@@ -290,14 +267,15 @@ html.tablet_size body nav {
   @include alpha;
   @include omega;
   height: 100%;
-  min-height: 600px;
+  min-height: 100px;
   // max-height of 100 might be needed for mobile
 }
 .content-container{ 
    @include columns(10);     
    @include clearfix;
-   border-bottom: 1px solid $secondary-color;
    height:33.33%;
+   max-height:33.33%;
+   border-bottom: 1px solid $secondary-color;
    @include transition-property(background);
    @include transition-duration(.5s);
    &:hover, &:active{ 
@@ -313,6 +291,11 @@ li.intro{
    .intro_container {
      @extend .content-container;
      margin-top: 30%;
+     
+     @media only screen and (max-width: $botMaxWidth ){
+	font-size: 22px; 
+        margin-top: 40%;
+     }
      &:hover, &:active { 
        background: none;
      } 
@@ -322,14 +305,19 @@ li.intro{
      @extend .intro_container;	
      padding-left: 11%;
      padding-right: 11%;
+     border: none;
       
      .intro{
-	font-size : 30px;
+	font-size : 27px;
 	font-weight: normal;
 	color: $main-color;
-	padding-bottom: 15%;
+	padding-bottom: 10%;
+	border-bottom: 1px solid $secondary-color;	
 
-		a {
+	@media only screen and (max-width: $botMaxWidth ){
+		font-size: 22px; 
+	}
+	a {
 	  color: $secondary-color;
 	}
      }     
@@ -339,13 +327,15 @@ li.intro{
 
 // project extend classes
 .project-image{
-   background: url('../img/sprites/main_sprite_big.png') no-repeat;
-   background-size: 150%;
+    background:	 url('../img/sprites/main_sprite_separeted.png') no-repeat;
+    background-size: 270%;
    // avrg sizes
-   width: 275px;
-   height: 100px;
-   margin-left: 33%;
-   margin-top: $proj-img-top-margin;   
+   //   background: red;
+   width: 100%;
+   height: 100%;
+   overflow:hidden;
+//   margin-left: 33%;
+//   margin-top: $proj-img-top-margin;   
 }
 
 li.ux { 
@@ -356,19 +346,18 @@ li.ux {
 
     .riotry_image {
       @extend .project-image;
-      background-position: -10px -80px;
+      background-position:-2% 6%;
     }
     
     .stampede_image {
       @extend .project-image;
-      background-position: -5px -185px;
-      margin-left: 32%;
+      background-position: -1% 39%;
     }
 
     .sudo_image {
       @extend .project-image;
-      background-position: -10px -290px;
-      margin-top: 100px;
+      background-position: -2% 69%;
+      
     }
   }
 }
@@ -381,24 +370,21 @@ li.gpx {
   .project_block_sudotouch { 
     @extend .content-container;
     height: 50%;
+    max-height: 50%;
    
     .sudotouch_image {
       @extend .project-image;
-      background-position: -10px -380px;
-      margin-left: 27%;
-      margin-top: $proj-img-top-margin*2;
+      background-position: 50% 1%;
     }
    }
 
    .project_block_cervantes { 
-    @extend .content-container;
-    height: 50%;
-    border: none;
+    @extend .project_block_sudotouch;
+
 
     .cervantes_image {
       @extend .project-image;
-      background-position: -5px -450px;
-      margin-left: 27%;
+      background-position: 80% 1%;
     }
   }
 }
@@ -606,18 +592,20 @@ html.tablet_size body ul {
   }
 }
 
+
 // @mobile
 html.mobile_size body {
   
   nav { 
+    @include columns( 16 );
     background: $BG-color;
     
     .home_icon_container .home_icon { 
-      margin-left: 43.5%;
+      //margin-left: 43%;
     } 
     
     .links_icon_container .links_icon { 
-      margin-left: 42%;	      
+      //margin-left: 43%;	      
     } 
   }
 
@@ -638,43 +626,44 @@ html.mobile_size body {
       content:"";
       background: url('../img/sprites/second_sprite_big.png') 
       no-repeat;
-      background-position: -5% -1.8%;
-      background-size: 350%;		
+      background-position: -5% -3.8%;
+      background-size: 300%;		
    }
    
    .nav_icon_x { 
       @extend .nav_icon_hamburger;
-      background-position: -5% 7%;
+      background-position: -5% 6.5%;
    }
 
    .home_mini { 
       @extend .nav_icon_hamburger;
       background-size: 550%;	  
-      background-position: 5% 64.8%;
+      margin-left: -10px;	  
+      background-position: 9% 64.8%;
    }
 
    .ux_mini { 
      @extend .home_mini;
-     background-position: 3% 17%;
+     background-position: 9% 16.5%;
    }
 
    .gpx_mini { 
      @extend .home_mini;
-     background-position: 3% 28.5%;
+     background-position: 9% 28.1%;
    }
   
    .code_mini { 
      @extend .home_mini;
-     background-position: 3% 40%;
+     background-position: 9% 39.5%;
    } 
 
    .links_mini { 
      @extend .home_mini;
-     background-position: 5% 82%;
+     background-position: 9% 82%;
    }
   }
 
-
+/*
   // @mobile projects
      // ux		  
     .project_block { 
@@ -754,6 +743,7 @@ html.mobile_size body {
       margin-top: 8%;
     }
   }
+  */
 }
 
 
@@ -765,11 +755,11 @@ html.mobile_sm_size body {
     background: $BG-color;
     
     .home_icon_container .home_icon { 
-      margin-left: 41.5%;
+      //margin-left: 41.5%;
     } 
     
     .links_icon_container .links_icon { 
-      margin-left: 38%;	      
+      //margin-left: 38%;	      
     } 
   }
 
@@ -783,6 +773,7 @@ html.mobile_sm_size body {
     z-index: 1001;
 
 
+
     .nav_icon_hamburger { 
       position:relative;
       float: left;
@@ -791,39 +782,40 @@ html.mobile_sm_size body {
       content:"";
       background: url('../img/sprites/second_sprite_big.png') 
       no-repeat;
-      background-position: -5% -1.8%;
-      background-size: 350%;	  
+      background-position: -5% -3.8%;
+      background-size: 300%;		
    }
-  
+   
    .nav_icon_x { 
       @extend .nav_icon_hamburger;
-      background-position: -5% 7%;
+      background-position: -5% 6.5%;
    }
 
    .home_mini { 
       @extend .nav_icon_hamburger;
+      margin-left: -10px;
       background-size: 550%;	  
-      background-position: 5% 64.8%;
+      background-position: 9% 64.8%;
    }
 
    .ux_mini { 
      @extend .home_mini;
-     background-position: 3% 17%;
+     background-position: 9% 16.5%;
    }
 
    .gpx_mini { 
      @extend .home_mini;
-     background-position: 3% 28.5%;
+     background-position: 9% 28.1%;
    }
   
    .code_mini { 
      @extend .home_mini;
-     background-position: 3% 40%;
+     background-position: 9% 39.5%;
    } 
 
    .links_mini { 
      @extend .home_mini;
-     background-position: 5% 82%;
+     background-position: 9% 82%;
    }
   }
 

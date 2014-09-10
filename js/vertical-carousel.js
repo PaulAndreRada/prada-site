@@ -190,7 +190,7 @@ $.verticalCarousel = function( element , options ){
 
 	case 'release':
 	    // more then 50% moved, navigate
-	    if(Math.abs(ev.gesture.deltaY) > paneHeight/2) {
+	    if(Math.abs(ev.gesture.deltaY) > paneHeight/8) {
 		if(ev.gesture.direction === 'down') {
 		    //
 		    VC.prev();
