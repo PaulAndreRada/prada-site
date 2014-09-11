@@ -71,6 +71,26 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/img\/sprites\/main_sprite_sm.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/sprites\/main_sprite_sm.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_sm.png",
+      "initialSize" : 46121,
+      "fileType" : 8192
+    },
+    "\/css\/main.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/main.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/scss\/_normalize.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -83,16 +103,14 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/img\/sprites\/main_sprite_sm.png" : {
+    "\/projects\/template.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/sprites\/main_sprite_sm.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_sm.png",
-      "initialSize" : 46121,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/projects\/template.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/img\/sprites\/second_sprite_big.png" : {
       "ignoreWasSetByUser" : 0,
@@ -100,9 +118,49 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/img\/sprites\/second_sprite_big.png",
-      "processed" : 0,
+      "processed" : 1,
       "outputAbbreviatedPath" : "\/img\/sprites\/second_sprite_big.png",
       "initialSize" : 9840,
+      "fileType" : 8192
+    },
+    "\/js\/projects-ck.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/projects-ck.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/projects-ck-ck.js",
+      "fileType" : 64
+    },
+    "\/css\/projects.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/projects.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
+    "\/404.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/404.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/img\/sprites\/main_sprite_separeted.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/sprites\/main_sprite_separeted.png",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_separeted.png",
+      "initialSize" : 532804,
       "fileType" : 8192
     },
     "\/img\/sprites\/main_sprite_big.png" : {
@@ -116,26 +174,6 @@
       "initialSize" : 93141,
       "fileType" : 8192
     },
-    "\/img\/sprites\/main_sprite_separeted.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/sprites\/main_sprite_separeted.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_separeted.png",
-      "initialSize" : 532804,
-      "fileType" : 8192
-    },
-    "\/404.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/404.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/js\/main-ck.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -147,13 +185,24 @@
       "outputAbbreviatedPath" : "\/js\/main-ck-ck.js",
       "fileType" : 64
     },
+    "\/js\/projects.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/projects.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/projects-ck.js",
+      "fileType" : 64
+    },
     "\/favicon.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/favicon.png",
-      "processed" : 0,
+      "processed" : 1,
       "outputAbbreviatedPath" : "\/favicon.png",
       "initialSize" : 21752,
       "fileType" : 8192
@@ -175,19 +224,21 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/apple-touch-icon-precomposed.png",
-      "processed" : 0,
+      "processed" : 1,
       "outputAbbreviatedPath" : "\/apple-touch-icon-precomposed.png",
       "initialSize" : 5977,
       "fileType" : 8192
     },
-    "\/config.rb" : {
+    "\/img\/tester.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config.rb",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 32768
+      "inputAbbreviatedPath" : "\/img\/tester.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/tester.jpg",
+      "initialSize" : 159703,
+      "fileType" : 4096
     },
     "\/js\/main.js" : {
       "ignoreWasSetByUser" : 0,
@@ -198,6 +249,29 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/js\/main-ck.js",
+      "fileType" : 64
+    },
+    "\/scss\/projects.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/scss\/projects.scss",
+      "outputStyle" : 3,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/css\/projects.css",
+      "fileType" : 4,
+      "debugStyle" : 0
+    },
+    "\/js\/vertical-carousel.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/vertical-carousel.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/vertical-carousel-ck.js",
       "fileType" : 64
     },
     "\/js\/vendor\/modernizr-2.6.2.min.js" : {
@@ -211,16 +285,14 @@
       "outputAbbreviatedPath" : "\/js\/vendor\/modernizr-2.6.2.min-ck.js",
       "fileType" : 64
     },
-    "\/js\/vertical-carousel.js" : {
+    "\/config.rb" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/vertical-carousel.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/vertical-carousel-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/config.rb",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 32768
     },
     "\/index.html" : {
       "ignoreWasSetByUser" : 0,
@@ -252,6 +324,17 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/sprites_crop_inverted.png",
       "initialSize" : 14391,
       "fileType" : 8192
+    },
+    "\/js\/projects-plugins.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/projects-plugins.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/projects-plugins-ck.js",
+      "fileType" : 64
     }
   },
   "manualImportLinks" : [

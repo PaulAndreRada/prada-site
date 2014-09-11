@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Paul Rada | Designer</title>
         <!--<meta name="description" content=""> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 	
 	<link rel="icon" type="image/png" href="favicon.png" />
 	
@@ -46,7 +46,7 @@
 	       class="home_icon_container"
 	       data-link="home"
 	       data-section-index="0">
-	      <div class="home_icon"> 
+	      <div class="home_icon hidden"> 
 		^
 		<span class="visuallyhidden">
 		  home
@@ -176,7 +176,7 @@
 		  <div class="oat_image">
 		  </div>
     		  <span>
-		    OAT code pattern
+		    OAT program pattern
 		  </span>
 		</a>
 		

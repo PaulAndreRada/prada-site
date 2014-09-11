@@ -159,19 +159,7 @@ textarea {
     color: $main-color;
   }
 }
-.nav-icon { 
-   background: url('../img/sprites/main_sprite_big.png') no-repeat;
-   background-size: 480%;
-   // avrg sizes
-   width: 70px;
-   height: 70px;
-}
-.home_icon_focused{ 
-  background-position : -260px -402px !important;
-}
-.links_icon_focused{ 
-  background-position : -249px -532px !important;    
-}		    
+
 .focused_nav { 
    @extend .nav-text;
    color: $main-color !important;
@@ -207,8 +195,7 @@ nav {
        
     .home_icon{	
       @extend .nav-text;
-      font-size: 40px;
-                    
+      font-size: 40px;                  
     }
   }
 
@@ -268,17 +255,17 @@ nav {
   @include omega;
   height: 100%;
   min-height: 100px;
-  // max-height of 100 might be needed for mobile
 }
 .content-container{ 
    @include columns(10);     
    @include clearfix;
    height:33.33%;
-   max-height:33.33%;
+   max-height: 300px;
    border-bottom: 1px solid $secondary-color;
    @include transition-property(background);
    @include transition-duration(.5s);
    &:hover, &:active{ 
+     color: $BG-color;
      background: $secondary-color;
    }
 }
@@ -327,15 +314,12 @@ li.intro{
 
 // project extend classes
 .project-image{
-    background:	 url('../img/sprites/main_sprite_separeted.png') no-repeat;
-    background-size: 270%;
+   background: url('../img/sprites/main_sprite_separeted.png') no-repeat;
+   background-size: 270%;
    // avrg sizes
-   //   background: red;
    width: 100%;
    height: 100%;
    overflow:hidden;
-//   margin-left: 33%;
-//   margin-top: $proj-img-top-margin;   
 }
 
 li.ux { 
@@ -370,7 +354,7 @@ li.gpx {
   .project_block_sudotouch { 
     @extend .content-container;
     height: 50%;
-    max-height: 50%;
+
    
     .sudotouch_image {
       @extend .project-image;
@@ -384,50 +368,38 @@ li.gpx {
 
     .cervantes_image {
       @extend .project-image;
-      background-position: 80% 1%;
+      background-position: 50% 39%;
     }
   }
 }
 
-// project code image class
-.code-project-image{
-   background: url('../img/sprites/main_sprite_big.png') no-repeat;
-   background-size: 150%;
-   // avrg sizes
-   width: 270px;
-   height: 120px;
-   margin-left: 25%;
-   margin-top: 9%;
-}
-.code-icons-text{   
 
-}
 	
 
 li.code { 
   @extend .content-sections;
-
+ 
   .project_block { 
     @extend .content-container;
-    
+     
     .oat_image {
-      @extend .code-project-image;
-      background-position: -200px -90px;
+      @extend .project-image;
+      background-position: 103% 7%;
     }
     
     .data_spider_image {
-      @extend .code-project-image;
-      background-position: -200px -202px;
+      @extend .project-image;
+      background-position: 103% 38.5%;
     }
     
     .riotry_demo_image {
-      @extend .code-project-image;
-      background-position: 18px -610px;
+      @extend .project-image;	
+      background-position: 103% 70%;
     }
     
     span { 
        display: block;
-       margin-top:10px;
+       margin-top: -11%;
        color: $main-color;
        font-weight: bolder;
        text-align: center;
@@ -443,18 +415,11 @@ li.code {
 .link-container{
    @extend .content-container;
    @include columns(5);
-   margin-top:80px;
-   height:20%;  
    border: none;
 }
 .link-images{ 
-   background: url('../img/sprites/main_sprite_big.png') no-repeat;
-   background-size: 613%;
-   // avrg sizes
-   width: 70px;
-   height: 100px;
-   margin-left: 38%;
-   margin-top: 3%;   
+   @extend .project-image;
+   background-size: 550%;
 }				
 
 
@@ -466,42 +431,44 @@ li.links {
 
     .email_image {
       @extend .link-images;
-      background-position: -7px 0px;
+      background-position: -3% 102%;
     }
     
     .linkedin_image {
       @extend .link-images;
-      background-position: -79px 0px;
-      margin-left: 37%;
+      background-position: 12.8% 102%;
     }
+
     
     .github_image {
       @extend .link-images;
-      background-position: -226px 0px;
+      background-position: 28.5% 102%;
     }
     
     .instagram_image {
       @extend .link-images;
-      background-position: -150px 0px;
-      margin-left: 37%;
+      background-position: 44.7% 102%;
     }
     
     .quora_image {
       @extend .link-images;
-      background-position: -300px 0px;
+      background-position: 60.2% 102%;
     }
     
     .rdio_image {
       @extend .link-images;
-      background-position: -333px -357px;
+      background-position: 76.3% 102%;
     }
     
     span{
       display: block;
-      margin-top:-10px;	
+      margin-top:-27%;	
       color: $main-color;
       font-weight: bolder;
       text-align: center;
+      &:hover, &:active { 
+        color: $BG-color !important;
+      }
     }
   }
 }
@@ -516,28 +483,28 @@ html.tablet_size body ul {
     .project_block { 
 
       .riotry_image {
-      	margin-left: 30%;
+
       }
     
       .stampede_image {
-        margin-left: 27%;     
+
       }
 
       .sudo_image {
-        margin-left: 30%;     
+
      }
    }
    
   // graphics
   .project_block_sudotouch { 
     .sudotouch_image {
-      margin-left: 22%;
+
     }
    }
 
    .project_block_cervantes {    
     .cervantes_image {
-      margin-left: 21%;
+
     }
   }
 
@@ -545,15 +512,15 @@ html.tablet_size body ul {
   .project_block { 
       
     .oat_image {
-      margin-left: 19%;
+
     }
     
     .data_spider_image {
-      margin-left: 19%;
+
     }
     
     .riotry_demo_image {
-      margin-left: 19%;
+
     }
   }
 
@@ -561,36 +528,36 @@ html.tablet_size body ul {
    .link_block { 
 
     .email_image {
-      margin-left: 35%;
-      margin-top: 8%;
+
     }
     
     .linkedin_image {
-      margin-left: 34%;
-      margin-top: 8%;
+
     }
     
     .github_image {
-      margin-left: 35%;
-      margin-top: 8%;
+
     }
     
     .instagram_image {
-      margin-left: 34%;
-      margin-top: 8%;
+
     }
     
     .quora_image {
-      margin-left: 35%;
-      margin-top: 8%;
+
     }
     
     .rdio_image {
-      margin-left: 35%;
-      margin-top: 8%;
+
     }
   }
 }
+
+
+
+.mobile-icon { 
+  margin-top: -15%;
+} 
 
 
 // @mobile
@@ -599,15 +566,54 @@ html.mobile_size body {
   nav { 
     @include columns( 16 );
     background: $BG-color;
-    
-    .home_icon_container .home_icon { 
-      //margin-left: 43%;
-    } 
-    
-    .links_icon_container .links_icon { 
-      //margin-left: 43%;	      
-    } 
-  }
+  
+    .home_icon_container{
+      @extend .icon-container;  
+       
+      .home_icon{	
+        @extend .nav-text;
+	@extend .mobile-icon;
+        font-size: 40px;                    
+      }
+    }
+
+    .ux_icon_container{ 
+      @extend .icon-container;
+
+      .ux_icon{ 
+        @extend .nav-text;
+	@extend .mobile-icon;
+      }   
+    }
+  
+    .gpx_icon_container{ 
+      @extend .icon-container;
+
+      .gpx_icon{ 
+        @extend .nav-text;
+	@extend .mobile-icon;
+      }   
+    }
+  
+    .code_icon_container{ 
+      @extend .icon-container;
+
+      .code_icon{ 
+        @extend .nav-text;
+	@extend .mobile-icon;
+      }   
+    }
+ 
+    .links_icon_container{ 
+      @extend .icon-container;
+
+      .links_icon{ 
+        @extend .nav-text;
+	@extend .mobile-icon;
+        font-size: 40px;	
+      }   
+    }
+   }
 
 
   .nav_toggle{ 
@@ -615,7 +621,7 @@ html.mobile_size body {
     width: 150px;
     height: 50px;
     left: 0px;
-    top: 5px;
+    top: 0px;
     z-index: 1001;
 
     .nav_icon_hamburger { 
@@ -626,13 +632,14 @@ html.mobile_size body {
       content:"";
       background: url('../img/sprites/second_sprite_big.png') 
       no-repeat;
-      background-position: -5% -3.8%;
-      background-size: 300%;		
+      background-position: -5% -4.8%;
+      background-size: 270%;		
    }
    
    .nav_icon_x { 
       @extend .nav_icon_hamburger;
-      background-position: -5% 6.5%;
+      background-position: -3% 7%;
+      background-size: 350%;		
    }
 
    .home_mini { 
@@ -663,34 +670,36 @@ html.mobile_size body {
    }
   }
 
-/*
+
+
+
   // @mobile projects
      // ux		  
     .project_block { 
 
       .riotry_image {
-      	margin-left: 29%;
+
       }
     
       .stampede_image {
-        margin-left: 27%;     
+
       }
 
       .sudo_image {
-        margin-left: 29%;     
+
      }
    }
    
   // graphics
   .project_block_sudotouch { 
     .sudotouch_image {
-      margin-left: 20%;
+
     }
    }
 
    .project_block_cervantes {    
     .cervantes_image {
-      margin-left: 18%;
+
     }
   }
 
@@ -698,69 +707,119 @@ html.mobile_size body {
   .project_block { 
       
     .oat_image {
-      margin-left: 16%;
+
     }
     
     .data_spider_image {
-      margin-left: 16%;
+
     }
     
     .riotry_demo_image {
-      margin-left: 16%;
+
     }
   }
-
+  
+  .removeBackground{
+    @media screen and ( max-height: 600px ){
+       background: none;
+    }
+  }
+  
   // links
    .link_block { 
+     height: 16.6%;
+     max-height: 16.6%;     
 
     .email_image {
-      margin-left: 42%;
-      margin-top: 8%;
+      @extend .removeBackground;          
     }
     
     .linkedin_image {
-      margin-left: 42%;
-      margin-top: 8%;
+      @extend .removeBackground;		          
     }
     
     .github_image {
-      margin-left: 42%;
-      margin-top: 8%;
+      @extend .removeBackground;          
     }
     
     .instagram_image {
-      margin-left: 42%;
-      margin-top: 8%;
+      @extend .removeBackground;          
     }
     
     .quora_image {
-      margin-left: 42%;
-      margin-top: 8%;
+      @extend .removeBackground;          
     }
     
     .rdio_image {
-      margin-left: 42%;
-      margin-top: 8%;
+      @extend .removeBackground;          
+    }
+    
+    span{
+      display: block;
+      margin-top:-15%;	
+      color: $main-color;
+      font-weight: bolder;
+      text-align: center;
     }
   }
-  */
 }
 
-
+.mobile-sm-icon { 
+  margin-top: -20%;
+}
 
 // @mobile_sm
 html.mobile_sm_size body {
   
   nav { 
     background: $BG-color;
-    
-    .home_icon_container .home_icon { 
-      //margin-left: 41.5%;
-    } 
-    
-    .links_icon_container .links_icon { 
-      //margin-left: 38%;	      
-    } 
+
+    .home_icon_container{
+      @extend .icon-container;  
+       
+      .home_icon{	
+        @extend .nav-text;
+	@extend .mobile-sm-icon;
+        font-size: 40px;                    
+      }
+    }
+
+    .ux_icon_container{ 
+      @extend .icon-container;
+
+      .ux_icon{ 
+        @extend .nav-text;
+	@extend .mobile-sm-icon;
+      }   
+    }
+  
+    .gpx_icon_container{ 
+      @extend .icon-container;
+
+      .gpx_icon{ 
+        @extend .nav-text;
+	@extend .mobile-sm-icon;
+      }   
+    }
+  
+    .code_icon_container{ 
+      @extend .icon-container;
+
+      .code_icon{ 
+        @extend .nav-text;
+	@extend .mobile-sm-icon;
+      }   
+    }
+ 
+    .links_icon_container{ 
+      @extend .icon-container;
+
+      .links_icon{ 
+        @extend .nav-text;
+	@extend .mobile-sm-icon;
+        font-size: 40px;	
+      }   
+    }
   }
 
 
@@ -793,7 +852,7 @@ html.mobile_sm_size body {
 
    .home_mini { 
       @extend .nav_icon_hamburger;
-      margin-left: -10px;
+      margin-left: -18px;
       background-size: 550%;	  
       background-position: 9% 64.8%;
    }
@@ -820,83 +879,102 @@ html.mobile_sm_size body {
   }
 
 
+  .mobile-content-container { 
+    @extend .content-Container;
+    max-height: 150px;
+  }
+
   // @mobile_sm projects
      // ux		  
     .project_block { 
+      @extend .mobile-content-container;    
 
       .riotry_image {
-      	margin-left: 22%;
+
+
       }
     
       .stampede_image {
-        margin-left: 17%;     
+
       }
 
       .sudo_image {
-        margin-left: 22%;     
+
      }
    }
    
   // graphics
   .project_block_sudotouch { 
+    @extend .mobile-content-container;
+
     .sudotouch_image {
-      margin-left: 7%;
+
     }
    }
 
    .project_block_cervantes {    
     .cervantes_image {
-      margin-left: 5%;
+
     }
   }
 
   // code
   .project_block { 
-      
+    @extend .mobile-content-container;      
     .oat_image {
-      margin-left: 3%;
+
     }
     
     .data_spider_image {
-      margin-left: 3%;
+
     }
     
     .riotry_demo_image {
-      margin-left: 1%;
+
     }
   }
-
+  
+  .removeBackground{
+    @media screen and ( max-height: 1000px ){
+       background: none;
+    }
+  }
+  
   // links
    .link_block { 
+     height: 16.6%;
+     max-height: 16.6%;     
 
     .email_image {
-      margin-left: 39%;
-      margin-top: 8%;
+      @extend .removeBackground;          
     }
     
     .linkedin_image {
-      margin-left: 38.5%;
-      margin-top: 8%;
+      @extend .removeBackground;		          
     }
     
     .github_image {
-      margin-left: 39%;
-      margin-top: 8%;
+      @extend .removeBackground;          
     }
     
     .instagram_image {
-      margin-left: 38%;
-      margin-top: 8%;
+      @extend .removeBackground;          
     }
     
     .quora_image {
-      margin-left: 39%;
-      margin-top: 8%;
+      @extend .removeBackground;          
     }
     
     .rdio_image {
-      margin-left: 39%;
-      margin-top: 8%;
+      @extend .removeBackground;          
+    }
+    
+    span{
+      display: block;
+      margin-top:-15%;	
+      color: $main-color;
+      font-weight: bolder;
+      text-align: center;
     }
   }
 }
