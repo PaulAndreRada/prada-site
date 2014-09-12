@@ -9,18 +9,27 @@ $(function(){
 	'use strict';
 
 	var $doc =$(document),
-	    // 
+	    $body = $doc.find( 'body' ),
+	    //
 	    // site objects
 	    navigation,
 	    hashManager,
 	    //
 	    HIDDEN = 'hidden';
-	
+
+        // onLoad fadeIn body
+	$(window).on( 'load', function(){
+                //
+                $body.fadeIn(1500);
+                //
+        });
+
+
 	// @hashManager
-	var HashManager = function( options ){ 
-	    
-	    var that = { 
-		settings : { 
+	var HashManager = function( options ){
+
+	    var that = {
+		settings : {
 		    currentHash : 'home',
 		    $link : {},
 		    onChange : function(){},
@@ -29,11 +38,11 @@ $(function(){
 	    var HM = (function(){ return that; }()),
 	    s = $.extend( HM.settings, options );
 
-	    
-	    HM.checkForChanges = function(){ 
+
+	    HM.checkForChanges = function(){
 		//
 		// check the url for change
-		$( window ).on( 'load hashchange',function(){ 
+		$( window ).on( 'load hashchange',function(){
 			//
 			HM.handleHash( HM.getHash() );
 			//
@@ -43,7 +52,7 @@ $(function(){
 	    };
 
 
-	    HM.getHash = function(){ 
+	    HM.getHash = function(){
 		//
 		var hashNow = window.location.hash.slice(1);
 		//
@@ -52,61 +61,61 @@ $(function(){
 	    };
 
 
-	    HM.handleHash = function( newHash ){ 
+	    HM.handleHash = function( newHash ){
 		//
 		var prevHash = s.currentHash,
 		newHash =  newHash;
 		//
 		// check if the newhash is the same as the last
-		if( newHash === s.currentHash ){ 
+		if( newHash === s.currentHash ){
 		    //
 		    // leave function
 		    return HM;
 		    //
-		}		
+		}
 		// setup the hash to Home under these conditions
 		else if( newHash === 'setup' ||
-			 newHash === "" 
-			 || newHash === undefined ){ 
+			 newHash === ""
+			 || newHash === undefined ){
 		    //
 		    HM.changeHashTo( 'home' );
 		    //
-		} else { 
+		} else {
 		    //
 		    // if the hash is different
 		    // call the callback function
-		    // with that hash info 
+		    // with that hash info
 		    s.onChange.call( HM, newHash );
-		    // 
+		    //
 		};
 		return HM;
 		//
-	    }; 
-		
-		
-	    HM.changeHashTo = function( hash ){ 
+	    };
+
+
+	    HM.changeHashTo = function( hash ){
 		//
 		s.currentHash = hash;
 		//
 		if( hash !== undefined ){
 		    window.location.hash = s.currentHash;
 		};
-		// 
+		//
 		return HM;
 	    };
-		
-		
+
+
 	    return HM;
 	    //
 	};
-	
-	    
 
-	var Navigation = function( options ){ 
+
+
+	var Navigation = function( options ){
 	    //
 	    // create the NAV object
-	    var that = { 
-		settings : { 
+	    var that = {
+		settings : {
 		    //
 		    mode : 'desktop',
 		    toggleState : 'off',
@@ -125,7 +134,7 @@ $(function(){
 		    SECTION_INDEX_TAG : 'section-index',
 		    SECTION_TYPE_TAG : 'section-type',
 		    NAV_STATE_TAG : 'nav-state',
-		    // link and pane types  
+		    // link and pane types
 		    sections : {
 			HOME : 'home',
 			UX : 'ux',
@@ -189,7 +198,7 @@ $(function(){
 			//
 			.updateMobileGuide();
 			//
-			if( s.mode === 'mobile' ){ 
+			if( s.mode === 'mobile' ){
 			    //
 			    // hide the Nav
 			    $navToggle.trigger( 'click' );
@@ -202,8 +211,8 @@ $(function(){
 		return NAV;
 	    };
 
-	    
-	    NAV.setupPage = function(){ 
+
+	    NAV.setupPage = function(){
 		//
 		//
 		if( s.hashManager ){
@@ -211,7 +220,7 @@ $(function(){
 		    var hashMan = s.hashManager,
 		    hash = hashMan.getHash();
 		    //
-		    if( !NAV.compareSectionsWith( hash ) ){ 
+		    if( !NAV.compareSectionsWith( hash ) ){
 			//
 			hashMan.handleHash( 'setup' );
 			//
@@ -221,13 +230,13 @@ $(function(){
 		    hashMan.checkForChanges();
 		    //
 		    // toggle home arrow
-		    if( hash === s.sections.HOME ){ 
+		    if( hash === s.sections.HOME ){
 			//
 			NAV.toggleHomeArrow( 'off' );
 			//
 		    } else if ( NAV.compareSectionsWith( hash ) &&
-			       hash !== s.sections.HOME ){ 
-			// 
+			       hash !== s.sections.HOME ){
+			//
 			NAV.toggleHomeArrow( 'on' );
 			//
 		    };
@@ -236,29 +245,29 @@ $(function(){
 		return NAV;
 	    };
 
-	    
+
 
 	    // NAV @ACTIONS ----------------------------------//
-		
-	    NAV.clearFocusedLinks = function(){ 
+
+	    NAV.clearFocusedLinks = function(){
 		//
 		$links.children().removeClass( s.NAV_FOCUS );
 		//
 		return NAV;
 	    };
-	    
-	    
 
-	    NAV.focusText = function( $text ){ 
+
+
+	    NAV.focusText = function( $text ){
 		//
 		$text.addClass( s.NAV_FOCUS );
 		//
-		return NAV	    
+		return NAV
 	    };
-	    
 
-	    NAV.handleFocus = function( $linkEl ){ 
-		//		
+
+	    NAV.handleFocus = function( $linkEl ){
+		//
 		var $link = $linkEl || $linkClicked,
 		section = $link.parent().attr('href');
 		//
@@ -266,14 +275,14 @@ $(function(){
 		//
 		return NAV;
 	    };
-	    
-	    
-	    NAV.callPane = function( ){ 
+
+
+	    NAV.callPane = function( ){
 		//
 		var index,
-		$link = $linkClicked; 
+		$link = $linkClicked;
 		//
-		if( $linkClicked.tagName !== "A" ){ 
+		if( $linkClicked.tagName !== "A" ){
 		    //
 		    $link = $link.parent();
 		    //
@@ -281,7 +290,7 @@ $(function(){
 		//
 		index = $link.data( s.SECTION_INDEX_TAG );
 		//
-		if( s.carousel ){ 
+		if( s.carousel ){
 		    //
 		    s.carousel.showPane( parseInt(index) );
 		    //
@@ -291,12 +300,12 @@ $(function(){
 	    };
 
 
-	    NAV.changeHash = function( $link ){ 
+	    NAV.changeHash = function( $link ){
 		//
 		var $element = $link || $linkClicked,
 		section = $element.parent().attr( 'href' );
 		//
-		if( s.hashManager ){ 
+		if( s.hashManager ){
 		    //
 		    // change the hash
 		    s.hashManager.changeHashTo( section );
@@ -305,11 +314,11 @@ $(function(){
 		    s.currentHash = s.hashManager.getHash();
 		    //
 		};
-		// 
+		//
 		return NAV;
 	    };
 
-	    
+
 	    NAV.triggerLink = function( section ){
 		//
 		var $sectionLink = $links.children().filter( '[data-'+s.LINK_TAG+
@@ -322,8 +331,8 @@ $(function(){
 		//
 	    };
 
-	    
-	    NAV.updateMobileGuide = function( section ){ 
+
+	    NAV.updateMobileGuide = function( section ){
 		//
 		var section = section || s.currentHash;
 		//
@@ -331,41 +340,41 @@ $(function(){
 		//
 		return NAV;
 	    };
-	    
-	    
+
+
 	    // @MODES ----------------------------------------//
-	    
+
 	    // @switch modes
-	    NAV.switchModeTo = function( mode ){ 
+	    NAV.switchModeTo = function( mode ){
 		//
 		if( s.mode === mode ){
-		    // 
-		    // leave function 
+		    //
+		    // leave function
 		    return NAV;
-		    //		    
+		    //
 		}
 		//
 		// save for later use
 		s.mode = mode;
 		//
-		if( mode === 'desktop' || mode === 'tablet' ){ 
+		if( mode === 'desktop' || mode === 'tablet' ){
 		    //
 		    NAV.desktopMode();
 		    //
-		} else if ( mode === 'mobile' ){ 
+		} else if ( mode === 'mobile' ){
 		    //
 		    NAV.mobileMode();
 		    //
-		} else { 
+		} else {
 		    //
 		    NAV.switchModeTo( 'desktop' );
 		    //
-		} 
+		}
 		//
 	    };
 
 	    // @desktop
-	    NAV.desktopMode = function(){ 
+	    NAV.desktopMode = function(){
 		//
 		// show the nav
 		$nav.removeClass( HIDDEN );
@@ -382,15 +391,15 @@ $(function(){
 		//
 		return NAV;
 	    };
-	    
+
 	    // @mobile
-	    NAV.mobileMode = function(){  
+	    NAV.mobileMode = function(){
 		//
-		// hide the nav 
+		// hide the nav
 		$nav.addClass( HIDDEN );
 		//
 		// activate the toggle button's click event
-		$navToggle.on( 'click', function( e ){ 
+		$navToggle.on( 'click', function( e ){
 			//
 			e.preventDefault();
 			//
@@ -407,8 +416,8 @@ $(function(){
 		return NAV;
 		//
 	    };
-	    	
-	    NAV.navBackground = function( state ){ 
+
+	    NAV.navBackground = function( state ){
 		//
 		if( state === 'on' ){
 		    //
@@ -418,27 +427,27 @@ $(function(){
 		    //
 		    $navBG.addClass( HIDDEN );
 		    //
-		}; 
+		};
 		//
 		return NAV;
 		//
 	    };
 
-	    
+
 	    // @TOGGLE BUTTON METHODS ----------------------------//
-	    	    
-	    NAV.toggleNav = function(){ 
+
+	    NAV.toggleNav = function(){
 		//
 		var $toggleIcon = $navToggle.children( '#'+s.MENU_ICON_ID );
 		//
-		if ( s.toggleState === 'off' ){ 
+		if ( s.toggleState === 'off' ){
 		    //
 		    //
 		    // show the nav
 		    $nav.removeClass( HIDDEN );
 		    //
 		    // hide the projects with a background
-		    NAV.navBackground( 'on' );		    
+		    NAV.navBackground( 'on' );
 		    //
 		    // change the menu icon for a cancel icon
 		    $toggleIcon.removeClass().addClass( s.CANCEL_ICON );
@@ -449,13 +458,13 @@ $(function(){
 		    // change the state
 		    s.toggleState = 'on'
 		    //
-		} else if ( s.toggleState === 'on' ){ 
+		} else if ( s.toggleState === 'on' ){
 		    //
 		    // hide the nav
 		    $nav.addClass( HIDDEN );
 		    //
 		    // show the projects by hiding the BG
-		    NAV.navBackground( 'off' );		    
+		    NAV.navBackground( 'off' );
 		    //
 		    // change the menu icon for a cancel icon
 		    $toggleIcon.removeClass().addClass( s.MENU_ICON );
@@ -470,9 +479,9 @@ $(function(){
 		return NAV
 		//
 	    };
-	    
+
 	    // Update Nav  ----------------------------//
-	    
+
 	    NAV.updateNav = function( sectionIndex ){
 		//
 		var $link = $links.filter( '[data-'+ s.SECTION_INDEX_TAG +
@@ -495,7 +504,7 @@ $(function(){
 	    // @Helpers ------------------------------//
 
 
-	    NAV.findIndexFrom = function( section ){ 
+	    NAV.findIndexFrom = function( section ){
 		//
 		// get the link button
 		var $link = $links.filter( '[data-'+ s.LINK_TAG +
@@ -507,8 +516,8 @@ $(function(){
 		return index
 		//
 	    };
-	    
-	    NAV.findSectionFrom = function( index ){ 
+
+	    NAV.findSectionFrom = function( index ){
 		//
 		// get the link button using the index
 		var $link = $links.filter( '[data-'+ s.SECTION_INDEX_TAG +
@@ -518,11 +527,11 @@ $(function(){
 		section = $link.attr( 'href' );
 		//
 		//
-		return section; 
+		return section;
 		//
 	    };
 
-	    NAV.findLinkFrom = function( section ){ 
+	    NAV.findLinkFrom = function( section ){
 		//
 		// Accepts number(by index)  or string ( by section name )
 		//
@@ -531,7 +540,7 @@ $(function(){
 		    var $link = $links.filter( '[data-'+s.SECTION_INDEX_TAG+
 					       '='+section+']' );
 		    //
-		} else if( typeof section === 'number' ){ 
+		} else if( typeof section === 'number' ){
 		    //
 		    var $link = $links.filter( '[data-'+s.SECTION_TYPE_TAG+
 					       '='+section+']' );
@@ -543,15 +552,15 @@ $(function(){
 	    };
 
 
-	    NAV.compareSectionsWith = function( possibleSec ){ 
+	    NAV.compareSectionsWith = function( possibleSec ){
 		//
 		var sections = s.sections,
 		answer = false;
 		//
 		// check if the argument is  a section
-		for(var prop in sections ){ 
+		for(var prop in sections ){
 		    //
-		    if ( sections[ prop ] === possibleSec ){ 
+		    if ( sections[ prop ] === possibleSec ){
 			//
 			answer = true;
 			//
@@ -561,19 +570,19 @@ $(function(){
 		};
 		return answer;
 	    };
-	    
 
-	    NAV.toggleHomeArrow = function( state ){ 
+
+	    NAV.toggleHomeArrow = function( state ){
 		//
 		var $homeArrow = $links
 		.filter( '[data-' +s.LINK_TAG+ '=' +s.sections.HOME+ ']' )
 		.children();
 		//
-		if( state === 'on' ){ 
+		if( state === 'on' ){
 		    //
 		    $homeArrow.removeClass( HIDDEN );
 		    //
-		} else if ( state === 'off' ){ 
+		} else if ( state === 'off' ){
    		    //
 		    $homeArrow.addClass( HIDDEN );
 		    //
@@ -581,20 +590,20 @@ $(function(){
 		//
 		return NAV
 	    }
-	    
+
 	    return NAV;
 	    //
-	}// end NAV 
+	}// end NAV
 
 
 
-	// @INIT site objects 
+	// @INIT site objects
 	//
-	navigation = Navigation({ 
-		//		
+	navigation = Navigation({
+		//
 		carousel: $.verticalCarousel( '#vertical-carousel',{
 			//
-			onChange : function( newPane ){ 
+			onChange : function( newPane ){
 			    //
 			    var nav = navigation;
 			    //
@@ -609,21 +618,21 @@ $(function(){
 			    .hashManager.changeHashTo( section );
 			    //
 			    // show or hide the home arrow
-			    if( section === nav.settings.sections.HOME ){ 
+			    if( section === nav.settings.sections.HOME ){
 				//
 				nav.toggleHomeArrow( 'off' );
 				//
 			    } else if ( nav.compareSectionsWith( section ) &&
-					section !== nav.settings.sections.HOME ){ 
+					section !== nav.settings.sections.HOME ){
 				//
 				nav.toggleHomeArrow( 'on' );
 				//
-				
-			    } 
-			} 
-			//			
+
+			    }
+			}
+			//
 		    }),
-		hashManager : HashManager({ 
+		hashManager : HashManager({
 			    //
 			onChange : function( hash ){
 			    //
@@ -646,7 +655,7 @@ $(function(){
 
 
 	// ENQUIRE SITE MODES
-	
+
 	// window thresholds
 	var base_width = 960,
 	    tablet_width =  768,
@@ -662,38 +671,38 @@ $(function(){
 
 
 
-	var siteMode = function( screenMode ){ 
+	var siteMode = function( screenMode ){
 	    //
 	    var screenMode = screenMode || 'desktop',
 	    tablet = 'tablet_size',
 	    mobile = 'mobile_size',
 	    mobile_small = 'mobile_sm_size';
 
-	    switch( screenMode ){ 
+	    switch( screenMode ){
 		//
-	    case "desktop": 
+	    case "desktop":
 		//
-		$html.removeClass( tablet 
-				   +" "+ mobile 
+		$html.removeClass( tablet
+				   +" "+ mobile
 				   +" "+ mobile_small );
 		//
 		navigation.switchModeTo( 'desktop' );
 		//
 		//
 		break;
-	    case "tablet": 
+	    case "tablet":
 		//
-		$html.removeClass( mobile 
+		$html.removeClass( mobile
 				   +" "+ mobile_small );
 		//
 		$html.addClass( tablet );
 		//
 		navigation.switchModeTo( 'tablet' );
 		//
-		break;	    
-	    case "mobile": 
+		break;
+	    case "mobile":
 		//
-		$html.removeClass( tablet 
+		$html.removeClass( tablet
 				   +" "+ mobile_small );
 		//
 		$html.addClass( mobile );
@@ -701,10 +710,10 @@ $(function(){
 		navigation.switchModeTo( 'mobile' );
 		//
 		//
-		break;	    
-	    case "mobile_small": 
+		break;
+	    case "mobile_small":
 		//
-		$html.removeClass( tablet 
+		$html.removeClass( tablet
 				   +" "+ mobile);
 		//
 		$html.addClass( mobile_small );
@@ -726,7 +735,7 @@ $(function(){
 			siteMode( 'desktop' );
 			//
 		    }
-		    
+
 		})
 	    .register("screen and (min-width: "+topMinWidth+
 		      "px ) and (max-width: "+topMaxWidth+"px )", {
@@ -747,8 +756,8 @@ $(function(){
 			    }
 			})
 	    .register("screen and (max-width: "+botMaxWidth+"px)", {
-				// 
-				match: function(){ 
+				//
+				match: function(){
 				    //
 				siteMode( 'mobile_small' );
 				//

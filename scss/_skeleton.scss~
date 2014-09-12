@@ -52,7 +52,7 @@
 
         &:after {
             content: "\0020";
-            display: block;
+v            display: block;
             height: 0;
             clear: both;
             visibility: hidden; }
@@ -132,6 +132,16 @@
 
         @media only screen and (max-width: $medMaxWidth ) {
             padding-left: 0; } }
+
+    @mixin offset-margin($num: 1) {
+        $offset: 2 * $margin;
+        margin-left: skeleton-column-width($num, $base-width) + $offset;
+
+        @media only screen and (min-width: $botMaxWidth ) and (max-width: $topMaxWidth ) {
+            margin-left: skeleton-column-width($num, $tablet-width) + $offset; }
+
+        @media only screen and (max-width: $medMaxWidth ) {
+            margin-left: 0; } }
 
 
 /* #Clearing

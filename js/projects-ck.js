@@ -56,11 +56,10 @@ $(function(){
 	// onLoad fadeIn body
 	$(window).on( 'load', function(){ 
 		//
-		$body.fadeIn(600);
+		$body.fadeIn(700);
 		//
 	    });
     
-
 	
 	// @nav object
 	var Navigation = function(){
@@ -92,10 +91,13 @@ $(function(){
 		$nav.fadeOut( 200 );
 		//
 		// show toggle button
-		$toggle.fadeIn( 500 );
+		$toggle.removeClass( HIDDEN );
 		//
 		// set the toggle button's click handler
 		$toggle.on( 'click', toggleMobileNav );
+		//
+		// assure the menu button shows
+		$toggleIcon.removeClass().addClass( s.MENU_CLASS ); 
 		//
 		// report the mode
 		s.navMode = 'mobile';
@@ -119,7 +121,7 @@ $(function(){
 		$toggle.off( 'click' );
 		//
 		// hide the toggle button
-		$toggle.hide();
+		$toggle.addClass( HIDDEN );
 		//
 		s.navMode = 'desktop';
 		//
@@ -127,10 +129,8 @@ $(function(){
 	    };
 
 
-
 	    var toggleMobileNav = function(e){ 
 		//		
-		//
 		e.preventDefault();
 		//
 		var speed = 100;
