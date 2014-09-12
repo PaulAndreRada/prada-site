@@ -1,0 +1,546 @@
+@import "compass/css3/transition";
+@import "compass/css3/box-shadow";
+@import "_normalize";
+@import "_skeleton";
+
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+    height: 100%;
+}
+
+/* remove link decorations */
+  a {  text-decoration: none; }
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   @main
+   Author's custom styles
+   ========================================================================== */
+
+
+   // @vars
+   // Style variables
+   $main-color : rgb( 61, 61, 61 );
+   $secondary-color: rgb( 205, 200, 174 );
+   $tertiary-color: rgb( 63, 169, 245 );
+   $BG-color : white;
+
+   // layout variables
+   $side-gap: 10px;
+   $block-width: 60%;
+   
+
+html {
+     width: 100%;
+     max-width: 100%;
+     margin: 0;
+}
+
+body {
+     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+     background: $BG-color;
+     width: 100%;
+     max-width: 100%;
+     margin: 0;
+}
+
+
+html.js body{
+		display: none;
+}
+
+
+.page-wrap {
+   @include container;
+   height: 100%;
+}
+
+
+
+// @toggle
+.toggle_button{
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 40px;
+  display: hidden;
+
+
+  .menu_icon{
+    background: url('../img/sprites/second_sprite_big.png') no-repeat;
+    // avrg sizes
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2000;
+    background-size: 1%;
+    background-position: 5px 10px;
+
+    @media only screen and (min-width: $topMinWidth ) and (max-width: $topMaxWidth ) {
+       background-size: 25%;
+       background-position: 5px 10px;
+    }
+
+    @media only screen and (max-width: $medMaxWidth) {
+       background-size: 50%;
+       background-position: 5px 14px;
+    }
+  }
+
+    .cancel_icon {
+       @extend .menu_icon;
+       background-size: 25%;
+       background-position: 5px -20px;
+
+        @media only screen and (min-width: $botMinWidth ) and (max-width: $botMaxWidth ) {
+	   background-size: 50%;
+           background-position: 5px -22px;
+       }
+       
+       @media only screen and (max-width: $botMinWidth) {
+	   background-size: 65%;
+           background-position: 5px -20px;
+       }
+    }// cancel_icon
+ } // toggle_button
+
+
+///* nav extends */
+.icon-container {
+   @include columns(3);
+   @include alpha();
+   @include omega();
+   position: relative;
+   float: left;
+   padding-top: 8px;
+}
+
+.nav-text{
+  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 34px;
+  text-align : center;
+  color : $secondary-color;
+  @include transition-property(color);
+  @include transition-duration(.2s);
+
+
+  &:hover, &:active {
+    color: $main-color;
+  }
+}
+
+.focused_nav {
+   @extend .nav-text;
+   color: $main-color !important;
+};
+
+.nav_toggle {
+  display: hidden;
+}
+
+
+///* @nav */
+
+.navBackground{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background:white;
+  z-index: 999;
+}
+
+nav {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  z-index: 1000;
+  margin: 0;
+  padding-top: 10px;
+  background: none;
+
+  .home_icon_container{
+    @extend .icon-container;
+    @include offset-margin(1);
+    padding-top: 1px;
+
+    .home_icon{
+      @extend .nav-text;
+      font-size: 40px;
+    }
+  }
+
+  .ux_icon_container{
+    @extend .icon-container;
+
+    .ux_icon{
+      @extend .nav-text;
+    }
+  }
+
+  .gpx_icon_container{
+    @extend .icon-container;
+
+    .gpx_icon{
+      @extend .nav-text;
+    }
+  }
+
+  .code_icon_container{
+    @extend .icon-container;
+
+    .code_icon{
+      @extend .nav-text;
+    }
+  }
+
+  .links_icon_container{
+    @extend .icon-container;
+    padding-top: 1px;
+
+
+    .links_icon{
+      @extend .nav-text;
+      font-size: 40px;
+    }
+  }
+
+ }//end nav
+
+
+// layout elements
+hr.full {
+  padding:0px;
+  margin:0 $side-gap 0 $side-gap;
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba( $main-color, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 999
+}
+
+hr.mid {
+  @extend .full;
+  width: $block-width;
+
+  @media only screen and (max-width: $medMaxWidth) {
+    width: 100%;
+  }
+}
+
+.space_1 {
+  display:block;
+  position: relative;
+  width: 100%;
+  height: 20px;
+}
+.space_2 {
+  @extends .space_1;
+  height: 40px;
+}
+.space_3 {
+  @extends .space_1;
+  height: 60px;
+}
+
+
+// Text
+.title {
+  display:block;
+  position: relative;
+  height: auto;
+  width: 100%;
+  margin: 0 $side-gap 0 $side-gap;
+  font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  letter-spacing: 1px;
+  font-size: 35px;
+}
+
+.details {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 $side-gap 0 $side-gap;
+  padding: 0px;
+  color: rgba( $main-color, 0.4 );
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+
+.description {
+  display: block;
+  position: relative;
+  width: $block-width;
+  height: auto;
+  margin: 0 $side-gap 0 $side-gap;
+  padding: 0;
+  color: $main-color;
+  font-weight: 200;
+  font-size: 16px;
+
+  @media only screen and (max-width: $medMaxWidth) {
+    width: 100%;
+  }
+}
+
+.project-img {
+  position: relative;
+  width: 100%;
+  height:auto;
+//  border: 1px solid white;
+//@include box-shadow(rgba(black, 0.9) 0 0 3px);
+}
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
