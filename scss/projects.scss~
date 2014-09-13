@@ -134,7 +134,7 @@ body {
 
 
 html.js body{
-		display: none;
+     display: none;
 }
 
 
@@ -266,6 +266,7 @@ nav {
 
   .ux_icon_container{
     @extend .icon-container;
+    @include offset-margin(3);	
 
     .ux_icon{
       @extend .nav-text;
@@ -385,7 +386,7 @@ hr.mid {
   width: 100%;
   height:auto;
 //  border: 1px solid white;
-//@include box-shadow(rgba(black, 0.9) 0 0 3px);
+@include box-shadow(rgba(black, 0.2) 0 0 3px);
 }
 
 

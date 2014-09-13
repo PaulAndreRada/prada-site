@@ -292,11 +292,12 @@ li.intro{
      } 
    }  
    
-   .intro_container_desktop{ 
+   .intro_container{ 
      @extend .intro_container;	
      padding-left: 11%;
      padding-right: 11%;
      border: none;
+     margin-bottom: 0px;
       
      .intro{
 	font-size : 27px;
@@ -311,8 +312,8 @@ li.intro{
 	a {
 	  color: $secondary-color;
 	}
-     }     
-   }
+     } // intro 
+   } // intro_container
 
 
 
