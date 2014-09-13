@@ -20,7 +20,7 @@ $(function(){
         // onLoad fadeIn body
 	$(window).on( 'load', function(){
                 //
-                $body.fadeIn(1500);
+                $body.fadeIn(700);
                 //
         });
 

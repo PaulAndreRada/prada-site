@@ -107,14 +107,34 @@
 	  <!-- @main --->
 	  <hr class="full">
 	  <div class="space_1"></div>
-	  <h1 class="title">sudo website</h1>
+	  <h1 class="title">sudotouch logo</h1>
 
 	  <div class="space_1"></div>
  	  <hr class="mid">
 	  <div class="space_1"></div>
 	  
-	  <iframe src="//player.vimeo.com/video/105936397?color=ffffff&amp;autoplay=1&amp;loop=1" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/105936397">sudo splashpage</a> from <a href="http://vimeo.com/user10650110">Paul Rada</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+	  <h3 class="details">click to navigate the logo states</h3>
+	  
+	  <div class="sudo_canvas_controls" id="controls">
+	    <button id="backButton"
+		    data-value=-1>
+              prev
+	    </button>
+	    <button id="nextButton"
+		    data-value=1>
+              next
+	    </button>
+	  </div>
+	  
+	  <div class="project_canvas_container">
+	    <canvas id="sudotouchCanvas">
+	    </canvas>
+	  </div>
+	  
 
+
+	  
+	  <!--
 	  <div class="space_1"></div>
 	  <h3 class="details">splash version</h3>
   	  <div class="space_1"></div>
@@ -128,7 +148,8 @@
 	  
 	  <img src="../img/sudo_splash_wire.jpg"
 	       class="project-img"/>
-
+	  
+	  -->
 
 
 
@@ -148,8 +169,8 @@
 	  <!-- @scripts -->
 
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-          <script src="../js/projects-ck.js"></script>
+          <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+          <script src="../js/sudotouch-project-ck.js"></script>
 
           <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--          <script>

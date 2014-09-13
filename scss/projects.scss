@@ -1,5 +1,6 @@
 @import "compass/css3/transition";
 @import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
 @import "_normalize";
 @import "_skeleton";
 
@@ -385,10 +386,74 @@ hr.mid {
   position: relative;
   width: 100%;
   height:auto;
-//  border: 1px solid white;
-@include box-shadow(rgba(black, 0.2) 0 0 3px);
+  //  border: 1px solid white;
+  @include box-shadow(rgba(black, 0.2) 0 0 3px);
 }
 
+// @canvas
+.project_canvas_container{ 
+  @extend .project-img;
+  background: rgb( 232, 232, 232 );
+  padding: 15%;
+  canvas { 
+    height: 100%;
+    width: 100%;
+  } 
+} 
+
+
+// controls
+.button_info { 
+  display: block;
+  position: relative;
+  width: $block-width;
+  height: auto;
+  margin: 0 $side-gap 0 $side-gap;
+  padding: 0;
+  color: $main-color;
+  font-weight: 600;
+  font-size: 16px;
+
+  
+}
+.sudo_canvas_controls { 
+  display:block;
+  position: relative;
+  width: 100%;
+  font-weight: 100;
+  font-size: 12px;
+  letter-spacing: 1px;
+  
+  a {      
+     display: block;
+     height: 60px;
+     width: 60px;
+     margin-left: auto;
+     margin-right: auto;
+     background: $BG-color;
+     border: 1px solid $secondary-color;
+     @include border-radius(1000px);     
+     color: $secondary-color;
+     text-align : center;
+     padding-top: 20px;
+     
+     @include transition-property(all);
+     @include transition-duration(.1s);
+     @include transition-timing-function(ease-in);
+     
+     &:active { 
+       background: $main-color;	
+     }
+     &:hover { 
+       background: $secondary-color;
+       color: $BG-color;
+       height: 65px;
+       width: 65px;
+       padding-top: 22px;
+     }
+  }
+  
+}
 
 
 
