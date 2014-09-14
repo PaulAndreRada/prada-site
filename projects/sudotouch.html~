@@ -23,7 +23,7 @@
 
 
 	<!-- main -->
-	<div class="page-wrap">
+	<div class="page_wrap">
 	  
 	  <!-- @toggle nav button -->
 	  <a href="#" 
@@ -54,7 +54,7 @@
 	     class="ux_icon_container"
 	     data-link="ux"
 	     data-section-index="1">
-	    <div class="ux_icon focused_nav">
+	    <div class="ux_icon">
 	      UX/UI
 	      <span class="visuallyhidden">
 		user interface design
@@ -67,7 +67,7 @@
 	       class="gpx_icon_container"
 	       data-link="gpx"
 	       data-section-index="2">
-	      <div class="gpx_icon">
+	      <div class="gpx_icon focused_nav">
 		GPX
 		<span class="visuallyhidden">
 		  graphic design
@@ -113,24 +113,20 @@
  	  <hr class="mid">
 	  <div class="space_1"></div>
 	  
-	  <h3 class="details">click to navigate the logo states</h3>
-	  
-	  <div class="sudo_canvas_controls" id="controls">
-	    <button id="backButton"
-		    data-value=-1>
-              prev
-	    </button>
-	    <button id="nextButton"
-		    data-value=1>
-              next
-	    </button>
-	  </div>
 	  
 	  <div class="project_canvas_container">
 	    <canvas id="sudotouchCanvas">
 	    </canvas>
 	  </div>
 	  
+  	  <div class="space_1"></div>
+	  <div class="sudo_canvas_controls" id="controls">
+	    <a href="#" id="nextButton"
+	       data-value="1">
+              change
+	    </a>
+	  </div>
+	  <div class="space_1"></div>
 
 
 	  

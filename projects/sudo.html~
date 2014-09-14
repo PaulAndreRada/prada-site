@@ -23,7 +23,7 @@
 
 
 	<!-- main -->
-	<div class="page-wrap">
+	<div class="page_wrap">
 	  
 	  <!-- @toggle nav button -->
 	  <a href="#" 
@@ -107,51 +107,63 @@
 	  <!-- @main --->
 	  <hr class="full">
 	  <div class="space_1"></div>
-	  <h1 class="title">Project Stampede app</h1>
-	  <!--<h3 class="details">else about something</h3>-->
+	  <h1 class="title">sudo</h1>
+	  <h3 class="details">
+	    splash and project site
+	  </h3>
+	  <div class="description">
+	    A presentation website for Sudolab’s subset sports brand “sudo”. With the goal of explaining the companies strength in sports and technology branding with a simple interactive concept. A brand development project and website design bundled into one, where the residual design documents could transfer into future stationary projects.
+	  </div>
+	  <div class="space_1"></div>
+	  
+
+	  <h3 class="details">
+	    my role:
+	  </h3>
+	  <div class="description">
+	    Directed a group of creatives, organized design storms and created wireframes for the manifestation of the brand through a website. 
+	    </br>
+	    </br>
+I was also the engineering liaison for the website that would be implemented later in scalable stages by an outside team
+	  </div>
+
 	  <div class="space_1"></div>
  	  <hr class="mid">
 	  <div class="space_1"></div>
 	  
-	  <img src="../img/stampede_1.jpg"
-               class="project-img"/>
+	  <iframe src="//player.vimeo.com/video/105936397?color=ffffff&amp;autoplay=1&amp;loop=1" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/105936397">sudo splashpage</a> from <a href="http://vimeo.com/user10650110">Paul Rada</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
 
 	  <div class="space_1"></div>
-	  
-	  <img src="../img/stampede_2.jpg"
-	       class="project-img"/>
-
+	  <h3 class="details">splash version</h3>
+	  <div class="description">
+	    Created to use the slogan “we humanize what moves you through technology” as a macro view of Sudo’s focus; animated to show the micro view in what type of projects Sudo focuses on.
+	  </div>
   	  <div class="space_1"></div>
 
-	  <img src="../img/stampede_3.jpg"
-	       class="project-img"/>
+	  <img src="../img/sudo_projects_wire.jpg"
+               class="project_img"/>
 	  
 	  <div class="space_1"></div>
+	  <h3 class="details">project version</h3>
+	  <div class="description">
+	    Expanding on the slogan of the company in the form of a navigation bar for the website’s featured projects. Here every project gets described through replacing “we humanize [ product’s or company’s name or type ] through [ method, media or solution type ]”.
+	  </div>
+  	  <div class="space_1"></div>
 	  
-          <img src="../img/stampede_4.jpg"
-               class="project-img"/>
-	  
+	  <img src="../img/sudo_splash_wire.jpg"
+	       class="project_img"/>
+  
 	  <div class="space_1"></div>
+	  <h6 class="details">client: Sudolabs</h6>
+	  <div class="space_2"></div>
 	  
-          <img src="../img/stampede_5.jpg"
-               class="project-img"/>
+	</div><!--pageWrap-->
 
-
-
-	  </div><!--pageWrap-->
-
-	  <!-- use at the @end
-	       <div class="closing_container">
-		 <div class="closing">
-		   Paul Rada 2014
-		 </div>
-	       </div>
-	  -->
 
 
 
 	  <!-- @scripts -->
-
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
           <script src="../js/projects-ck.js"></script>

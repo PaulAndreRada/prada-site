@@ -139,7 +139,7 @@ html.js body{
 }
 
 
-.page-wrap {
+.page_wrap {
    @include container;
    height: 100%;
 }
@@ -233,7 +233,7 @@ html.js body{
 
 ///* @nav */
 
-.navBackground{
+.nav_background{
   position: absolute;
   width: 100%;
   height: 100%;
@@ -382,7 +382,7 @@ hr.mid {
   }
 }
 
-.project-img {
+.project_img {
   position: relative;
   width: 100%;
   height:auto;
@@ -392,7 +392,7 @@ hr.mid {
 
 // @canvas
 .project_canvas_container{ 
-  @extend .project-img;
+  @extend .project_img;
   background: rgb( 232, 232, 232 );
   padding: 15%;
   canvas { 

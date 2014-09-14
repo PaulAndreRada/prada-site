@@ -23,7 +23,7 @@
 
 
 	<!-- main -->
-	<div class="page-wrap">
+	<div class="page_wrap">
 	  
 	  <!-- @toggle nav button -->
 	  <a href="#" 
@@ -107,26 +107,43 @@
 	  <!-- @main --->
 	  <hr class="full">
 	  <div class="space_1"></div>
-	  <h1 class="title">sudotouch logo</h1>
-
+	  <h1 class="title">cervantes</h1>
+	  
 	  <div class="space_1"></div>
  	  <hr class="mid">
 	  <div class="space_1"></div>
 	  
+          <img src="../img/cervantes_logo.jpg"
+               class="project-img"/> 
 	  
-	  <div class="project_canvas_container">
-	    <canvas id="sudotouchCanvas">
-	    </canvas>
-	  </div>
+  	  <div class="space_2"></div>
+	  <h3 class="details">The layering process</h3>
+    	  <div class="space_1"></div>
+
+          <img src="../img/cervantes_n_process.jpg"
+	              class="project_img"/>
+
+
+    	  <div class="space_2"></div>
+	  <h3 class="details">The style choice</h3>
+    	  <div class="space_1"></div>
 	  
-  	  <div class="space_1"></div>
-	  <div class="sudo_canvas_controls" id="controls">
-	    <a href="#" id="nextButton"
-	       data-value="1">
-              change
-	    </a>
-	  </div>
-	  <div class="space_1"></div>
+	  <img src="../img/cervantes_rapier_style.jpg"
+	       class="project_img"/>
+
+
+      	  <div class="space_2"></div>
+	  <h3 class="details">The font choice</h3>
+    	  <div class="space_1"></div>
+	  
+          <img src="../img/cervantes_font_long.jpg"
+	              class="project_img"/>
+
+          <div class="space_1"></div>
+
+
+
+
 
 
 	  
@@ -136,14 +153,14 @@
   	  <div class="space_1"></div>
 
 	  <img src="../img/sudo_projects_wire.jpg"
-               class="project-img"/>
+               class="project_img"/>
 	  
 	  <div class="space_1"></div>
 	  <h3 class="details">projects version</h3>
   	  <div class="space_1"></div>
 	  
 	  <img src="../img/sudo_splash_wire.jpg"
-	       class="project-img"/>
+	       class="project_img"/>
 	  
 	  -->
 
