@@ -20,8 +20,12 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        
+	
+	<!-- spinner -->
+	<div class="spinner_container"
+	     id="spinner">
+	  <div class="spinner"></div>
+	</div> 
 	
 	<!-- hamburger -->
 	<a href="#"
@@ -38,7 +42,8 @@
 	     id="navBG"></div>
 
 	<!-- main -->
-	<div class="page-wrap">	  
+	<div class="page_wrap" 
+	     id="mainContent">	  
 
 	  <nav id="navigation"> 
 	    

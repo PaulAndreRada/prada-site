@@ -16,11 +16,10 @@ $(function(){
 	// onLoad fadeIn body
 	$(window).on( 'load', function(){ 
 		//
-		$body.fadeIn(600);
+		$body.fadeIn(700);
 		//
 	    });
     
-
 	
 	// @nav object
 	var Navigation = function(){
@@ -46,20 +45,19 @@ $(function(){
 	    $toggle = $doc.find( '#'+s.TOG_ID ),
 	    $toggleIcon = $toggle.children();
 
-	    console.log( $nav );
-	    console.log( $toggle );
-	    console.log( $toggleIcon );
-	    
 	    NAV.mobileMode = function(){ 
 		//
 		// hide nav 
 		$nav.fadeOut( 200 );
 		//
+		// show toggle button
+		$toggle.removeClass( HIDDEN );
+		//
 		// set the toggle button's click handler
 		$toggle.on( 'click', toggleMobileNav );
 		//
-		// show toggle button
-		$toggle.fadeIn( 500 );
+		// assure the menu button shows
+		$toggleIcon.removeClass().addClass( s.MENU_CLASS ); 
 		//
 		// report the mode
 		s.navMode = 'mobile';
@@ -83,7 +81,7 @@ $(function(){
 		$toggle.off( 'click' );
 		//
 		// hide the toggle button
-		$toggle.hide();
+		$toggle.addClass( HIDDEN );
 		//
 		s.navMode = 'desktop';
 		//
@@ -92,8 +90,8 @@ $(function(){
 
 
 	    var toggleMobileNav = function(e){ 
-		//
-		if ( e ){ e.preventDefault(); }
+		//		
+		e.preventDefault();
 		//
 		var speed = 100;
 		//
@@ -101,12 +99,10 @@ $(function(){
 		    //
 		    NAV.off( speed );
 		    //
-		    console.log( 'if on' );
 		} else if( s.navState === 'off' ){ 
 		    //
 		    NAV.on( speed )
 		    //
-		    console.log( 'else off' );
 		};
 		// 
 		return NAV;
@@ -123,7 +119,8 @@ $(function(){
 		$toggleIcon.removeClass().addClass( s.CANCEL_CLASS );
 		//
 		s.navState = 'on';
-		console.log( 'toggle open' );
+		//
+		return NAV;
 	    };
 
 
@@ -139,7 +136,7 @@ $(function(){
 		//
 		s.navState = 'off';
 		//
-		console.log( 'toggled close' );
+		return NAV;
 	    };
 	    
 	   

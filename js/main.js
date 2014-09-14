@@ -9,7 +9,8 @@ $(function(){
 	'use strict';
 
 	var $doc =$(document),
-	    $body = $doc.find( 'body' ),
+	    $mainContent = $doc.find( '#mainContent' ),
+	    $spinner = $doc.find( '#spinner' ),
 	    //
 	    // site objects
 	    navigation,
@@ -20,9 +21,11 @@ $(function(){
         // onLoad fadeIn body
 	$(window).on( 'load', function(){
                 //
-                $body.fadeIn(700);
+		$spinner.hide();
+		//
+                $mainContent.fadeIn(700);
                 //
-        });
+	});
 
 
 	// @hashManager

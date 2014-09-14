@@ -2,30 +2,34 @@
 //
 // @codekit-prepend "projects-plugins.js";
 
-
 $(function(){
 	'use strict';
 
 	var $doc = $(document),
-	    $body = $doc.find( 'body' ),
-	    // 
+	    $mainContent = $doc.find( '#mainContent' ),
+	    $spinner = $doc.find( '#spinner' ),
+	    //
 	    HIDDEN = 'hidden',
 	    navigation;
 
 
 	// onLoad fadeIn body
-	$(window).on( 'load', function(){ 
-		//
-		$body.fadeIn(700);
-		//
+        $(window).on( 'load', function(){
+                //
+		$spinner.hide();
+                //
+		$mainContent.fadeIn(700);
+                //
+		console.log( $spinner );
+		console.log( $mainContent );
 	    });
-    
-	
+
+
 	// @nav object
 	var Navigation = function(){
 	    //
 	    var that = {
-		settings : { 
+		settings : {
 		    navMode : 'desktop',
 		    navState : 'off',
 		    //
@@ -45,9 +49,9 @@ $(function(){
 	    $toggle = $doc.find( '#'+s.TOG_ID ),
 	    $toggleIcon = $toggle.children();
 
-	    NAV.mobileMode = function(){ 
+	    NAV.mobileMode = function(){
 		//
-		// hide nav 
+		// hide nav
 		$nav.fadeOut( 200 );
 		//
 		// show toggle button
@@ -57,22 +61,22 @@ $(function(){
 		$toggle.on( 'click', toggleMobileNav );
 		//
 		// assure the menu button shows
-		$toggleIcon.removeClass().addClass( s.MENU_CLASS ); 
+		$toggleIcon.removeClass().addClass( s.MENU_CLASS );
 		//
 		// report the mode
 		s.navMode = 'mobile';
 		//
 		return NAV;
 	    };
-	    
 
-	    NAV.desktopMode = function(){ 
+
+	    NAV.desktopMode = function(){
 		//
 		if( s.navState  === 'on' ){
 		    //
 		    NAV.off();
 		    //
-		} 
+		}
 		//
 		// show the nav
 		$nav.fadeIn( 200 );
@@ -89,33 +93,33 @@ $(function(){
 	    };
 
 
-	    var toggleMobileNav = function(e){ 
-		//		
+	    var toggleMobileNav = function(e){
+		//
 		e.preventDefault();
 		//
 		var speed = 100;
 		//
-		if( s.navState === 'on' ){ 
+		if( s.navState === 'on' ){
 		    //
 		    NAV.off( speed );
 		    //
-		} else if( s.navState === 'off' ){ 
+		} else if( s.navState === 'off' ){
 		    //
 		    NAV.on( speed )
 		    //
 		};
-		// 
+		//
 		return NAV;
 	    };
-	    
-	    
-	    NAV.on = function( speed ){ 
+
+
+	    NAV.on = function( speed ){
 		//
 		// show the nav
 		$nav.fadeIn( speed );
 		//
 		// Hide the menu icon,
-		// Show the Cancel Icon 
+		// Show the Cancel Icon
 		$toggleIcon.removeClass().addClass( s.CANCEL_CLASS );
 		//
 		s.navState = 'on';
@@ -124,35 +128,35 @@ $(function(){
 	    };
 
 
-	    NAV.off = function( speed ){ 
+	    NAV.off = function( speed ){
 		//
-		// hide the nav 
+		// hide the nav
 		$nav.fadeOut( speed );
 		//
 		// Hide the cancel icon,
 		// Show the menu icon
-		$toggleIcon.removeClass().addClass( s.MENU_CLASS ); 
+		$toggleIcon.removeClass().addClass( s.MENU_CLASS );
 		//
 		//
 		s.navState = 'off';
 		//
 		return NAV;
 	    };
-	    
-	   
+
+
 
 	    return NAV
 	    //
 	}; // nav object
 	//
-	//@init 
+	//@init
 	navigation = Navigation();
 
 
 
 
 	// ENQUIRE SITE MODES
-	
+
 	// window thresholds
 	var base_width = 960,
 	    tablet_width =  768,
@@ -167,38 +171,38 @@ $(function(){
 	    $html = $doc.find( 'html' );
 
 
-	/*	var siteMode = function( screenMode ){ 
+	/*	var siteMode = function( screenMode ){
 	    //
 	    var screenMode = screenMode || 'desktop',
 	    tablet = 'tablet_size',
 	    mobile = 'mobile_size',
 	    mobile_small = 'mobile_sm_size';
 
-	    switch( screenMode ){ 
+	    switch( screenMode ){
 		//
-	    case "desktop": 
+	    case "desktop":
 		//
-		$html.removeClass( tablet 
-				   +" "+ mobile 
+		$html.removeClass( tablet
+				   +" "+ mobile
 				   +" "+ mobile_small );
 		//
 		navigation.switchModeTo( 'desktop' );
 		//
 		//
 		break;
-	    case "tablet": 
+	    case "tablet":
 		//
-		$html.removeClass( mobile 
+		$html.removeClass( mobile
 				   +" "+ mobile_small );
 		//
 		$html.addClass( tablet );
 		//
 		navigation.switchModeTo( 'tablet' );
 		//
-		break;	    
-	    case "mobile": 
+		break;
+	    case "mobile":
 		//
-		$html.removeClass( tablet 
+		$html.removeClass( tablet
 				   +" "+ mobile_small );
 		//
 		$html.addClass( mobile );
@@ -206,10 +210,10 @@ $(function(){
 		navigation.switchModeTo( 'mobile' );
 		//
 		//
-		break;	    
-	    case "mobile_small": 
+		break;
+	    case "mobile_small":
 		//
-		$html.removeClass( tablet 
+		$html.removeClass( tablet
 				   +" "+ mobile);
 		//
 		$html.addClass( mobile_small );
@@ -231,7 +235,7 @@ $(function(){
 			navigation.desktopMode();
 			//
 		    }
-		    
+
 		})
 	    .register("screen and (min-width: "+medMinWidth+
 		      "px ) and (max-width: "+medMaxWidth+"px ) ", {
@@ -243,8 +247,8 @@ $(function(){
 			  }
 		      })
 	    .register("screen and (max-width: "+botMaxWidth+"px)", {
-		    // 
-		    match: function(){ 
+		    //
+		    match: function(){
 			//
 			navigation.mobileMode();
 			//
