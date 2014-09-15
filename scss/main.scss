@@ -125,8 +125,43 @@ textarea {
      background: $BG-color;
    }
 
+// @Spinner
 
-html.js body{
+   .spinner_container { 
+      display: block;
+      margin: 30% auto 0 auto;
+   }    
+  .spinner {
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+
+    margin: 100px auto;
+    -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+    animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+    0% { -webkit-transform: perspective(120px) }
+    50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+    100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+   0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+
+html.js .page_wrap{
    display: none;
 }
 
@@ -193,6 +228,7 @@ nav {
   position: absolute;
   height: 18%;
   z-index: 1000;
+
 
   .home_icon_container{
     @extend .icon-container;  
@@ -286,11 +322,14 @@ nav {
 
 li.intro{ 
   @extend .content-sections;
-
 }
    .intro_container {
      @extend .content-container;
      margin-top: 30%;
+     padding-left: 11%;
+     padding-right: 11%;
+     border: none;
+     margin-bottom: 0px;
      
      @media only screen and (max-width: $botMaxWidth ){
 	font-size: 22px; 
@@ -298,17 +337,9 @@ li.intro{
      }
      &:hover, &:active { 
        background: none;
+       color: $main-color;
      } 
-   }  
-   
-   .intro_container{ 
-     @extend .intro_container;	
-     padding-left: 11%;
-     padding-right: 11%;
-     border: none;
-     margin-bottom: 0px;
-      
-     .intro{
+     .intro {
 	font-size : 27px;
 	font-weight: normal;
 	color: $main-color;
@@ -324,6 +355,80 @@ li.intro{
      } // intro 
    } // intro_container
 
+
+   .about_container { 
+     @extend .intro_container;
+     margin-top: 10%;
+     display: none;
+
+     @media only screen and (max-width: $botMaxWidth ){
+        margin-top: 22px; 
+	padding-left: 2%;
+     	padding-right: 2%;
+     }
+     
+     .close_icon { 
+        position: absolute;
+	right: 35%;
+	top: 80px;
+	height:50px;
+	width: 50px;
+	background: url('../img/sprites/second_sprite_big.png') no-repeat;
+     	background-position: 0 7%;
+	background-size: 500%;			
+			
+	
+        @media only screen and (max-width: $botMaxWidth ){
+           right: 3%;
+	   top: 7px;
+        }
+     }
+     
+     .profile_img { 
+        float: left;
+        height: 100px;
+	width: 120px;
+	//	margin-bottom: 20px;
+        background: url('../img/sprites/second_sprite_big.png') no-repeat;
+     	background-position: 1% 100%;
+	background-size: 320%;			
+			
+        @media only screen and (max-width: $botMaxWidth ){
+          width:70px; 	  
+	  height: 55px;
+	  margin-top: -5px;
+	  margin-left: 10px;
+        }
+     }
+     .name{ 
+     	margin-top: 30px;
+        display : block;     
+	@media only screen and (max-width: $botMaxWidth ){
+	   margin-top: -5px;
+	}
+     } 
+     .title { 
+        display : block;
+	font-size: 14px;
+     } 
+
+     .about {
+    	margin-top: 30px;	
+     	font-size : 14px;
+	font-weight: normal;
+	color: $main-color;
+	padding-bottom: 10%;
+	border-bottom: 1px solid $secondary-color;	
+
+	@media only screen and (max-width: $botMaxWidth ){
+		font-size: 13px; 
+		margin-top: 10px;
+	}
+	a {
+	  color: $secondary-color;
+	}   
+     } 
+   }   
 
 
 // project extend classes

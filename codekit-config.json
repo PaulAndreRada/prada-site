@@ -57,17 +57,6 @@
       "initialSize" : 929803,
       "fileType" : 4096
     },
-    "\/img\/stampede_1.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/stampede_1.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/img\/stampede_1.jpg",
-      "initialSize" : 97953,
-      "fileType" : 4096
-    },
     "\/img\/sprites\/second_sprite_big.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -78,6 +67,17 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/second_sprite_big.png",
       "initialSize" : 27275,
       "fileType" : 8192
+    },
+    "\/img\/stampede_1.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/stampede_1.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/img\/stampede_1.jpg",
+      "initialSize" : 97953,
+      "fileType" : 4096
     },
     "\/img\/riotry_3.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -112,6 +112,15 @@
       "initialSize" : 14391,
       "fileType" : 8192
     },
+    "\/projects\/template.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/projects\/template.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/img\/stampede_3.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -123,14 +132,14 @@
       "initialSize" : 307798,
       "fileType" : 4096
     },
-    "\/projects\/template.html" : {
+    "\/css\/projects.css.BASE.57466.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/projects\/template.html",
+      "inputAbbreviatedPath" : "\/css\/projects.css.BASE.57466.css",
       "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "fileType" : 16
     },
     "\/index.html" : {
       "ignoreWasSetByUser" : 0,
@@ -140,6 +149,17 @@
       "inputAbbreviatedPath" : "\/index.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/img\/cervantes_s_style.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/cervantes_s_style.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/cervantes_s_style.jpg",
+      "initialSize" : 734495,
+      "fileType" : 4096
     },
     "\/img\/sprites\/main_sprite_big_separeted.png" : {
       "ignoreWasSetByUser" : 0,
@@ -151,17 +171,6 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_big_separeted.png",
       "initialSize" : 62147,
       "fileType" : 8192
-    },
-    "\/img\/stampede_4.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/stampede_4.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/img\/stampede_4.jpg",
-      "initialSize" : 260718,
-      "fileType" : 4096
     },
     "\/scss\/main.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -175,6 +184,17 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
+    "\/img\/stampede_4.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/stampede_4.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/img\/stampede_4.jpg",
+      "initialSize" : 260718,
+      "fileType" : 4096
+    },
     "\/img\/sprites\/second_sprite_big2.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -185,17 +205,6 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/second_sprite_big2.png",
       "initialSize" : 7720,
       "fileType" : 8192
-    },
-    "\/img\/cervantes_s_style.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/cervantes_s_style.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/img\/cervantes_s_style.jpg",
-      "initialSize" : 734495,
-      "fileType" : 4096
     },
     "\/img\/sprites\/main_sprite_big.png" : {
       "ignoreWasSetByUser" : 0,
@@ -413,6 +422,17 @@
       "outputAbbreviatedPath" : "\/js\/projects-ck.js",
       "fileType" : 64
     },
+    "\/img\/second_sprite_big.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/second_sprite_big.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/second_sprite_big.png",
+      "initialSize" : 27199,
+      "fileType" : 8192
+    },
     "\/img\/sudo_splash_wire_sm.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -477,6 +497,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/css\/projects.css.BACKUP.57466.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/projects.css.BACKUP.57466.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/config.rb" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -497,17 +526,6 @@
       "initialSize" : 7293,
       "fileType" : 4096
     },
-    "\/favicon.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/favicon.png",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/favicon.png",
-      "initialSize" : 21752,
-      "fileType" : 8192
-    },
     "\/scss\/_carousel.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -519,6 +537,17 @@
       "outputAbbreviatedPath" : "\/css\/_carousel.css",
       "fileType" : 4,
       "debugStyle" : 0
+    },
+    "\/favicon.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/favicon.png",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/favicon.png",
+      "initialSize" : 21752,
+      "fileType" : 8192
     },
     "\/js\/sudotouch-project-ck.js" : {
       "ignoreWasSetByUser" : 0,
@@ -561,6 +590,15 @@
       "outputAbbreviatedPath" : "\/img\/riotry_4.jpg",
       "initialSize" : 95363,
       "fileType" : 4096
+    },
+    "\/css\/projects.css.LOCAL.57466.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/projects.css.LOCAL.57466.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/img\/cervantes_logo.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -636,17 +674,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/js\/main-ck.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/main-ck.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/main-ck-ck.js",
-      "fileType" : 64
-    },
     "\/js\/vertical-carousel.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -657,6 +684,15 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/js\/vertical-carousel-ck.js",
       "fileType" : 64
+    },
+    "\/css\/projects.css.REMOTE.57466.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/css\/projects.css.REMOTE.57466.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/css\/main.css" : {
       "ignoreWasSetByUser" : 0,
@@ -678,6 +714,17 @@
       "initialSize" : 1230342,
       "fileType" : 4096
     },
+    "\/js\/main-ck.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/main-ck.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/main-ck-ck.js",
+      "fileType" : 64
+    },
     "\/img\/tester.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -692,6 +739,13 @@
   },
   "manualImportLinks" : [
     {
+      "type" : 1,
+      "position" : 0,
+      "linkedFileAbbreviatedPath" : "\/js\/modules\/_boids.js",
+      "baseFileAbbreviatedPath" : "\/js\/modules\/_logoSketch.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
       "type" : 0,
       "position" : 0,
       "linkedFileAbbreviatedPath" : "\/js\/vendor\/processing.js",
@@ -703,13 +757,6 @@
       "position" : 1,
       "linkedFileAbbreviatedPath" : "\/js\/modules\/_logoSketch.js",
       "baseFileAbbreviatedPath" : "\/js\/sudotouch-project.js",
-      "followForSyntaxChecking" : 1
-    },
-    {
-      "type" : 1,
-      "position" : 0,
-      "linkedFileAbbreviatedPath" : "\/js\/modules\/_boids.js",
-      "baseFileAbbreviatedPath" : "\/js\/modules\/_logoSketch.js",
       "followForSyntaxChecking" : 1
     }
   ],
