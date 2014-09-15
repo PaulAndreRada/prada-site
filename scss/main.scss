@@ -268,9 +268,18 @@ nav {
    border-bottom: 1px solid $secondary-color;
    @include transition-property(background);
    @include transition-duration(.5s);
-   &:hover, &:active{ 
+   &:hover {
      color: $BG-color;
      background: $secondary-color;
+     
+     @media only screen and (max-width: $botMaxWidth ){
+        background:inherit;
+        color: inherit; 
+     }
+   }
+   &:active{ 
+        color: $BG-color;
+	background: $secondary-color;	
    }
 }
 
@@ -460,7 +469,7 @@ li.links {
       background-position: 60.2% 102%;
     }
     
-    .rdio_image {
+    .siteCode_image {
       @extend .link-images;
       background-position: 76.3% 102%;
     }
@@ -552,7 +561,7 @@ html.tablet_size body ul {
 
     }
     
-    .rdio_image {
+    .siteCode_image {
 
     }
   }
@@ -755,7 +764,7 @@ html.mobile_size body {
       @extend .removeBackground;          
     }
     
-    .rdio_image {
+    .siteCode_image {
       @extend .removeBackground;          
     }
     
@@ -970,7 +979,7 @@ html.mobile_sm_size body {
       @extend .removeBackground;          
     }
     
-    .rdio_image {
+    .siteCode_image {
       @extend .removeBackground;          
     }
     
@@ -985,7 +994,12 @@ html.mobile_sm_size body {
 }
 
 
-
+.closing_container{
+	position: fixed;
+	z-index: 100;
+	bottom : 0px;
+	right: 0px;
+}
 
 
 

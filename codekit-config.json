@@ -15,7 +15,7 @@
     },
     "\/js\/vendor\/processing.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/js\/vendor\/processing.js",
@@ -74,9 +74,9 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/img\/sprites\/second_sprite_big.png",
-      "processed" : 1,
+      "processed" : 0,
       "outputAbbreviatedPath" : "\/img\/sprites\/second_sprite_big.png",
-      "initialSize" : 9840,
+      "initialSize" : 27275,
       "fileType" : 8192
     },
     "\/img\/riotry_3.jpg" : {
@@ -141,17 +141,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/img\/cervantes_s_style.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/cervantes_s_style.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/img\/cervantes_s_style.jpg",
-      "initialSize" : 734495,
-      "fileType" : 4096
-    },
     "\/img\/sprites\/main_sprite_big_separeted.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -162,6 +151,17 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_big_separeted.png",
       "initialSize" : 62147,
       "fileType" : 8192
+    },
+    "\/img\/stampede_4.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/stampede_4.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/img\/stampede_4.jpg",
+      "initialSize" : 260718,
+      "fileType" : 4096
     },
     "\/scss\/main.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -175,17 +175,6 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/img\/stampede_4.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/stampede_4.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/img\/stampede_4.jpg",
-      "initialSize" : 260718,
-      "fileType" : 4096
-    },
     "\/img\/sprites\/second_sprite_big2.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -196,6 +185,17 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/second_sprite_big2.png",
       "initialSize" : 7720,
       "fileType" : 8192
+    },
+    "\/img\/cervantes_s_style.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/cervantes_s_style.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/cervantes_s_style.jpg",
+      "initialSize" : 734495,
+      "fileType" : 4096
     },
     "\/img\/sprites\/main_sprite_big.png" : {
       "ignoreWasSetByUser" : 0,
@@ -225,7 +225,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/img\/cervantes_n_process.jpg",
-      "processed" : 1,
+      "processed" : 0,
       "outputAbbreviatedPath" : "\/img\/cervantes_n_process.jpg",
       "initialSize" : 1092132,
       "fileType" : 4096
@@ -264,14 +264,16 @@
       "outputAbbreviatedPath" : "\/js\/modules\/_boids-ck.js",
       "fileType" : 64
     },
-    "\/projects\/sudotouch.html" : {
+    "\/js\/sudotouch-project.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/projects\/sudotouch.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/js\/sudotouch-project.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/sudotouch-project-ck.js",
+      "fileType" : 64
     },
     "\/img\/sprites\/main_sprite_sm.png" : {
       "ignoreWasSetByUser" : 0,
@@ -284,16 +286,25 @@
       "initialSize" : 46121,
       "fileType" : 8192
     },
-    "\/js\/sudotouch-project.js" : {
+    "\/projects\/sudotouch.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/sudotouch-project.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/sudotouch-project-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/projects\/sudotouch.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/img\/sudo_projects_wire_sm.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/sudo_projects_wire_sm.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/sudo_projects_wire_sm.jpg",
+      "initialSize" : 516525,
+      "fileType" : 4096
     },
     "\/img\/sudotouch_cover.png" : {
       "ignoreWasSetByUser" : 0,
@@ -312,7 +323,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/img\/sprites\/main_sprite_separeted.png",
-      "processed" : 1,
+      "processed" : 0,
       "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_separeted.png",
       "initialSize" : 532804,
       "fileType" : 8192
@@ -397,10 +408,21 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/js\/projects.js",
-      "outputStyle" : 0,
+      "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/js\/projects-ck.js",
       "fileType" : 64
+    },
+    "\/img\/sudo_splash_wire_sm.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/sudo_splash_wire_sm.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/sudo_splash_wire_sm.jpg",
+      "initialSize" : 595192,
+      "fileType" : 4096
     },
     "\/js\/projects-plugins.js" : {
       "ignoreWasSetByUser" : 0,
@@ -546,7 +568,7 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/img\/cervantes_logo.jpg",
-      "processed" : 1,
+      "processed" : 0,
       "outputAbbreviatedPath" : "\/img\/cervantes_logo.jpg",
       "initialSize" : 2690120,
       "fileType" : 4096
@@ -669,7 +691,27 @@
     }
   },
   "manualImportLinks" : [
-
+    {
+      "type" : 0,
+      "position" : 0,
+      "linkedFileAbbreviatedPath" : "\/js\/vendor\/processing.js",
+      "baseFileAbbreviatedPath" : "\/js\/sudotouch-project.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 0,
+      "position" : 1,
+      "linkedFileAbbreviatedPath" : "\/js\/modules\/_logoSketch.js",
+      "baseFileAbbreviatedPath" : "\/js\/sudotouch-project.js",
+      "followForSyntaxChecking" : 1
+    },
+    {
+      "type" : 1,
+      "position" : 0,
+      "linkedFileAbbreviatedPath" : "\/js\/modules\/_boids.js",
+      "baseFileAbbreviatedPath" : "\/js\/modules\/_logoSketch.js",
+      "followForSyntaxChecking" : 1
+    }
   ],
   "projectSettings" : {
     "hamlNoEscapeInAttributes" : 0,

@@ -267,7 +267,7 @@ nav {
 
   .ux_icon_container{
     @extend .icon-container;
-    @include offset-margin(3);	
+    
 
     .ux_icon{
       @extend .nav-text;
@@ -336,7 +336,7 @@ hr.mid {
 }
 .space_3 {
   @extends .space_1;
-  height: 60px;
+  height: 200px;
 }
 
 
@@ -365,6 +365,13 @@ hr.mid {
   font-size: 14px;
 }
 
+a.details { 
+  @extend .details;
+  color: $tertiary-color;
+  &:hover{ 
+    color: $secondary-color;	  
+  } 
+}
 
 .description {
   display: block;
@@ -382,6 +389,16 @@ hr.mid {
   }
 }
 
+.copyright { 
+    @extend .details;	
+}
+
+
+
+
+
+
+// @media
 .project_img {
   position: relative;
   width: 100%;
