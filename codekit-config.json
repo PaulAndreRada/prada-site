@@ -13,37 +13,15 @@
       "initialSize" : 7831,
       "fileType" : 8192
     },
-    "\/img\/tester.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/tester.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/img\/tester.jpg",
-      "initialSize" : 159703,
-      "fileType" : 4096
-    },
-    "\/img\/cervantes_logo_base.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/cervantes_logo_base.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/img\/cervantes_logo_base.jpg",
-      "initialSize" : 929803,
-      "fileType" : 4096
-    },
-    "\/js\/plugins.js" : {
+    "\/js\/vendor\/processing.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/plugins.js",
+      "inputAbbreviatedPath" : "\/js\/vendor\/processing.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/plugins-ck.js",
+      "outputAbbreviatedPath" : "\/js\/vendor\/processing-ck.js",
       "fileType" : 64
     },
     "\/img\/sprites\/sprites_crop.png" : {
@@ -56,6 +34,28 @@
       "outputAbbreviatedPath" : "\/img\/sprites\/sprites_crop.png",
       "initialSize" : 14095,
       "fileType" : 8192
+    },
+    "\/js\/plugins.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/js\/plugins.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/plugins-ck.js",
+      "fileType" : 64
+    },
+    "\/img\/cervantes_logo_base.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/cervantes_logo_base.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/cervantes_logo_base.jpg",
+      "initialSize" : 929803,
+      "fileType" : 4096
     },
     "\/img\/sprites\/second_sprite_big.png" : {
       "ignoreWasSetByUser" : 0,
@@ -152,16 +152,16 @@
       "initialSize" : 734495,
       "fileType" : 4096
     },
-    "\/img\/stampede_4.jpg" : {
+    "\/img\/sprites\/main_sprite_big_separeted.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/stampede_4.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/img\/stampede_4.jpg",
-      "initialSize" : 260718,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/img\/sprites\/main_sprite_big_separeted.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_big_separeted.png",
+      "initialSize" : 62147,
+      "fileType" : 8192
     },
     "\/scss\/main.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -175,16 +175,16 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/img\/sprites\/main_sprite_big_separeted.png" : {
+    "\/img\/stampede_4.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/sprites\/main_sprite_big_separeted.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/img\/sprites\/main_sprite_big_separeted.png",
-      "initialSize" : 62147,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/img\/stampede_4.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/img\/stampede_4.jpg",
+      "initialSize" : 260718,
+      "fileType" : 4096
     },
     "\/img\/sprites\/second_sprite_big2.png" : {
       "ignoreWasSetByUser" : 0,
@@ -591,6 +591,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/img\/cervantes_rapier_style.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/img\/cervantes_rapier_style.jpg",
+      "processed" : 1,
+      "outputAbbreviatedPath" : "\/img\/cervantes_rapier_style.jpg",
+      "initialSize" : 994604,
+      "fileType" : 4096
+    },
     "\/js\/main.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -602,16 +613,16 @@
       "outputAbbreviatedPath" : "\/js\/main-ck.js",
       "fileType" : 64
     },
-    "\/img\/cervantes_rapier_style.jpg" : {
+    "\/js\/main-ck.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/img\/cervantes_rapier_style.jpg",
-      "processed" : 1,
-      "outputAbbreviatedPath" : "\/img\/cervantes_rapier_style.jpg",
-      "initialSize" : 994604,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/js\/main-ck.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/js\/main-ck-ck.js",
+      "fileType" : 64
     },
     "\/scss\/_normalize.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -625,16 +636,14 @@
       "fileType" : 4,
       "debugStyle" : 0
     },
-    "\/js\/main-ck.js" : {
+    "\/css\/main.css" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/main-ck.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/main-ck-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/css\/main.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/js\/vertical-carousel.js" : {
       "ignoreWasSetByUser" : 0,
@@ -647,15 +656,6 @@
       "outputAbbreviatedPath" : "\/js\/vertical-carousel-ck.js",
       "fileType" : 64
     },
-    "\/css\/main.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/css\/main.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
     "\/img\/sudo_projects_wire.jpg" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -667,16 +667,16 @@
       "initialSize" : 1230342,
       "fileType" : 4096
     },
-    "\/js\/vendor\/processing.js" : {
+    "\/img\/tester.jpg" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/js\/vendor\/processing.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/js\/vendor\/processing-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/img\/tester.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/img\/tester.jpg",
+      "initialSize" : 159703,
+      "fileType" : 4096
     }
   },
   "manualImportLinks" : [

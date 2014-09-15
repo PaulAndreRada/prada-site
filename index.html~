@@ -47,6 +47,23 @@
 
 	  <nav id="navigation"> 
 	    
+	    
+	    <!-- @profileNav -->
+	    
+	    <!--
+	    <a href="profile" 
+	       class="profile_icon_container"
+	       data-link="profile"
+	       data-section-index="0">
+	      <div class="profile_icon"> 
+		<span class="visuallyhidden">
+		  profile
+		</span>
+	      </div>
+	    </a>
+	    -->
+	    
+
 	    <!-- @homeNav -->
 	    <a href="home" 
 	       class="home_icon_container"
@@ -59,7 +76,9 @@
 		</span>
 	      </div>
 	    </a>
-	    
+
+
+
 	    <!-- @uxNav -->
 	    <a href="ux" 
 	       class="ux_icon_container"

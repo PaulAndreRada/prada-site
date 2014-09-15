@@ -1,6 +1,15 @@
 //
-// Needs some seious cleanup and organizing
+// author: Paul Rada
 //
+// For quick search use the @ symbol to navigate:
+// like so :     @top
+//
+// guide :
+//    infoToggle || IT
+//    hashChange || HC
+//    navigation || NV
+//    siteModes || enquire
+//     
 // @codekit-prepend "plugins.js";
 // @codekit-prepend "vertical-carousel.js";
 
@@ -15,10 +24,12 @@ $(function(){
 	    // site objects
 	    navigation,
 	    hashManager,
+	    infoToggle,
 	    //
 	    HIDDEN = 'hidden';
 
-        // onLoad fadeIn body
+
+        // onLoad fadeIn the main content
 	$(window).on( 'load', function(){
                 //
 		$spinner.hide();
@@ -28,7 +39,93 @@ $(function(){
 	});
 
 
-	// @hashManager
+	// @infoToggle || @IT
+	var InfoToggle = function(){ 
+	    //
+	    var that = {
+		settings: {
+		    mode : 'closed',
+		    INTRO_ID : 'intro',
+		    ABOUT_ID : 'about',
+		    OPEN_ID : 'moreButton',
+		    CLOSE_ID : 'closeButton',
+		    HOME_TAG : 'section-type',
+		    HOME : 'home',
+		}
+	    },
+	    IT = (function(){ return that; }()),
+	    s = IT.settings,
+	    $section = $doc.find( '[data-'+ s.HOME_TAG +'='+ s.HOME+']' ),
+	    $intro = $section.find( '#'+ s.INTRO_ID ),
+	    $openButton = $intro.find( '#'+ s.OPEN_ID ),
+	    $about = $section.find( '#'+s.ABOUT_ID ),
+	    $closeButton = $about.find( '#' + s.CLOSE_ID );
+	    
+	    console.log( $section );
+	    console.log( $intro );
+	    console.log( $openButton );
+	    console.log( $about );
+	    console.log( $closeButton );
+	    
+	    IT.init = function(){ 
+		//
+		console.log( 'initialized' );
+		$openButton.on( 'click', function(e){ 
+			//
+			e.preventDefault();
+			//
+			console.log( 'open' );
+			IT.info( 'open' );
+			//
+		    });
+		//
+		$closeButton.on( 'click', function(e){
+			//
+			e.preventDefault();
+			//
+			console.log( 'event on' );
+			IT.info( 'close' );
+			//
+		    });
+		return IT;
+	    };
+	    
+	    
+	    IT.info = function( mode ){
+		//
+		var speed = 300;
+		//
+		if( mode === 'open' ) { 
+		    //
+		    $intro.fadeOut( speed/2 );
+		    //
+		    $about.fadeIn( speed*3 );
+		    //
+		    s.mode = 'open';
+		    //
+		} else if ( mode === 'close' ){
+		    //
+		    $about.fadeOut( speed/4 );
+		    //
+		    window.setTimeout( function(){ 
+			    $intro.fadeIn( speed ); 
+			}, speed );
+		    //
+		    s.mode = 'closed';
+		    //
+		};
+		//
+		return IT;
+	    };
+
+	    return IT;
+	};
+
+
+
+
+	
+	// @hashManager  || @HM
 	var HashManager = function( options ){
 
 	    var that = {
@@ -114,6 +211,8 @@ $(function(){
 
 
 
+
+	// @navigation || @nav
 	var Navigation = function( options ){
 	    //
 	    // create the NAV object
@@ -650,15 +749,18 @@ $(function(){
 	//
 	// @nav init
 	//
-	// @carousel init
+	// @carousel @init
 	navigation.settings.carousel.init();
 	navigation.init();
+	//
+	// @infoToggle || @aboutToggle @init
+	infoToggle = InfoToggle().init();
 
 
 
 
-	// ENQUIRE SITE MODES
-
+	// @siteModes
+	//
 	// window thresholds
 	var base_width = 960,
 	    tablet_width =  768,
@@ -728,8 +830,9 @@ $(function(){
 	    };
 	}
 
-
-
+	// @enquire
+	//
+	// Reads the site's screen size to trigger functions on rezise
 	enquire
 	    .register("screen and (min-width: "+topMaxWidth+"px )", {
 		    //
@@ -738,33 +841,33 @@ $(function(){
 			siteMode( 'desktop' );
 			//
 		    }
-
+		    
 		})
 	    .register("screen and (min-width: "+topMinWidth+
 		      "px ) and (max-width: "+topMaxWidth+"px )", {
-			//
-			match : function(){
+			  //
+			  match : function(){
 			    //
-			    siteMode( 'tablet' );
+			      siteMode( 'tablet' );
 			    //
-			}
-		    })
+			  }
+		      })
 	    .register("screen and (min-width: "+medMinWidth+
 		      "px ) and (max-width: "+medMaxWidth+"px ) ", {
-			    //
-			    match : function(){
+			  //
+			  match : function(){
+			      //
+			      siteMode( 'mobile' );
 				//
-				siteMode( 'mobile' );
-				//
-			    }
-			})
+			  }
+		      })
 	    .register("screen and (max-width: "+botMaxWidth+"px)", {
-				//
-				match: function(){
-				    //
-				siteMode( 'mobile_small' );
-				//
-				}
-			    });
-    });
+		    //
+		    match: function(){
+			//
+			siteMode( 'mobile_small' );
+			//
+		    }
+		});
+    });// end
 

@@ -39,8 +39,17 @@
 ********************************************** */
 
 //
+// author: Paul Rada
+//
+// For quick search use the @ symbol to navigate:
+// like so :    @top
+//
+// guide :
+//    navigation || NV
+//    enquire
 //
 // @codekit-prepend "projects-plugins.js";
+
 
 $(function(){
 	'use strict';
@@ -194,9 +203,6 @@ $(function(){
 
 
 
-
-	// ENQUIRE SITE MODES
-
 	// window thresholds
 	var base_width = 960,
 	    tablet_width =  768,
@@ -209,62 +215,6 @@ $(function(){
 	    medMinWidth = 481,
 	    botMaxWidth = 480,
 	    $html = $doc.find( 'html' );
-
-
-	/*	var siteMode = function( screenMode ){
-	    //
-	    var screenMode = screenMode || 'desktop',
-	    tablet = 'tablet_size',
-	    mobile = 'mobile_size',
-	    mobile_small = 'mobile_sm_size';
-
-	    switch( screenMode ){
-		//
-	    case "desktop":
-		//
-		$html.removeClass( tablet
-				   +" "+ mobile
-				   +" "+ mobile_small );
-		//
-		navigation.switchModeTo( 'desktop' );
-		//
-		//
-		break;
-	    case "tablet":
-		//
-		$html.removeClass( mobile
-				   +" "+ mobile_small );
-		//
-		$html.addClass( tablet );
-		//
-		navigation.switchModeTo( 'tablet' );
-		//
-		break;
-	    case "mobile":
-		//
-		$html.removeClass( tablet
-				   +" "+ mobile_small );
-		//
-		$html.addClass( mobile );
-		//
-		navigation.switchModeTo( 'mobile' );
-		//
-		//
-		break;
-	    case "mobile_small":
-		//
-		$html.removeClass( tablet
-				   +" "+ mobile);
-		//
-		$html.addClass( mobile_small );
-		//
-		navigation.switchModeTo( 'mobile' );
-		//
-		//
-		break;
-	    };
-	}
-	*/
 
 	// @enquire
 	enquire

@@ -1,5 +1,15 @@
 //
 //
+// author: Paul Rada
+//
+// For quick search use the @ symbol to navigate:
+// like so :    @top
+//
+// guide :
+//    navigation || NV
+//    enquire
+//    canvas || processing
+//
 // @codekit-prepend "processing.js";
 // @codekit-prepend "_logoSketch.js";
 // @codekit-prepend "projects-plugins.js";
@@ -15,7 +25,7 @@ $(function(){
             //
             HIDDEN = 'hidden',
             navigation;
-	
+
         // onLoad fadeIn body
         $(window).on( 'load', function(){
                 //

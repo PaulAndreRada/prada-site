@@ -8,18 +8,21 @@
 $(function(){
 	'use strict';
 
-	var $doc = $(document),
-	    $body = $doc.find( 'body' ),
-	    //
-	    HIDDEN = 'hidden',
-	    navigation;
 
-
-	// onLoad fadeIn body
-	$(window).on( 'load', function(){
-		//
-		$body.fadeIn(700);
-		//
+        var $doc = $(document),
+            $mainContent = $doc.find( '#mainContent' ),
+            $spinner = $doc.find( '#spinner' ),
+            //
+            HIDDEN = 'hidden',
+            navigation;
+	
+        // onLoad fadeIn body
+        $(window).on( 'load', function(){
+                //
+                $spinner.hide();
+                //
+                $mainContent.fadeIn(700);
+                //
 	    });
 
 
