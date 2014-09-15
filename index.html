@@ -20,8 +20,12 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        
+	
+	<!-- spinner -->
+	<div class="spinner_container"
+	     id="spinner">
+	  <div class="spinner"></div>
+	</div> 
 	
 	<!-- hamburger -->
 	<a href="#"
@@ -34,14 +38,32 @@
 	</a>
 		
 	<!-- nav BG cover -->
-	<div class="navBackground hidden"
+	<div class="nav_background hidden"
 	     id="navBG"></div>
 
 	<!-- main -->
-	<div class="page-wrap">	  
+	<div class="page_wrap" 
+	     id="mainContent">	  
 
 	  <nav id="navigation"> 
 	    
+	    
+	    <!-- @profileNav -->
+	    
+	    <!--
+	    <a href="profile" 
+	       class="profile_icon_container"
+	       data-link="profile"
+	       data-section-index="0">
+	      <div class="profile_icon"> 
+		<span class="visuallyhidden">
+		  profile
+		</span>
+	      </div>
+	    </a>
+	    -->
+	    
+
 	    <!-- @homeNav -->
 	    <a href="home" 
 	       class="home_icon_container"
@@ -54,7 +76,9 @@
 		</span>
 	      </div>
 	    </a>
-	    
+
+
+
 	    <!-- @uxNav -->
 	    <a href="ux" 
 	       class="ux_icon_container"
@@ -117,12 +141,39 @@
 		  data-section-type="home">
 		
 		<!-- @intro -->
-		<div class="intro_container">
+		<div class="intro_container"
+		     id="intro">
 		  <div class="intro"> 
 		    Hi, I’m <a href="https://www.linkedin.com/pub/paul-rada/a0/16/21">Paul Rada</a>, a product designer that specializes in web and mobile apps.
+		    <a href="#"
+		       id="moreButton"> 
+		      more
+		      </a>
 		  </div>
 		</div> <!--intro_container-->		
 		
+
+		<!-- @about -->
+		<div class="about_container"
+		     id="about">
+		  <a href="#" 
+		     class="close_icon"
+		     id="closeButton"></a>
+		  <div class="profile_img"></div>
+		  <div class="name">Paul Rada</div>
+		  <div class="title">Product Designer</div>
+		  <div class="about"> 
+		    I’m passionate about the possibilities that can come from combining modern design principles with web/mobile technologies.
+</br></br>
+I have designed and coded large projects in html, css and Javascript, as well as experimented with plugin and framework design. Most of my experience has been in the conceptualizing, structuring, styling, prototyping and building of front end features and applications for startups. In and effort to become a better mobile/web designer, I have devoted a big aspect of my career to learning how to code the front end of web applications using object oriented and modular methods. 
+</br></br>
+My abilities and experience in adobe Photoshop, Illustrator, inDesign, and After Effects in combination with a knowledge of modern design principles allow me to create media for a variety of scenarios. Other skills include user research, technology trends research, and 3D modeling.
+</br>
+Now, seeking an internship or entry level position in the tech industry.
+		  </div>
+		</div> <!--intro_container-->		
+		
+
 	      </li>
 	      
 	      <!-- @ux --> 

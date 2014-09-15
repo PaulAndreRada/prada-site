@@ -20,8 +20,12 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        
+	
+	<!-- spinner -->
+	<div class="spinner_container"
+	     id="spinner">
+	  <div class="spinner"></div>
+	</div> 
 	
 	<!-- hamburger -->
 	<a href="#"
@@ -34,14 +38,32 @@
 	</a>
 		
 	<!-- nav BG cover -->
-	<div class="navBackground hidden"
+	<div class="nav_background hidden"
 	     id="navBG"></div>
 
 	<!-- main -->
-	<div class="page-wrap">	  
+	<div class="page_wrap" 
+	     id="mainContent">	  
 
 	  <nav id="navigation"> 
 	    
+	    
+	    <!-- @profileNav -->
+	    
+	    <!--
+	    <a href="profile" 
+	       class="profile_icon_container"
+	       data-link="profile"
+	       data-section-index="0">
+	      <div class="profile_icon"> 
+		<span class="visuallyhidden">
+		  profile
+		</span>
+	      </div>
+	    </a>
+	    -->
+	    
+
 	    <!-- @homeNav -->
 	    <a href="home" 
 	       class="home_icon_container"
@@ -54,7 +76,9 @@
 		</span>
 	      </div>
 	    </a>
-	    
+
+
+
 	    <!-- @uxNav -->
 	    <a href="ux" 
 	       class="ux_icon_container"
@@ -117,11 +141,11 @@
 		  data-section-type="home">
 		
 		<!-- @intro -->
-		<div class="intro_container_desktop">
+		<div class="intro_container">
 		  <div class="intro"> 
 		    Hi, I’m <a href="https://www.linkedin.com/pub/paul-rada/a0/16/21">Paul Rada</a>, a product designer that specializes in web and mobile apps.
 		  </div>
-		</div> <!--intro_container-->
+		</div> <!--intro_container-->		
 		
 	      </li>
 	      
@@ -129,19 +153,19 @@
 	      <li class="ux"
 		  data-section-type="ux">
 		
-		<a href="#" class="project_block"> 
+		<a href="projects/riotry.html" class="project_block"> 
 		  <div class="riotry_image">
 		  </div>
 	      </a>
 		
 		
-		<a href="#" class="project_block"> 
+		<a href="projects/stampede.html" class="project_block"> 
 		  <div class="stampede_image">
 		  </div>
 		</a>
 		
 		
-		<a href="#" class="project_block"> 
+		<a href="projects/sudo.html" class="project_block"> 
 		  <div class="sudo_image">
 		  </div>
 		</a>
@@ -154,13 +178,13 @@
 		  data-section-type="gpx">
 		
 	      
-		<a href="#" class="project_block_sudotouch"> 
+		<a href="projects/sudotouch.html" class="project_block_sudotouch"> 
 		  <div class="sudotouch_image">
 		  </div>
 		</a>
 		
 		
-		<a href="#" class="project_block_cervantes"> 
+		<a href="projects/cervantes.html" class="project_block_cervantes"> 
 		  <div class="cervantes_image">
 		  </div>
 		</a>

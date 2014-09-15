@@ -125,13 +125,48 @@ textarea {
      background: $BG-color;
    }
 
+// @Spinner
 
-html.js body{
+   .spinner_container { 
+      display: block;
+      margin: 30% auto 0 auto;
+   }    
+  .spinner {
+    width: 30px;
+    height: 30px;
+    background-color: #333;
+
+    margin: 100px auto;
+    -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+    animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+    0% { -webkit-transform: perspective(120px) }
+    50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+    100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+   0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+
+html.js .page_wrap{
    display: none;
 }
 
 
-.page-wrap {
+.page_wrap {
    @include container;
    height: 100%;	
    max-height: 100%;
@@ -176,7 +211,7 @@ html.js body{
 
 ///* @nav */  
 
-.navBackground{ 
+.nav_background{ 
   position: absolute;
   width: 100%;
   height: 100%;
@@ -193,6 +228,24 @@ nav {
   position: absolute;
   height: 18%;
   z-index: 1000;
+
+ // for profile on nav
+ /*
+  .profile_icon_container { 
+    @extend .icon-container;
+        
+    .profile_icon{ 
+       background: url('../img/sprites/second_sprite_big.png') no-repeat;
+       background-size: 250%;
+       background-position: 118% -1%;
+       // avrg sizes
+       width: 100%;
+       height: 100%;
+       overflow:hidden;
+    }
+  }
+*/
+
 
   .home_icon_container{
     @extend .icon-container;  
@@ -292,11 +345,12 @@ li.intro{
      } 
    }  
    
-   .intro_container_desktop{ 
+   .intro_container{ 
      @extend .intro_container;	
      padding-left: 11%;
      padding-right: 11%;
      border: none;
+     margin-bottom: 0px;
       
      .intro{
 	font-size : 27px;
@@ -311,8 +365,8 @@ li.intro{
 	a {
 	  color: $secondary-color;
 	}
-     }     
-   }
+     } // intro 
+   } // intro_container
 
 
 

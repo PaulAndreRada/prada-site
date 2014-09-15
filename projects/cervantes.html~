@@ -21,9 +21,14 @@
         <![endif]-->
 
 
+        <!-- spinner -->
+        <div class="spinner_container"
+             id="spinner">
+          <div class="spinner"></div>
+        </div>
 
-	<!-- main -->
-	<div class="page-wrap">
+        <!-- main -->
+        <div class="page_wrap" id="mainContent">
 	  
 	  <!-- @toggle nav button -->
 	  <a href="#" 
@@ -107,58 +112,60 @@
 	  <!-- @main --->
 	  <hr class="full">
 	  <div class="space_1"></div>
-	  <h1 class="title">sudotouch logo</h1>
+	  <h1 class="title">cervantes</h1>
+	  <div class="space_1"></div>
 
+	  <h3 class="details">logo</h3>
+	  <div class="description">
+	    Created for the pre-production sales of the miniseries based on Miguel de Cervantes life.
+	  </div>	     
 	  <div class="space_1"></div>
  	  <hr class="mid">
+	  <div class="space_1"></div>	  
+	  <a href="../img/cervantes_logo.jpg">
+            <img src="../img/cervantes_logo.jpg"
+		 class="project_img"/> 
+	  </a>
+	  
+  	  <div class="space_2"></div>
+	  <a href="../img/cervantes_n_process.jpg">
+	    <img src="../img/cervantes_n_process.jpg"
+		 class="project_img"/>
+	  </a>
 	  <div class="space_1"></div>
-	  
-	  
-	  <div class="project_canvas_container">
-	    <canvas id="sudotouchCanvas">
-	    </canvas>
-	  </div>
-	  
-  	  <div class="space_1"></div>
-	  <div class="sudo_canvas_controls" id="controls">
-	    <a href="#" id="nextButton"
-	       data-value="1">
-              change
-	    </a>
-	  </div>
+	  <h3 class="details">the process</h3>	  
+	  <div class="description">
+	    Created with a combination of illustrator and photoshop.
+	  </div>	     
+	  <div class="space_2"></div>
+
+	  <a href="../img/cervantes_s_style.jpg">
+	    <img src="../img/cervantes_s_style.jpg"
+		 class="project_img"/>
+	  </a>
 	  <div class="space_1"></div>
-
+	  <h3 class="details">the concept</h3>
+	  <div class="description">
+	    Focusing more on the influential events of his life rather than on his writings. We based the concept on a pivotal moment in Cervantes life where by using a rapier sword to defend his love in a battle Cervantes finds himself committing murder and becoming an enemy of the state. The idea was to replicate the swirling metal shapes found in rapier swords  a curse of sorts. A reference to the moment his life changed and the adventure started.
+	  </div>	     
 
 	  
-	  <!--
+      	  <div class="space_2"></div>
+	  <a href="../img/cervantes_font_long.jpg">
+	    <img src="../img/cervantes_font_long.jpg"
+		 class="project_img"/>
+	  </a>
 	  <div class="space_1"></div>
-	  <h3 class="details">splash version</h3>
-  	  <div class="space_1"></div>
-
-	  <img src="../img/sudo_projects_wire.jpg"
-               class="project-img"/>
-	  
-	  <div class="space_1"></div>
-	  <h3 class="details">projects version</h3>
-  	  <div class="space_1"></div>
-	  
-	  <img src="../img/sudo_splash_wire.jpg"
-	       class="project-img"/>
-	  
-	  -->
+	  <h3 class="details">The font</h3>
+	  <div class="description">
+	    Garamond ( created  a few years before Cervantes was born ) was chosen for its elegant showcase of the late sixteenth century styles. Also the added value of it being one of the most legible serif fonts till this day, allowed the press copy and later media relating to the story to have a cohesive style throughout.
+	  </div>	  
+          <div class="space_1"></div>
 
 
 
+	</div><!--pageWrap-->
 
-	  </div><!--pageWrap-->
-
-	  <!-- use at the @end
-	       <div class="closing_container">
-		 <div class="closing">
-		   Paul Rada 2014
-		 </div>
-	       </div>
-	  -->
 
 
 
@@ -166,7 +173,7 @@
 
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
           <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-          <script src="../js/sudotouch-project-ck.js"></script>
+          <script src="../js/projects-ck.js"></script>
 
           <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--          <script>
