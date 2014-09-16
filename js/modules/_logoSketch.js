@@ -345,7 +345,7 @@
 	// @clusterSet || CS
 	var clusterSettings = {
 	    strokeW : .6,
-	    boidAmount : 2000, // current performance limit 8,000
+	    boidAmount : 6000, // current performance limit 8,000
 	    clusters :  [{
 		    //
 		    // reads from left to write
@@ -439,7 +439,7 @@
 	    p.size( WIDTH, HEIGHT );
 	    p.smooth();
 	    p.background( 232 );
-	    p.frameRate(30);
+	    p.frameRate(24);
 	    //
 	};
 

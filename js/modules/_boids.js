@@ -18,7 +18,7 @@
 		state : 'network',
 		strokeW : 0.01,
 		color :  p.color( 0,0,0,255),
-		directionLimit : 10,
+		directionLimit : 1,
 		radius  : 12,
 		radiusLimit : 1,
 		startPos : new p.PVector( p.random( 0,0 ),
@@ -147,7 +147,7 @@
 
 	boid.renderIdea = function(){
 	    //
-	    var explosionSpeed = 6
+	    var explosionSpeed = 3;
 	    //
 	    // set the color
 	    p.stroke( s.color );
