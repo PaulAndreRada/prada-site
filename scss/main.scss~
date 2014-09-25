@@ -194,7 +194,7 @@ html.js .page_wrap{
   @include transition-duration(.2s);
 
   
-  .no-touch &:hover { 
+  &:hover, &:active { 
     color: $main-color;
   }
 }
@@ -228,6 +228,7 @@ nav {
   position: absolute;
   height: 18%;
   z-index: 1000;
+
 
   .home_icon_container{
     @extend .icon-container;  
@@ -303,7 +304,7 @@ nav {
    border-bottom: 1px solid $secondary-color;
    @include transition-property(background);
    @include transition-duration(.5s);
-   .no-touch &:hover {
+   &:hover {
      color: $BG-color;
      background: $secondary-color;
      
@@ -312,7 +313,10 @@ nav {
         color: inherit; 
      }
    }
-   
+   &:active{ 
+        color: $BG-color;
+	background: $secondary-color;	
+   }
 }
 
 
@@ -331,7 +335,7 @@ li.intro{
 	font-size: 22px; 
         margin-top: 40%;
      }
-     .no-touch &:hover { 
+     &:hover, &:active { 
        background: none;
        color: $main-color;
      } 
@@ -581,7 +585,7 @@ li.links {
       color: $main-color;
       font-weight: bolder;
       text-align: center;
-      .no-touch &:hover { 
+      &:hover, &:active { 
         color: $BG-color !important;
       }
     }
@@ -592,26 +596,98 @@ li.links {
 
 
 // @tablet sections
+html.tablet_size body ul {
 
+    // ux		  
+    .project_block { 
 
-.mobile-icon-container{ 
-  @extend .icon-container;
-  padding-top: 0px;
+      .riotry_image {
+
+      }
+    
+      .stampede_image {
+
+      }
+
+      .sudo_image {
+
+     }
+   }
+   
+  // graphics
+  .project_block_sudotouch { 
+    .sudotouch_image {
+
+    }
+   }
+
+   .project_block_cervantes {    
+    .cervantes_image {
+
+    }
+  }
+
+  // code
+  .project_block { 
+      
+    .oat_image {
+
+    }
+    
+    .data_spider_image {
+
+    }
+    
+    .riotry_demo_image {
+
+    }
+  }
+
+  // links
+   .link_block { 
+
+    .email_image {
+
+    }
+    
+    .linkedin_image {
+
+    }
+    
+    .github_image {
+
+    }
+    
+    .instagram_image {
+
+    }
+    
+    .quora_image {
+
+    }
+    
+    .siteCode_image {
+
+    }
+  }
 }
+
+
+
 .mobile-icon { 
-  //margin-top: 15%;
+  margin-top: -15%;
 } 
 
 
 // @mobile
 html.mobile_size body {
-
+  
   nav { 
     @include columns( 16 );
     background: $BG-color;
   
     .home_icon_container{
-      @extend .mobile-icon-container;  
+      @extend .icon-container;  
        
       .home_icon{	
         @extend .nav-text;
@@ -621,7 +697,7 @@ html.mobile_size body {
     }
 
     .ux_icon_container{ 
-      @extend .mobile-icon-container;
+      @extend .icon-container;
 
       .ux_icon{ 
         @extend .nav-text;
@@ -630,7 +706,7 @@ html.mobile_size body {
     }
   
     .gpx_icon_container{ 
-      @extend .mobile-icon-container;
+      @extend .icon-container;
 
       .gpx_icon{ 
         @extend .nav-text;
@@ -639,7 +715,7 @@ html.mobile_size body {
     }
   
     .code_icon_container{ 
-      @extend .mobile-icon-container;
+      @extend .icon-container;
 
       .code_icon{ 
         @extend .nav-text;
@@ -648,7 +724,7 @@ html.mobile_size body {
     }
  
     .links_icon_container{ 
-      @extend .mobile-icon-container;
+      @extend .icon-container;
 
       .links_icon{ 
         @extend .nav-text;

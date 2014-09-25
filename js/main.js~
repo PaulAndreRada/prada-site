@@ -61,13 +61,20 @@ $(function(){
 	    $about = $section.find( '#'+s.ABOUT_ID ),
 	    $closeButton = $about.find( '#' + s.CLOSE_ID );
 	    
+	    console.log( $section );
+	    console.log( $intro );
+	    console.log( $openButton );
+	    console.log( $about );
+	    console.log( $closeButton );
 	    
 	    IT.init = function(){ 
 		//
+		console.log( 'initialized' );
 		$openButton.on( 'click', function(e){ 
 			//
 			e.preventDefault();
 			//
+			console.log( 'open' );
 			IT.info( 'open' );
 			//
 		    });
@@ -76,6 +83,7 @@ $(function(){
 			//
 			e.preventDefault();
 			//
+			console.log( 'event on' );
 			IT.info( 'close' );
 			//
 		    });
@@ -825,7 +833,6 @@ $(function(){
 	// @enquire
 	//
 	// Reads the site's screen size to trigger functions on rezise
-
 	enquire
 	    .register("screen and (min-width: "+topMaxWidth+"px )", {
 		    //
@@ -843,7 +850,6 @@ $(function(){
 			    //
 			      siteMode( 'tablet' );
 			    //
-			      console.log( 'tablet' );
 			  }
 		      })
 	    .register("screen and (min-width: "+medMinWidth+
@@ -853,7 +859,6 @@ $(function(){
 			      //
 			      siteMode( 'mobile' );
 				//
-			      console.log( 'mobile' );
 			  }
 		      })
 	    .register("screen and (max-width: "+botMaxWidth+"px)", {
@@ -862,7 +867,6 @@ $(function(){
 			//
 			siteMode( 'mobile_small' );
 			//
-			console.log( 'small');
 		    }
 		});
     });// end
